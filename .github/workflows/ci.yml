@@ -32,6 +32,8 @@ jobs:
           ALL_SUBJECTS_READY: "0"
       - name: Build
         run: pnpm build
+      - name: Bundle checks
+        run: node scripts/check-bundle.mjs
       - name: Install Playwright Chromium
         run: pnpm exec playwright install --with-deps chromium
       - name: E2E tests

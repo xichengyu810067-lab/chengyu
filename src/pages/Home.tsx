@@ -41,7 +41,7 @@ export default function Home() {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute right-24 bottom-4 size-16 rounded-full bg-amber-300/30"
+          className="pointer-events-none absolute -bottom-6 left-1/2 size-16 rounded-full bg-amber-300/30"
           aria-hidden
         />
         <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">

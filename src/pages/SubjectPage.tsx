@@ -7,6 +7,7 @@ import { useProgress } from "../lib/progress";
 import { EmptyState, ProgressRing, Spinner } from "../ui";
 import { KIND_META } from "../widgets/ActivityHost";
 import MindMap from "../widgets/MindMap";
+import { Rich } from "../widgets/RichText";
 
 export default function SubjectPage() {
   const { stage = "", subject = "" } = useParams();
@@ -160,7 +161,7 @@ export default function SubjectPage() {
                           ) : null}
                         </div>
                         <p className="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">
-                          {l.objectives[0]}
+                          <Rich text={l.objectives[0]} />
                         </p>
                         <div className="mt-auto flex flex-wrap gap-1 pt-3">
                           {kinds.map((k) => (

@@ -6,7 +6,7 @@ import { useAsync } from "../lib/hooks";
 import { useProgress } from "../lib/progress";
 import { EmptyState, ProgressBar, Spinner } from "../ui";
 import ActivityHost, { KIND_META } from "../widgets/ActivityHost";
-import { RichText } from "../widgets/RichText";
+import { Rich, RichText } from "../widgets/RichText";
 
 export default function LessonPage() {
   const { lessonId = "" } = useParams();
@@ -87,7 +87,9 @@ export default function LessonPage() {
           </p>
           <ul className="mx-auto max-w-sm space-y-1 text-left text-sm">
             {lesson.objectives.map((o) => (
-              <li key={o}>✅ {o}</li>
+              <li key={o}>
+                ✅ <Rich text={o} />
+              </li>
             ))}
           </ul>
           <div className="flex flex-wrap justify-center gap-2">
@@ -141,7 +143,9 @@ export default function LessonPage() {
           <summary className="cursor-pointer">學習目標</summary>
           <ul className="mt-1 list-disc pl-5">
             {lesson.objectives.map((o) => (
-              <li key={o}>{o}</li>
+              <li key={o}>
+                <Rich text={o} />
+              </li>
             ))}
           </ul>
         </details>

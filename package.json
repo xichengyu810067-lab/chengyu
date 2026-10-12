@@ -18,7 +18,7 @@
     "test:watch": "vitest",
     "e2e": "playwright test",
     "check:subject": "node scripts/check-subject.mjs",
-    "verify": "pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm e2e"
+    "verify": "pnpm typecheck && pnpm lint && pnpm test && pnpm build && node scripts/check-bundle.mjs && pnpm e2e"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.133.0",

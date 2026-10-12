@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router";
 import type { CurriculumNode } from "../content/types";
 import { useMediaQuery } from "../lib/hooks";
-import { RichText } from "./RichText";
+import { Rich, RichText } from "./RichText";
 
 interface Placed {
   node: CurriculumNode;
@@ -224,7 +224,7 @@ export default function MindMap({
                         className="line-clamp-2 flex-1 dark:text-slate-100"
                         style={isRoot ? { color: "white" } : undefined}
                       >
-                        {p.node.title}
+                        <Rich text={p.node.title} />
                       </span>
                       {p.node.lessonIds?.length ? (
                         <span role="img" aria-label="有互動課程">
@@ -266,7 +266,9 @@ export default function MindMap({
           aria-live="polite"
         >
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-lg font-bold">{selected.title}</h3>
+            <h3 className="text-lg font-bold">
+              <Rich text={selected.title} />
+            </h3>
             {selected.grade && <span className="chip">{selected.grade} 年級</span>}
             {selected.code && <span className="chip font-mono">課綱 {selected.code}</span>}
           </div>
@@ -332,7 +334,7 @@ function OutlineNode({
           className={depth === 0 ? "font-bold" : depth === 1 ? "font-semibold" : ""}
           style={depth <= 1 ? { color } : undefined}
         >
-          {node.title}
+          <Rich text={node.title} />
         </span>
         {node.lessonIds?.length ? (
           <span role="img" aria-label="有互動課程">
