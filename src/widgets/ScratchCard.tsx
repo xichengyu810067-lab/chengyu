@@ -160,7 +160,7 @@ function Card({
     <div className="card overflow-hidden" data-testid={`scratch-card-${index}`}>
       <div className="flex items-start justify-between gap-2 px-4 pt-3">
         <RichText text={card.front} className="font-semibold" />
-        {card.speak && canSpeak() && (
+        {card.speak && revealed && canSpeak() && (
           <button
             type="button"
             className="btn-ghost min-h-8 shrink-0 px-2 py-1"
