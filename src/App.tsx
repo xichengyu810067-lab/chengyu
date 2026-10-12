@@ -14,6 +14,7 @@ export const routes = [
     path: "/",
     element: <Layout />,
     errorElement: <RouteError />,
+    hydrateFallbackElement: <div className="p-8 text-center text-slate-400">載入中…</div>,
     children: [
       { index: true, lazy: page(() => import("./pages/Home")) },
       { path: "learn/:stage", lazy: page(() => import("./pages/StagePage")) },

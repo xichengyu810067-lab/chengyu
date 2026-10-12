@@ -154,6 +154,15 @@
   }
 }
 
+.hotspot-btn:focus {
+  outline: none;
+}
+.hotspot-btn:focus-visible {
+  outline: 3px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 9999px;
+}
+
 .no-touch-scroll {
   touch-action: none;
 }
@@ -180,4 +189,11 @@
 }
 .reduce-motion .hotspot-ring {
   display: none;
+}
+
+:root {
+  --mm-bg: #ffffff;
+}
+.dark {
+  --mm-bg: #0f172a;
 }
