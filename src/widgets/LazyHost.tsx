@@ -1,5 +1,6 @@
-import { Component, type ComponentType, lazy, type ReactNode, Suspense } from "react";
+import { Component, type ComponentType, type ReactNode, Suspense } from "react";
 import type { Loader } from "../content/types";
+import { isChunkError, lazyRetry } from "../lib/lazyRetry";
 import { Spinner } from "../ui";
 
 const cache = new WeakMap<Loader<never>, ComponentType<never>>();
@@ -8,7 +9,7 @@ function getLazy<P>(load: Loader<P>): ComponentType<P> {
   const key = load as unknown as Loader<never>;
   let C = cache.get(key) as ComponentType<P> | undefined;
   if (!C) {
-    C = lazy(load) as unknown as ComponentType<P>;
+    C = lazyRetry(load) as unknown as ComponentType<P>;
     cache.set(key, C as unknown as ComponentType<never>);
   }
   return C;
@@ -56,11 +57,19 @@ export class ErrorBoundary extends Component<
             role="alert"
           >
             <p className="font-semibold">這個互動暫時無法顯示 😢</p>
-            <p className="mt-1">可以先跳過，繼續下一個活動。</p>
+            <p className="mt-1">
+              {isChunkError(this.state.error)
+                ? "網路不穩或網站剛更新，請重新整理頁面。"
+                : "可以先跳過，繼續下一個活動。"}
+            </p>
             <button
               type="button"
               className="btn-secondary mt-3"
-              onClick={() => this.setState({ error: null })}
+              onClick={() =>
+                isChunkError(this.state.error)
+                  ? window.location.reload()
+                  : this.setState({ error: null })
+              }
             >
               再試一次
             </button>

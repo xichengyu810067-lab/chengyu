@@ -1,5 +1,6 @@
-import { type ComponentType, lazy, Suspense, useState } from "react";
+import { type ComponentType, Suspense, useState } from "react";
 import type { Activity, ActivityKind, MindmapActivity, ReadActivity } from "../content/types";
+import { lazyRetry } from "../lib/lazyRetry";
 import { Spinner } from "../ui";
 import { CompleteBar } from "./kit";
 import { ErrorBoundary } from "./LazyHost";
@@ -9,7 +10,7 @@ import type { WidgetProps } from "./types";
 // biome-ignore lint/suspicious/noExplicitAny: 各元件的 activity 型別不同，由 kind 對應保證
 type AnyWidget = ComponentType<WidgetProps<any>>;
 
-const MindmapWidget = lazy(async () => {
+const MindmapWidget = lazyRetry(async () => {
   const { default: MindMap } = await import("./MindMap");
   function W({ activity, done, onComplete, ctx }: WidgetProps<MindmapActivity>) {
     const [visited, setVisited] = useState<Set<string>>(new Set());
@@ -49,17 +50,17 @@ function ReadWidget({ activity, done, onComplete }: WidgetProps<ReadActivity>) {
 
 const WIDGETS: Record<ActivityKind, AnyWidget> = {
   mindmap: MindmapWidget,
-  slider: lazy(() => import("./SliderLab").then((m) => ({ default: m.SliderWidget }))),
-  lab: lazy(() => import("./SliderLab").then((m) => ({ default: m.LabWidget }))),
-  drag: lazy(() => import("./DragSort")),
-  hotspot: lazy(() => import("./Hotspot")),
-  layers: lazy(() => import("./LayerViewer")),
-  steps: lazy(() => import("./Stepper")),
-  scratch: lazy(() => import("./ScratchCard")),
-  dialogue: lazy(() => import("./Dialogue")),
-  canvas: lazy(() => import("./DoodleCanvas")),
-  quiz: lazy(() => import("./Quiz")),
-  memory: lazy(() => import("./MemoryMatch")),
+  slider: lazyRetry(() => import("./SliderLab").then((m) => ({ default: m.SliderWidget }))),
+  lab: lazyRetry(() => import("./SliderLab").then((m) => ({ default: m.LabWidget }))),
+  drag: lazyRetry(() => import("./DragSort")),
+  hotspot: lazyRetry(() => import("./Hotspot")),
+  layers: lazyRetry(() => import("./LayerViewer")),
+  steps: lazyRetry(() => import("./Stepper")),
+  scratch: lazyRetry(() => import("./ScratchCard")),
+  dialogue: lazyRetry(() => import("./Dialogue")),
+  canvas: lazyRetry(() => import("./DoodleCanvas")),
+  quiz: lazyRetry(() => import("./Quiz")),
+  memory: lazyRetry(() => import("./MemoryMatch")),
   read: ReadWidget,
 };
 

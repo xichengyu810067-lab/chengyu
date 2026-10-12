@@ -3,10 +3,11 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import Layout from "./components/Layout";
 import RouteError from "./components/RouteError";
+import { retryImport } from "./lib/lazyRetry";
 
 type PageModule = { default: ComponentType };
 const page = (load: () => Promise<PageModule>) => async () => ({
-  Component: (await load()).default,
+  Component: (await retryImport(load)).default,
 });
 
 export const routes = [
