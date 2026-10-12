@@ -4,6 +4,8 @@ import { RichText } from "./RichText";
 export interface Bubble {
   role: "user" | "assistant" | "note";
   content: string;
+  /** 使用者泡泡也以 Rich 渲染（腳本選項可能含公式） */
+  rich?: boolean;
 }
 
 export default function ChatPanel({
@@ -71,7 +73,7 @@ export default function ChatPanel({
               avatar={b.role === "user" ? userAvatar : aiAvatar}
               name={b.role === "user" ? "你" : aiName}
             >
-              {b.role === "assistant" ? (
+              {b.role === "assistant" || b.rich ? (
                 <RichText text={b.content} />
               ) : (
                 <p className="whitespace-pre-wrap">{b.content}</p>

@@ -7,6 +7,7 @@ import { useProgress } from "../lib/progress";
 import { Spinner } from "../ui";
 import ChatPanel, { type Bubble } from "./ChatPanel";
 import { CompleteBar } from "./kit";
+import { Rich } from "./RichText";
 import type { WidgetProps } from "./types";
 
 export default function Dialogue({
@@ -39,11 +40,15 @@ export default function Dialogue({
         <p className="text-base font-bold">
           {scenario.aiAvatar ?? "🎭"} {scenario.title}
         </p>
-        <p className="mt-1 text-slate-600 dark:text-slate-300">{scenario.setting}</p>
+        <p className="mt-1 text-slate-600 dark:text-slate-300">
+          <Rich text={scenario.setting} />
+        </p>
         <div className="mt-2 flex flex-wrap gap-2">
           <span className="chip">你：{scenario.userRole}</span>
           <span className="chip">對方：{scenario.aiRole}</span>
-          <span className="chip">🎯 {scenario.goal}</span>
+          <span className="chip">
+            🎯 <Rich text={scenario.goal} />
+          </span>
         </div>
       </div>
       <fieldset className="flex w-fit rounded-lg bg-slate-100 p-0.5 text-sm dark:bg-slate-800">
@@ -105,7 +110,7 @@ function ScriptDialogue({
     const opt = node?.options?.[idx];
     if (!opt) return;
     const next = scenario.script[opt.next];
-    const add: Bubble[] = [{ role: "user", content: opt.label }];
+    const add: Bubble[] = [{ role: "user", content: opt.label, rich: true }];
     if (opt.feedback)
       add.push({
         role: "note",
@@ -143,7 +148,7 @@ function ScriptDialogue({
                 className="rounded-xl border-2 border-slate-200 px-3 py-2 text-left text-sm hover:border-brand-400 dark:border-slate-700"
                 onClick={() => choose(i)}
               >
-                {o.label}
+                <Rich text={o.label} />
               </button>
             ))}
           </div>
