@@ -99,6 +99,9 @@ export default function EpicenterLab({ onComplete }: LabProps) {
               50 公里
             </text>
           </g>
+          <text x="392" y="292" fontSize="10" textAnchor="end" fill="#64748b">
+            示意圖
+          </text>
         </svg>
         <div className="space-y-3 text-sm">
           <div className="rounded-xl bg-slate-100 p-3 dark:bg-slate-800">
@@ -106,6 +109,9 @@ export default function EpicenterLab({ onComplete }: LabProps) {
               P 波 {VP} km/s、S 波 {VS} km/s，所以
               <br />
               <strong>距離 ＝ S−P 時間差 × {fmt(K, 1)} 公里</strong>
+            </p>
+            <p className="mt-1 text-xs text-slate-500">
+              {fmt(K, 1)} 是依假設波速算出的近似值；實際波速隨岩層而變，課本也常取約 8 公里。
             </p>
           </div>
           <table className="w-full text-left">

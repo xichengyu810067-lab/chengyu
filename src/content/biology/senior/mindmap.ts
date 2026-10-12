@@ -20,7 +20,7 @@ const mindmap: CurriculumNode = {
           keyPoints: [
             "1665 年虎克（Hooke）觀察軟木塞，命名 cell",
             "許來登（Schleiden）與許旺（Schwann）提出細胞學說",
-            "菲爾紹（Virchow）補充：細胞來自原有的細胞",
+            "菲爾紹（Virchow，也譯作魏修）補充：細胞來自原有的細胞",
           ],
           lessonIds: ["biology.senior.cell-membrane"],
         },
@@ -246,7 +246,7 @@ const mindmap: CurriculumNode = {
           summary: "非專一性防禦與專一性防禦（體液免疫、細胞免疫）共同保護身體。",
           keyPoints: [
             "第一道防線：皮膚與黏膜；第二道防線：發炎反應、吞噬細胞",
-            "B 細胞分化成漿細胞分泌抗體；胞毒性 T 細胞破壞被感染的細胞",
+            "B 細胞分化成漿細胞分泌抗體；胞毒性 T 細胞（又稱毒殺型 T 細胞）破壞被感染的細胞",
             "疫苗誘發主動免疫，產生記憶細胞",
           ],
           lessonIds: ["biology.senior.nerve-immune"],

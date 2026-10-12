@@ -347,7 +347,7 @@ const questions: Question[] = [
     id: id("h7"),
     type: "cloze",
     stem: "吸氣時，橫膈會收縮並向＿＿＿移動，使胸腔變大。",
-    accept: ["下", "下方"],
+    accept: ["下", "下方", "下降"],
     explain: "吸氣時橫膈收縮**下降**、肋骨上舉，胸腔體積變大、壓力變小，空氣便流入肺中。",
     difficulty: 2,
     nodeId: node("gas-exchange"),

@@ -99,7 +99,7 @@ export function EmotionLayer(_: SceneProps) {
       <circle cx="200" cy="288" r="5" fill="#e11d48" />
       <circle cx="376" cy="258" r="5" fill="#e11d48" />
       <text x="34" y="258" fontSize="11" fontWeight="700" fill="#9f1239">
-        樂：飲酒樂甚，扣舷而歌
+        樂：飲酒樂甚，扣舷而歌之
       </text>
       <text x="200" y="273" textAnchor="middle" fontSize="11" fontWeight="700" fill="#9f1239">
         悲：洞簫嗚嗚，客嘆人生須臾

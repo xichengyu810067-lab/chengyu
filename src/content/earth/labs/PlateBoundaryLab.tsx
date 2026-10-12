@@ -33,13 +33,14 @@ const SPEED_KM_PER_MYR = 50; // 每年 5 公分 = 每百萬年 50 公里
 function Divergent({ t }: { t: number }) {
   const half = t * 6;
   const pairs = Math.ceil(half / 12);
+  // 磁條帶跟著板塊往外移：k = 0 是最早生成、離中洋脊最遠的一條，最新的地殼在中洋脊旁
   const stripes = Array.from({ length: pairs }, (_, k) => {
     const w = Math.min(12, half - 12 * k);
     const color = k % 2 === 0 ? "#475569" : "#cbd5e1";
     return (
       <g key={k}>
-        <rect x={220 - 12 * k - w} y="100" width={w} height="40" fill={color} />
-        <rect x={220 + 12 * k} y="100" width={w} height="40" fill={color} />
+        <rect x={220 - half + 12 * k} y="100" width={w} height="40" fill={color} />
+        <rect x={220 + half - 12 * k - w} y="100" width={w} height="40" fill={color} />
       </g>
     );
   });
@@ -161,33 +162,33 @@ function Transform({ t }: { t: number }) {
         strokeWidth="3"
         strokeDasharray="8 5"
       />
-      {/* 道路被錯開 */}
-      <line x1="20" y1={130 + d} x2="220" y2={130 + d} stroke="#475569" strokeWidth="10" />
-      <line x1="220" y1={130 - d} x2="420" y2={130 - d} stroke="#475569" strokeWidth="10" />
+      {/* 道路被錯開（右移斷層，與聖安地列斯斷層相同：從一側看，對面往右移） */}
+      <line x1="20" y1={130 - d} x2="220" y2={130 - d} stroke="#475569" strokeWidth="10" />
+      <line x1="220" y1={130 + d} x2="420" y2={130 + d} stroke="#475569" strokeWidth="10" />
       <line
         x1="20"
-        y1={130 + d}
+        y1={130 - d}
         x2="220"
-        y2={130 + d}
+        y2={130 - d}
         stroke="#f8fafc"
         strokeWidth="1.5"
         strokeDasharray="8 8"
       />
       <line
         x1="220"
-        y1={130 - d}
+        y1={130 + d}
         x2="420"
-        y2={130 - d}
+        y2={130 + d}
         stroke="#f8fafc"
         strokeWidth="1.5"
         strokeDasharray="8 8"
       />
       {/* 移動方向 */}
       <g stroke="#1e293b" fill="#1e293b" strokeWidth="3">
-        <line x1="110" y1="40" x2="110" y2="80" />
-        <polygon points="102,78 118,78 110,92" />
-        <line x1="330" y1="220" x2="330" y2="180" />
-        <polygon points="322,182 338,182 330,168" />
+        <line x1="110" y1="250" x2="110" y2="212" />
+        <polygon points="102,214 118,214 110,200" />
+        <line x1="330" y1="40" x2="330" y2="78" />
+        <polygon points="322,76 338,76 330,90" />
       </g>
       {[60, 200, 240].map((y) => (
         <text key={y} x="214" y={y} fontSize="13" fill="#b91c1c">

@@ -193,13 +193,14 @@ const mindmap: CurriculumNode = {
               id: "chinese.senior.lugang",
               title: "〈鹿港乘桴記〉",
               grade: 12,
-              summary: "洪繻（洪棄生），彰化鹿港人。藉乘竹筏出入鹿港的見聞，寄寓鹿港今昔盛衰之感。",
+              summary:
+                "洪繻（洪棄生），彰化鹿港人。文中寫鹿港港道淤淺、由盛轉衰，作者並批評日治時期的海關、鹽田等政策；也記與友人乘竹筏（桴）遊覽海濱的見聞，寄寓今昔盛衰之感。",
             },
             {
               id: "chinese.senior.huaju",
               title: "〈畫菊自序〉",
               grade: 12,
-              summary: "張李德和，日治時期嘉義的女詩人、畫家，詩書畫兼擅。自述畫菊的緣由與心境。",
+              summary: "張李德和，日治時期嘉義的女詩人、畫家，詩書畫兼擅。以駢文寫成，自述畫菊的緣由與志趣。",
             },
           ],
         },
@@ -252,7 +253,7 @@ const mindmap: CurriculumNode = {
           id: "chinese.senior.hist-yuan",
           title: "元：曲",
           summary:
-            "元曲包括散曲（小令、套數）與雜劇。元曲四大家：關漢卿、馬致遠、白樸、鄭光祖；關漢卿〈竇娥冤〉、馬致遠〈天淨沙・秋思〉。",
+            "元曲包括散曲（小令、套數）與雜劇。元曲四大家：關漢卿、馬致遠、白樸、鄭光祖；關漢卿《竇娥冤》、馬致遠〈天淨沙・秋思〉。",
         },
         {
           id: "chinese.senior.hist-mingqing",

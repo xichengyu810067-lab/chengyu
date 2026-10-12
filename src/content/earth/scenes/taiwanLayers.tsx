@@ -37,6 +37,9 @@ export function Base(_: SceneProps) {
           北
         </text>
       </g>
+      <text x="8" y="18" fontSize="11" fill="#64748b">
+        示意圖
+      </text>
     </g>
   );
 }

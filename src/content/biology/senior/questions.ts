@@ -203,7 +203,7 @@ const questions: Question[] = [
     id: id("d3"),
     type: "cloze",
     stem: "DNA 模板股的序列為 3′-TAC-5′，轉錄出的 mRNA 密碼子為何？（依 5′→3′ 寫出三個鹼基）",
-    accept: ["AUG"],
+    accept: ["AUG", "5'-AUG-3'", "5′-AUG-3′"],
     explain: "依互補配對且 RNA 以 U 取代 T：T→A、A→U、C→G，得 5′-**AUG**-3′，也就是起始密碼子。",
     difficulty: 2,
     nodeId: node("expression"),
