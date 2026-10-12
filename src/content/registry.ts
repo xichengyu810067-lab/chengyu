@@ -4,6 +4,8 @@
  * - `<subject>/<stage>/index.ts`：依需要延遲載入（每個學段一個 chunk）
  * - `<subject>/scenarios.ts`：對話情境，延遲載入
  */
+
+import { retryImport } from "../lib/lazyRetry";
 import type { Lesson, Question, Scenario, Stage, SubjectId, SubjectMeta, TrackData } from "./types";
 import { SUBJECT_IDS } from "./types";
 
@@ -46,7 +48,7 @@ export function loadTrack(subject: SubjectId, stage: Stage): Promise<TrackData> 
   if (!p) {
     const loader = trackModules[`./${subject}/${stage}/index.ts`];
     if (!loader) return Promise.reject(new Error(`尚無內容：${key}`));
-    p = loader().then((m) => m.default);
+    p = retryImport(loader).then((m) => m.default);
     p.catch(() => trackCache.delete(key));
     trackCache.set(key, p);
   }
@@ -89,7 +91,8 @@ export function loadSubjectScenarios(subject: SubjectId): Promise<Scenario[]> {
   let p = scenarioCache.get(subject);
   if (!p) {
     const loader = scenarioModules[`./${subject}/scenarios.ts`];
-    p = loader ? loader().then((m) => m.default) : Promise.resolve([]);
+    p = loader ? retryImport(loader).then((m) => m.default) : Promise.resolve([]);
+    p.catch(() => scenarioCache.delete(subject));
     scenarioCache.set(subject, p);
   }
   return p;
