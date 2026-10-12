@@ -67,7 +67,8 @@ const mindmap: CurriculumNode = {
               id: "history.senior.tw-ethnic-indigenous",
               title: "原住民族與南島文化",
               grade: 10,
-              summary: "原住民族是臺灣最早的主人，屬於分布廣泛的南島語族。",
+              summary:
+                "在漢人等移民大量來臺之前，原住民族已在臺灣生活數千年，屬於分布廣泛的南島語族。",
               keyPoints: [
                 "南島語族分布從臺灣延伸到太平洋與印度洋的島嶼",
                 "平埔族群在清帝國時期面臨土地流失與遷徙",

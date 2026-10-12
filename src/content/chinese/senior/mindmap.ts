@@ -200,7 +200,8 @@ const mindmap: CurriculumNode = {
               id: "chinese.senior.huaju",
               title: "〈畫菊自序〉",
               grade: 12,
-              summary: "張李德和，日治時期嘉義的女詩人、畫家，詩書畫兼擅。以駢文寫成，自述畫菊的緣由與志趣。",
+              summary:
+                "張李德和，日治時期嘉義的女詩人、畫家，詩書畫兼擅。以駢文寫成，自述畫菊的緣由與志趣。",
             },
           ],
         },
