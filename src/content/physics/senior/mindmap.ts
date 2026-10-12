@@ -188,27 +188,27 @@ const mindmap: CurriculumNode = {
     {
       id: L("thermal"),
       title: "熱學",
-      grade: 12,
+      grade: 11,
       summary: "溫度、熱與氣體的微觀解釋。",
       children: [
         {
           id: L("ideal-gas"),
           title: "理想氣體",
-          grade: 12,
+          grade: 11,
           summary: "理想氣體方程式 $PV = nRT$，溫度要用絕對溫度。",
           keyPoints: ["絕對溫度 = 攝氏溫度 + 273（精確值為 273.15），單位克耳文（K）"],
         },
         {
           id: L("kinetic-theory"),
           title: "氣體動力論",
-          grade: 12,
+          grade: 11,
           summary: "氣體壓力來自大量分子碰撞器壁；分子平均動能與絕對溫度成正比。",
           keyPoints: ["單原子理想氣體分子平均動能 $\\bar{K} = \\dfrac{3}{2}kT$"],
         },
         {
           id: L("thermo-laws"),
           title: "熱力學定律",
-          grade: 12,
+          grade: 11,
           summary: "第一定律是能量守恆；第二定律說明熱不會自發地由低溫傳到高溫。",
         },
       ],

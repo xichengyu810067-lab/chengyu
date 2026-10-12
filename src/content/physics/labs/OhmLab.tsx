@@ -100,7 +100,7 @@ export default function OhmLab({ onComplete }: LabProps) {
           <div className="rounded-xl bg-slate-100 p-3 font-mono text-sm dark:bg-slate-800">
             <p>等效電阻 = {fmt(s.req, 2)} Ω</p>
             <p>
-              安培計讀數 I = V ÷ R = <strong>{fmt(s.total, 3)} A</strong>
+              安培計讀數 I = V ÷ 等效電阻 = <strong>{fmt(s.total, 3)} A</strong>
             </p>
             <p>
               每個燈泡：{fmt(s.bulbV, 2)} V、{fmt(s.bulbI, 3)} A

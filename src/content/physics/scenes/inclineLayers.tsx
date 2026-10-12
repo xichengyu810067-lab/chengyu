@@ -88,8 +88,9 @@ export function Gravity(_: SceneProps) {
 export function Normal(_: SceneProps) {
   return (
     <g>
-      <Arrow x2={142.4} y2={92.8} color="#2563eb" />
-      <text x="120" y="86" fontSize="15" fontWeight="700" fill="#1d4ed8">
+      {/* 長度 = mg cosθ（與「重力的分量」圖層一致） */}
+      <Arrow x2={138.4} y2={85.9} color="#2563eb" />
+      <text x="118" y="84" fontSize="15" fontWeight="700" fill="#1d4ed8">
         N
       </text>
     </g>
@@ -99,7 +100,8 @@ export function Normal(_: SceneProps) {
 export function Friction(_: SceneProps) {
   return (
     <g>
-      <Arrow x2={225} y2={125.9} color="#d97706" />
+      {/* 長度 = mg sinθ（靜止時靜摩擦力與下滑分力等大反向） */}
+      <Arrow x2={216.4} y2={130.9} color="#d97706" />
       <text x="230" y="120" fontSize="15" fontWeight="700" fill="#b45309">
         f（靜摩擦力）
       </text>

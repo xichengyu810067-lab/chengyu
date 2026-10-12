@@ -404,7 +404,15 @@ const lessons: Lesson[] = [
             value: (p) => `${r2(p.v0 * p.T + 0.5 * p.a * p.T * p.T)} m`,
           },
           { label: "平均速度", value: (p) => `${r2(p.v0 + 0.5 * p.a * p.T)} m/s` },
-          { label: "運動狀態", value: (p) => (p.a > 0 ? "加速" : p.a < 0 ? "減速" : "等速度") },
+          {
+            label: "運動狀態",
+            value: (p) => {
+              if (p.a > 0) return "加速";
+              if (p.a === 0) return p.v0 === 0 ? "靜止" : "等速度";
+              if (p.v0 + p.a * p.T >= 0) return "減速";
+              return p.v0 > 0 ? "先減速，再反向加速" : "反向加速";
+            },
+          },
         ],
         goal: {
           text: "調出一個**加速**運動（$a > 0$），使它在 **5 秒內的位移恰為 50 m**。",

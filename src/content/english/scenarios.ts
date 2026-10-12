@@ -151,7 +151,7 @@ const scenarios: Scenario[] = [
         ],
       },
       bill: {
-        say: "It's ten dollars, please. Would you like to pay by cash or by card?",
+        say: "It's ten dollars, please. Would you like to pay in cash or by card?",
         options: [
           {
             label: "By card, please. Here you are.",

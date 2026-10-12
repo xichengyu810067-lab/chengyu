@@ -282,7 +282,7 @@ const lessons: Lesson[] = [
         background: "grid",
         hint: "可以用「直線」工具畫邊，用不同顏色標出兩股和斜邊。",
         reference:
-          "斜邊長 $\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$ 格。古埃及人就用 3-4-5 的繩子圍出直角！",
+          "斜邊長 $\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$ 格。相傳古埃及人就用 3-4-5 的繩子圍出直角！",
         aiFeedback: true,
       },
       { id: "a5", kind: "quiz", title: "小試身手", questionIds: [q("p1"), q("p2"), q("p3")] },

@@ -128,9 +128,10 @@ const questions: Question[] = [
   {
     id: id("v4"),
     type: "tf",
-    stem: "兩個非零向量的內積為負，表示它們的夾角是鈍角。",
+    stem: "兩個非零向量的內積為負，表示它們的夾角大於 $90^\\circ$。",
     answer: true,
-    explain: "$\\cos\\theta < 0$ 時 $90^\\circ < \\theta \\le 180^\\circ$。",
+    explain:
+      "$\\cos\\theta < 0$ 時 $90^\\circ < \\theta \\le 180^\\circ$：夾角是鈍角，或兩向量方向相反時夾角為 $180^\\circ$。",
     nodeId: "math.senior.vector",
   },
   // 排列組合與機率

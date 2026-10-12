@@ -171,7 +171,7 @@ export function Mixed(_: SceneProps) {
       <text x="200" y="265" textAnchor="middle" fontSize="12" fill={INK}>
         混合：If I{" "}
         <tspan fill={c} fontWeight="700">
-          had slept
+          had gone to bed
         </tspan>{" "}
         earlier last night,
       </text>

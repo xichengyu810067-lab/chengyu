@@ -601,7 +601,7 @@ const lessons: Lesson[] = [
             x: 444,
             y: 136,
             title: "推論 Inference",
-            body: "文中沒有直接說「珍奶在國外很受歡迎」，但 **people wait in long lines just to buy a cup** 這個線索，讓我們可以**推論**出這一點。",
+            body: "文中沒有直接說珍奶在倫敦、紐約「非常搶手、需求很大」，但 **people wait in long lines just to buy a cup** 這個線索，讓我們可以**推論**出這一點。",
           },
           {
             id: "appeal",
