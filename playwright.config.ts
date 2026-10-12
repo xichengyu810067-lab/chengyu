@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const baseURL = process.env.E2E_BASE_URL ?? "http://localhost:4173";
+const port = Number(process.env.E2E_PORT ?? 4173);
+const baseURL = process.env.E2E_BASE_URL ?? `http://localhost:${port}`;
 const bypass = process.env.VERCEL_PROTECTION_BYPASS;
 
 export default defineConfig({
@@ -26,7 +27,7 @@ export default defineConfig({
   webServer: process.env.E2E_BASE_URL
     ? undefined
     : {
-        command: "pnpm preview",
+        command: `pnpm exec vite preview --port ${port} --strictPort`,
         url: baseURL,
         reuseExistingServer: !process.env.CI,
         timeout: 60_000,

@@ -27,6 +27,9 @@ jobs:
         run: pnpm lint
       - name: Unit & content tests
         run: pnpm test
+        env:
+          # TODO: 10 科內容全部合併後移除，改為嚴格檢查
+          ALL_SUBJECTS_READY: "0"
       - name: Build
         run: pnpm build
       - name: Install Playwright Chromium
