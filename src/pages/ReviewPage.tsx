@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router";
 import { getSubject, loadQuestions, parseContentId } from "../content/registry";
+import type { Question } from "../content/types";
 import { dateKey } from "../lib/date";
 import { dueReviewIds, REVIEW_INTERVALS } from "../lib/gamification";
 import { useAsync } from "../lib/hooks";
@@ -14,7 +15,8 @@ export default function ReviewPage() {
   const mastered = useProgress((s) => s.mastered);
   const recordAnswer = useProgress((s) => s.recordAnswer);
   const removeReview = useProgress((s) => s.removeReview);
-  const [session, setSession] = useState<string[] | null>(null);
+  // 開始複習時固定題目清單，避免題目畢業後清單變動導致重來
+  const [session, setSession] = useState<Question[] | null>(null);
   const [result, setResult] = useState<{ c: number; t: number } | null>(null);
   const today = dateKey();
   const due = useMemo(() => dueReviewIds(review, today), [review, today]);
@@ -23,8 +25,14 @@ export default function ReviewPage() {
 
   if (loading && !qmap) return <Spinner />;
 
-  if (session && qmap) {
-    const qs = session.map((id) => qmap.get(id)).filter((q) => q !== undefined);
+  const start = (ids: string[]) => {
+    if (!qmap) return;
+    setResult(null);
+    setSession(ids.map((id) => qmap.get(id)).filter((q) => q !== undefined));
+  };
+
+  if (session) {
+    const qs = session;
     return (
       <div className="mx-auto max-w-3xl space-y-4">
         <PageTitle sub="答對會延後下次複習時間；連續答對 5 次就畢業！">📝 錯題複習</PageTitle>
@@ -99,12 +107,12 @@ export default function ReviewPage() {
           type="button"
           className="btn-primary"
           disabled={!due.length}
-          onClick={() => setSession(due)}
+          onClick={() => start(due)}
           data-testid="review-start"
         >
           開始複習到期的 {due.length} 題
         </button>
-        <button type="button" className="btn-secondary" onClick={() => setSession(allIds)}>
+        <button type="button" className="btn-secondary" onClick={() => start(allIds)}>
           全部再練一次
         </button>
       </div>

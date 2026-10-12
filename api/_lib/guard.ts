@@ -3,9 +3,9 @@ import { type Stage, SUBJECT_IDS, type SubjectId } from "../../src/content/types
 
 export const LIMITS = {
   maxBodyBytes: 2_000_000,
-  maxMessages: 16,
+  maxMessages: 24,
   maxUserChars: 600,
-  maxAssistantChars: 4000,
+  maxAssistantChars: 8000,
   maxImageBytes: 1_500_000,
   maxTaskChars: 300,
 };

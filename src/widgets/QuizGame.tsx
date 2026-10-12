@@ -33,6 +33,8 @@ export default function QuizGame({
   best?: number;
 }) {
   const recordAnswer = useProgress((s) => s.recordAnswer);
+  // 開局時的最佳分數（結束時 store 已更新，不能拿來比較）
+  const [bestAtStart] = useState(best);
   const reduced = usePrefersReducedMotion();
   const [phase, setPhase] = useState<"ready" | "q" | "fb" | "over">("ready");
   const [i, setI] = useState(0);
@@ -104,7 +106,7 @@ export default function QuizGame({
           <li>❤️ {startLives} 條命，答錯或超時扣 1 條</li>
           <li>🔥 連續答對有連擊加成，越快答分數越高</li>
         </ul>
-        {best ? <p className="text-sm">🏅 目前最佳：{best} 分</p> : null}
+        {bestAtStart ? <p className="text-sm">🏅 目前最佳：{bestAtStart} 分</p> : null}
         <button
           type="button"
           className="btn-primary px-8 text-base"
@@ -139,7 +141,7 @@ export default function QuizGame({
         </p>
         <p className="text-sm text-slate-500">
           答對 {correct} / {questions.length} 題
-          {best !== undefined && score > best ? "　🎉 新紀錄！" : ""}
+          {bestAtStart !== undefined && score > bestAtStart ? "　🎉 新紀錄！" : ""}
         </p>
         <p className="text-xs text-slate-500">答錯的題目已自動加入錯題本。</p>
         {onRestart && (

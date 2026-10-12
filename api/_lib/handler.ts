@@ -163,8 +163,8 @@ export function createTutorHandler(deps: TutorDeps) {
         );
       }
 
-      deps.limiter.take(clientKey(req));
       const params = buildRequest(body, deps.findScenario, deps.env.TUTOR_MODEL || DEFAULT_MODEL);
+      deps.limiter.take(clientKey(req));
       const abort = new AbortController();
       req.signal?.addEventListener("abort", () => abort.abort());
       const upstream = deps.openStream(params, abort.signal);

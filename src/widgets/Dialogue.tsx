@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { loadScenario } from "../content/registry";
 import type { DialogueActivity, Scenario } from "../content/types";
-import { type AiError, aiErrorText, type ChatMessage, streamTutor, useAiStatus } from "../lib/ai";
+import {
+  type AiError,
+  aiErrorText,
+  type ChatMessage,
+  nonEmptyReply,
+  prepareHistory,
+  streamTutor,
+  useAiStatus,
+} from "../lib/ai";
 import { useAsync } from "../lib/hooks";
 import { useProgress } from "../lib/progress";
 import { Spinner } from "../ui";
@@ -179,7 +187,7 @@ function AiDialogue({
   const [streaming, setStreaming] = useState<string | null>(null);
   const [finished, setFinished] = useState(false);
   const abort = useRef<AbortController | null>(null);
-  const maxTurns = scenario.maxTurns ?? 8;
+  const maxTurns = Math.min(scenario.maxTurns ?? 8, 9);
   const userTurns = messages.filter((m) => m.role === "user").length;
 
   useEffect(() => () => abort.current?.abort(), []);
@@ -189,11 +197,11 @@ function AiDialogue({
     setStreaming("");
     try {
       const full = await streamTutor(
-        { mode: "scenario", scenarioId: scenario.id, messages: msgs, finish },
+        { mode: "scenario", scenarioId: scenario.id, messages: prepareHistory(msgs), finish },
         (_c, all) => setStreaming(all),
         abort.current.signal,
       );
-      setMessages([...msgs, { role: "assistant", content: full }]);
+      setMessages([...msgs, { role: "assistant", content: nonEmptyReply(full) }]);
       if (finish) setFinished(true);
     } catch (e) {
       if ((e as Error).name === "AbortError") return;

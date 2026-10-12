@@ -68,9 +68,33 @@ export function fetchAiStatus(): Promise<AiStatus> {
           accessCodeRequired: Boolean(j.accessCodeRequired),
         };
       })
-      .catch(() => ({ available: false, accessCodeRequired: false }));
+      .catch(() => {
+        // 暫時性失敗不要快取，下次再檢查
+        statusPromise = null;
+        return { available: false, accessCodeRequired: false };
+      });
   }
   return statusPromise;
+}
+
+/** 對話最多保留的訊息數（伺服器上限 24，保留結束回饋所需空間） */
+export const MAX_HISTORY = 20;
+const MAX_ASSISTANT_CHARS = 6000;
+
+/** 送出前整理對話：只保留最近幾則、截斷過長的 AI 回覆 */
+export function prepareHistory(messages: ChatMessage[], max = MAX_HISTORY): ChatMessage[] {
+  return messages
+    .slice(-max)
+    .map((m) =>
+      m.role === "assistant" && m.content.length > MAX_ASSISTANT_CHARS
+        ? { ...m, content: `${m.content.slice(0, MAX_ASSISTANT_CHARS)}…` }
+        : m,
+    );
+}
+
+/** AI 回覆為空時的替代文字（避免把空訊息送回伺服器） */
+export function nonEmptyReply(text: string): string {
+  return text.trim() || "（AI 這次沒有產生回覆，請換個說法再問一次。）";
 }
 
 export function useAiStatus(): AiStatus | null {

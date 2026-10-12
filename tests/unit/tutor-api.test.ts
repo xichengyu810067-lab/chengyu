@@ -121,7 +121,7 @@ describe("AI 家教 API", () => {
     expect((await handler.POST(post(long))).status).toBe(413);
     const many = {
       ...tutorBody,
-      messages: Array.from({ length: 17 }, (_, i) => ({
+      messages: Array.from({ length: 25 }, (_, i) => ({
         role: i % 2 ? "assistant" : "user",
         content: "hi",
       })),
@@ -185,6 +185,21 @@ describe("AI 家教 API", () => {
       }),
     );
     expect(res.status).toBe(404);
+  });
+
+  it("找不到情境時不消耗限流額度", async () => {
+    const { handler } = setup();
+    const bad = {
+      mode: "scenario",
+      scenarioId: "math.junior.s-nope",
+      messages: [{ role: "user", content: "hi" }],
+    };
+    for (let i = 0; i < 5; i++) {
+      expect((await handler.POST(post(bad, { "x-forwarded-for": "9.9.9.9" }))).status).toBe(404);
+    }
+    expect((await handler.POST(post(tutorBody, { "x-forwarded-for": "9.9.9.9" }))).status).toBe(
+      200,
+    );
   });
 
   it("危機關鍵字直接回覆求助資訊，不呼叫模型", async () => {

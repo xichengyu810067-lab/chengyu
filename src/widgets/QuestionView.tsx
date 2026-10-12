@@ -9,7 +9,9 @@ export function normalizeAnswer(s: string): string {
     .trim()
     .toLowerCase()
     .replace(/\s+/g, " ")
-    .replace(/[。．.，,！!？?、；;：:「」『』"'（）()]/g, "");
+    .replace(/[。．，！!？?、；;：:「」『』"'（）()]/g, "")
+    .replace(/\.$/, "")
+    .trim();
 }
 
 export function checkAnswer(q: Question, value: unknown): boolean {

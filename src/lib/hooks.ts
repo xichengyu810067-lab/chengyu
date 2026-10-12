@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { dateKey } from "./date";
 import { computeBadges, computeStreak, computeXP, dueReviewIds, levelInfo } from "./gamification";
-import { pickProgress, useProgress } from "./progress";
+import { useProgress } from "./progress";
 
 /** 由進度推導的統計（XP、等級、連續天數、待複習題數） */
 export function useStats() {
@@ -28,11 +28,6 @@ export function useStats() {
       badges: computeBadges(data, today),
     };
   }, [lessons, answers, review, mastered, games, daily, activeDays, usage]);
-}
-
-export function useBadges() {
-  const state = useProgress();
-  return useMemo(() => computeBadges(pickProgress(state)), [state]);
 }
 
 /** 套用主題、字級、減少動態 */
@@ -81,7 +76,7 @@ export function useAsync<T>(fn: () => Promise<T>, key: string) {
   // biome-ignore lint/correctness/useExhaustiveDependencies: 只在 key 改變時重新載入
   useEffect(() => {
     let alive = true;
-    setState({ loading: true });
+    setState((s) => ({ ...s, error: undefined, loading: true }));
     fn().then(
       (data) => alive && setState({ data, loading: false }),
       (error: Error) => alive && setState({ error, loading: false }),

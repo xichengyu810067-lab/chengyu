@@ -25,6 +25,8 @@ describe("判斷答案", () => {
   it("填充題忽略大小寫、全形與標點", () => {
     const q: Question = { ...base, type: "cloze", accept: ["H2O"] };
     expect(checkAnswer(q, " h２o。")).toBe(true);
-    expect(normalizeAnswer("  Hello,  World! ")).toBe("hello world");
+    expect(normalizeAnswer("  Hello,  World! ")).toBe("hello, world");
+    expect(normalizeAnswer("3.14")).not.toBe(normalizeAnswer("314"));
+    expect(normalizeAnswer("Yes.")).toBe("yes");
   });
 });

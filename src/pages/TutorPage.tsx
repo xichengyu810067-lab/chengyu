@@ -2,7 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { isStage, isSubjectId, SUBJECTS } from "../content/registry";
 import { STAGE_LABEL, type Stage, type SubjectId } from "../content/types";
-import { type AiError, aiErrorText, type ChatMessage, streamTutor, useAiStatus } from "../lib/ai";
+import {
+  type AiError,
+  aiErrorText,
+  type ChatMessage,
+  nonEmptyReply,
+  prepareHistory,
+  streamTutor,
+  useAiStatus,
+} from "../lib/ai";
 import { useProgress } from "../lib/progress";
 import { PageTitle, Spinner } from "../ui";
 import ChatPanel, { type Bubble } from "../widgets/ChatPanel";
@@ -49,11 +57,11 @@ export default function TutorPage() {
     abort.current = new AbortController();
     try {
       const full = await streamTutor(
-        { mode: "tutor", subject, stage, messages: msgs.slice(-16) },
+        { mode: "tutor", subject, stage, messages: prepareHistory(msgs) },
         (_c, all) => setStreaming(all),
         abort.current.signal,
       );
-      setMessages([...msgs, { role: "assistant", content: full }]);
+      setMessages([...msgs, { role: "assistant", content: nonEmptyReply(full) }]);
     } catch (e) {
       if ((e as Error).name === "AbortError") return;
       const err = e as AiError;

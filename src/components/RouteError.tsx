@@ -1,10 +1,9 @@
 import { isRouteErrorResponse, Link, useRouteError } from "react-router";
+import { isChunkError } from "../lib/lazyRetry";
 
 export default function RouteError() {
   const error = useRouteError();
-  const chunkError =
-    error instanceof Error &&
-    /dynamically imported module|Failed to fetch|Importing a module/i.test(error.message);
+  const chunkError = isChunkError(error);
   const message = isRouteErrorResponse(error)
     ? `${error.status} ${error.statusText}`
     : error instanceof Error
