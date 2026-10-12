@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="學習星球：依 108 課綱設計的國高中互動式學習平台，用心智圖、小遊戲、拉桿模擬、拖拽、刮刮樂、情境對話與畫布輕鬆學。" />
+    <meta name="theme-color" content="#4f46e5" />
+    <title>學習星球｜國高中互動學習平台</title>
+    <script>
+      (() => {
+        var s = {};
+        var t = "system";
+        try {
+          s = JSON.parse(localStorage.getItem("learning-planet") || "{}").state || {};
+        } catch (e) {}
+        var settings = s.settings || {};
+        t = settings.theme || t;
+        if (t === "dark" || (t === "system" && matchMedia("(prefers-color-scheme: dark)").matches))
+          document.documentElement.classList.add("dark");
+        if (settings.fontScale) document.documentElement.style.fontSize = 16 * settings.fontScale + "px";
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>請開啟 JavaScript 才能使用學習星球。</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
