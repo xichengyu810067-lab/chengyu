@@ -1,0 +1,419 @@
+import type { CurriculumNode } from "../../types";
+
+/** 高中歷史（108 課綱普通型高中部定必修，主題式架構）學習內容 */
+const mindmap: CurriculumNode = {
+  id: "history.senior",
+  title: "高中歷史",
+  summary:
+    "高中必修歷史以主題式架構，依序探討臺灣史、東亞史與世界史，並培養史料判讀與歷史解釋的能力。",
+  children: [
+    {
+      id: "history.senior.basics",
+      title: "歷史的基礎觀念",
+      grade: 10,
+      summary: "時間、史料與解釋：歷史知識是怎麼建立起來的？",
+      children: [
+        {
+          id: "history.senior.basics-time",
+          title: "時間與分期",
+          grade: 10,
+          summary: "歷史分期反映觀點：可以依統治者劃分，也可以依經濟、社會或文化的變化劃分。",
+          keyPoints: [
+            "「清帝國時期」「日治時期」是以統治政權分期",
+            "也可以用「移墾社會」「工業化社會」等社會變遷來分期",
+            "分期的界線往往是漸進的，不是一夕改變",
+          ],
+        },
+        {
+          id: "history.senior.basics-sources",
+          title: "史料與證據",
+          grade: 10,
+          summary: "史料是歷史知識的證據基礎，但每一則史料都有其來源與限制。",
+          keyPoints: [
+            "文字史料：公文、日記、報紙、契約、口述紀錄",
+            "非文字史料：考古遺物、建築、照片、地圖",
+            "一手史料不一定可信，二手研究也不一定不可信",
+          ],
+          lessonIds: ["history.senior.source-inquiry"],
+        },
+        {
+          id: "history.senior.basics-interpretation",
+          title: "歷史解釋與多元觀點",
+          grade: 10,
+          summary: "歷史解釋是根據證據對過去提出的說明；同一事件可以有多種有根據的解釋。",
+          keyPoints: [
+            "區分「史實陳述」與「歷史解釋」",
+            "避免時代錯置與後見之明",
+            "注意誰的聲音被記錄、誰的聲音被忽略",
+          ],
+          lessonIds: ["history.senior.source-inquiry"],
+        },
+      ],
+    },
+    {
+      id: "history.senior.taiwan",
+      title: "臺灣史",
+      grade: 10,
+      summary: "以多元族群、經濟文化與現代國家三大主題，重新認識臺灣的過去。",
+      children: [
+        {
+          id: "history.senior.tw-ethnic",
+          title: "多元族群社會的形成",
+          grade: 10,
+          summary: "原住民族、漢人與後來的移民，如何在互動中形成今日的多元社會？",
+          lessonIds: ["history.senior.ethnic-society"],
+          children: [
+            {
+              id: "history.senior.tw-ethnic-indigenous",
+              title: "原住民族與南島文化",
+              grade: 10,
+              summary:
+                "在漢人等移民大量來臺之前，原住民族已在臺灣生活數千年，屬於分布廣泛的南島語族。",
+              keyPoints: [
+                "南島語族分布從臺灣延伸到太平洋與印度洋的島嶼",
+                "平埔族群在清帝國時期面臨土地流失與遷徙",
+                "日治時期「理蕃」政策深刻改變山地原住民族社會",
+              ],
+            },
+            {
+              id: "history.senior.tw-ethnic-migration",
+              title: "移民與移墾社會",
+              grade: 10,
+              summary: "閩、粵移民冒險渡海，以合股開墾、興築水圳建立家園。",
+              keyPoints: [
+                "渡臺禁令下的偷渡與「羅漢腳」",
+                "墾首、佃戶與「大租、小租」的土地關係",
+                "依祖籍結合：寺廟信仰、分類械鬥",
+                "漢人移墾大致由南而北、由西而東",
+              ],
+              lessonIds: ["history.senior.ethnic-society"],
+            },
+            {
+              id: "history.senior.tw-ethnic-land",
+              title: "族群互動與土地",
+              grade: 10,
+              summary: "契約、租佃與番界，記錄了族群之間合作與衝突的痕跡。",
+              keyPoints: [
+                "番大租：漢人承墾番社土地，每年向番社繳租",
+                "土牛溝、番界：區隔漢人與原住民族的界線",
+                "平埔族群遷往埔里、宜蘭、花東等地",
+              ],
+              lessonIds: ["history.senior.ethnic-society"],
+            },
+            {
+              id: "history.senior.tw-ethnic-postwar",
+              title: "戰後的移民與族群",
+              grade: 10,
+              summary: "戰後大批移民隨政府來臺；近數十年又有新住民加入。",
+              keyPoints: [
+                "1949 年前後大規模移民來臺",
+                "族群議題與語言政策的變化",
+                "新住民與多元文化社會",
+              ],
+            },
+          ],
+        },
+        {
+          id: "history.senior.tw-economy",
+          title: "經濟與文化的多樣性",
+          grade: 10,
+          summary: "臺灣經濟始終與區域及全球市場相連，也孕育出多樣的文化。",
+          lessonIds: ["history.senior.economy"],
+          children: [
+            {
+              id: "history.senior.tw-econ-trade",
+              title: "貿易網絡：從轉口貿易到開港通商",
+              grade: 10,
+              summary: "從荷治時期的轉口貿易，到清末開港後的茶、糖、樟腦出口。",
+              keyPoints: [
+                "荷治時期：生絲、瓷器、白銀、鹿皮的轉口貿易",
+                "清帝國時期：郊商與兩岸貿易",
+                "1860 年代開港：洋行、買辦，經濟重心北移",
+              ],
+            },
+            {
+              id: "history.senior.tw-econ-colonial",
+              title: "殖民經濟：米糖與工業化",
+              grade: 10,
+              summary: "日治時期臺灣經濟配合日本需要，由米糖經濟逐步走向工業化。",
+              keyPoints: [
+                "「工業日本，農業臺灣」",
+                "新式製糖與蓬萊米：米糖相剋",
+                "嘉南大圳（1930 年完工）",
+                "1930 年代後期配合戰爭與南進推動工業化",
+              ],
+              lessonIds: ["history.senior.economy"],
+            },
+            {
+              id: "history.senior.tw-econ-postwar",
+              title: "戰後經濟發展",
+              grade: 10,
+              summary: "從進口替代、出口擴張到高科技產業，創造經濟快速成長。",
+              keyPoints: [
+                "1950 年代：土地改革、美援、進口替代",
+                "1960 年代：出口擴張、加工出口區",
+                "1970 年代：十大建設、重化工業",
+                "1980 年代以後：科學園區與高科技產業",
+              ],
+              lessonIds: ["history.senior.economy"],
+            },
+            {
+              id: "history.senior.tw-culture",
+              title: "文化的多樣性",
+              grade: 10,
+              summary: "宗教、語言與大眾文化在不同時期交融變化。",
+              keyPoints: [
+                "民間信仰與祖籍：媽祖、開漳聖王、三山國王",
+                "日治時期的新文學與新劇",
+                "戰後的語言政策與解嚴後的本土文化發展",
+              ],
+            },
+          ],
+        },
+        {
+          id: "history.senior.tw-state",
+          title: "現代國家的形塑",
+          grade: 10,
+          summary: "從殖民統治到戰後體制，臺灣人民如何參與並形塑現代國家？",
+          lessonIds: ["history.senior.modern-state"],
+          children: [
+            {
+              id: "history.senior.tw-state-colonial",
+              title: "殖民統治與政治社會運動",
+              grade: 10,
+              summary: "總督府的統治方針幾經轉變，臺灣人也以多種方式爭取權益。",
+              keyPoints: [
+                "特別統治 → 同化政策（1919）→ 皇民化運動（1937）",
+                "臺灣議會設置請願運動（1921–1934）",
+                "臺灣文化協會、臺灣民眾黨",
+              ],
+              lessonIds: ["history.senior.modern-state"],
+            },
+            {
+              id: "history.senior.tw-state-authoritarian",
+              title: "戰後體制與威權統治",
+              grade: 10,
+              summary: "戰後政府接收臺灣，在動員戡亂與戒嚴體制下長期實施威權統治。",
+              keyPoints: [
+                "1947 年二二八事件",
+                "1949 年實施戒嚴，政治案件頻繁（白色恐怖）",
+                "冷戰下的美國援助與外交處境",
+                "1971 年中華民國退出聯合國",
+              ],
+            },
+            {
+              id: "history.senior.tw-state-democracy",
+              title: "民主化與國家認同",
+              grade: 10,
+              summary: "在社會力量與政治改革交互作用下，臺灣走向民主化。",
+              keyPoints: [
+                "1979 年美麗島事件",
+                "1987 年解除戒嚴，1988 年解除報禁",
+                "1991 年終止動員戡亂時期，國會陸續全面改選",
+                "1996 年首次總統直選",
+              ],
+              lessonIds: ["history.senior.modern-state"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "history.senior.eastasia",
+      title: "東亞史",
+      grade: 10,
+      summary: "從交會、國家與社會、人群移動到現代化，理解東亞各地的連結與差異。",
+      lessonIds: ["history.senior.east-asia"],
+      children: [
+        {
+          id: "history.senior.ea-encounter",
+          title: "中國與東亞的交會",
+          grade: 10,
+          summary: "農耕與遊牧、朝貢與冊封，形塑了傳統東亞的互動秩序。",
+          keyPoints: [
+            "朝貢體制：冊封、朝貢與回賜",
+            "漢字文化圈：日本、朝鮮、越南",
+            "北方民族建立的政權：遼、金、元、清",
+          ],
+        },
+        {
+          id: "history.senior.ea-state",
+          title: "國家與社會",
+          grade: 10,
+          summary: "東亞各國的政治體制與社會結構各有特色。",
+          keyPoints: [
+            "中國：皇帝制度、科舉與士紳社會",
+            "日本：天皇與幕府並存的武家政治",
+            "朝鮮：兩班貴族與儒學社會",
+          ],
+        },
+        {
+          id: "history.senior.ea-mobility",
+          title: "人群的移動與交流",
+          grade: 10,
+          summary: "商人、移民、留學生與戰爭難民，在東亞之間流動並傳遞文化。",
+          keyPoints: [
+            "閩粵移民「下南洋」",
+            "近代東亞留學生前往日本與歐美",
+            "戰爭與政治變局造成大規模人口遷徙",
+          ],
+        },
+        {
+          id: "history.senior.ea-modern",
+          title: "現代化的歷程",
+          grade: 10,
+          summary: "條約體制、改革、殖民與戰爭，構成東亞走向現代的複雜歷程。",
+          keyPoints: [
+            "條約體制取代朝貢體制",
+            "明治維新與自強運動的比較",
+            "日本殖民統治臺灣、朝鮮",
+            "冷戰下的東亞：韓戰、兩岸對峙、經濟發展",
+          ],
+          lessonIds: ["history.senior.east-asia"],
+        },
+      ],
+    },
+    {
+      id: "history.senior.world",
+      title: "世界史",
+      grade: 11,
+      summary: "從古代文化的遺產到現代世界的形成，理解全球連動的歷史。",
+      lessonIds: ["history.senior.modern-world"],
+      children: [
+        {
+          id: "history.senior.w-ancient",
+          title: "古代文化的遺產與交會",
+          grade: 11,
+          summary: "希臘羅馬、世界宗教與跨區域交流，奠定後世文明的基礎。",
+          keyPoints: [
+            "希臘：民主政治、哲學與科學精神",
+            "羅馬：法律、共和與帝國治理",
+            "佛教、基督教、伊斯蘭教的傳布",
+            "絲路連結歐亞",
+          ],
+        },
+        {
+          id: "history.senior.w-europe",
+          title: "歐洲文化與現代世界",
+          grade: 11,
+          summary: "近代歐洲的思想、宗教與政治變革，塑造了現代世界的許多基本價值。",
+          lessonIds: ["history.senior.modern-world"],
+          children: [
+            {
+              id: "history.senior.w-europe-renaissance",
+              title: "文藝復興與宗教改革",
+              grade: 11,
+              summary: "人文主義重視人的價值；宗教改革打破教會的一元權威。",
+              keyPoints: ["人文主義", "1517 年馬丁路德〈九十五條論綱〉", "印刷術加速思想傳播"],
+            },
+            {
+              id: "history.senior.w-europe-enlightenment",
+              title: "科學革命與啟蒙運動",
+              grade: 11,
+              summary: "以理性與實證認識世界，進而檢討政治與社會制度。",
+              keyPoints: [
+                "牛頓《自然哲學的數學原理》（1687）",
+                "洛克、孟德斯鳩、盧梭、伏爾泰",
+                "自然權利、三權分立、人民主權",
+              ],
+              lessonIds: ["history.senior.modern-world"],
+            },
+            {
+              id: "history.senior.w-europe-revolution",
+              title: "民主革命與工業革命",
+              grade: 11,
+              summary: "政治上的民主革命與經濟上的工業革命，被稱為近代的「雙元革命」。",
+              keyPoints: [
+                "美國獨立（1776）、法國大革命（1789）",
+                "工業革命始於 18 世紀中後期的英國",
+                "工廠制度、都市化與勞工問題",
+              ],
+              lessonIds: ["history.senior.modern-world"],
+            },
+          ],
+        },
+        {
+          id: "history.senior.w-modern",
+          title: "現代世界的發展",
+          grade: 11,
+          summary: "帝國主義、世界大戰、冷戰與全球化，構成 19 世紀以來的世界圖像。",
+          children: [
+            {
+              id: "history.senior.w-modern-imperialism",
+              title: "帝國主義與殖民",
+              grade: 11,
+              summary: "工業化列強向外擴張，亞非地區被捲入殖民體系。",
+              keyPoints: ["瓜分非洲", "殖民經濟與種族觀念", "被殖民者的抵抗與民族主義"],
+            },
+            {
+              id: "history.senior.w-modern-wars",
+              title: "世界大戰與極權主義",
+              grade: 11,
+              summary: "兩次大戰與極權政治，造成空前的破壞與人道災難。",
+              keyPoints: [
+                "第一次世界大戰（1914–1918）",
+                "經濟大恐慌與法西斯、納粹興起",
+                "第二次世界大戰（1939–1945）與納粹大屠殺",
+              ],
+            },
+            {
+              id: "history.senior.w-modern-coldwar",
+              title: "冷戰與去殖民化",
+              grade: 11,
+              summary: "美蘇對峙與亞非國家獨立，同時改寫了戰後的世界秩序。",
+              keyPoints: [
+                "北約與華沙公約組織",
+                "亞非國家紛紛獨立",
+                "1989 年柏林圍牆倒塌、1991 年蘇聯解體",
+              ],
+              lessonIds: ["history.senior.modern-world"],
+            },
+            {
+              id: "history.senior.w-modern-global",
+              title: "全球化與當代挑戰",
+              grade: 11,
+              summary: "貿易、科技與人群移動使世界更緊密，也帶來新的問題。",
+              keyPoints: ["世界貿易組織（1995）", "移民與多元文化", "氣候變遷與永續發展"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "history.senior.inquiry",
+      title: "史料判讀與歷史解釋",
+      grade: 11,
+      summary: "像史家一樣思考：提出問題、蒐集與判讀史料、形成有證據的解釋。",
+      lessonIds: ["history.senior.source-inquiry"],
+      children: [
+        {
+          id: "history.senior.inq-steps",
+          title: "史料判讀四問",
+          grade: 11,
+          summary: "誰寫的？何時寫？為什麼寫？可信嗎？",
+          keyPoints: ["來源與作者", "時間與脈絡", "目的與讀者", "與其他史料交叉比對"],
+        },
+        {
+          id: "history.senior.inq-bias",
+          title: "立場、偏見與沉默的聲音",
+          grade: 11,
+          summary: "史料反映作者的立場；許多人群在史料中很少留下聲音。",
+          keyPoints: [
+            "官方紀錄與民間紀錄的差異",
+            "女性、底層、原住民族的聲音較少被記錄",
+            "口述歷史與考古可補充文字史料",
+          ],
+        },
+        {
+          id: "history.senior.inq-argument",
+          title: "提出有證據的歷史解釋",
+          grade: 11,
+          summary: "好的歷史解釋要有證據、有推論，並回應不同的觀點。",
+          keyPoints: ["提出明確的論點", "引用史料作為證據", "說明推論過程並承認限制"],
+        },
+      ],
+    },
+  ],
+};
+
+export default mindmap;
