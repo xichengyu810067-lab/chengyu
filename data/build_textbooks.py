@@ -53,6 +53,10 @@ def load_rows():
             seen.add(key)
             row["_order"] = (f.name, i)
             rows.append(row)
+    # 以 v2_ 開頭的檔案是到官網核對過的資料：該冊有章節時，取代其他檔案裡同一冊的舊列
+    vol = lambda r: (r["版本"], r["學段"], r["年級"], r["冊次"], r["科目"])
+    v2_done = {vol(r) for r in rows if r["_order"][0].startswith("v2_") and r["章"]}
+    rows = [r for r in rows if r["_order"][0].startswith("v2_") or vol(r) not in v2_done]
     # 同一冊若已有章節，就移除該冊的「未查到」空白列
     found = {(r["版本"], r["學段"], r["年級"], r["冊次"], r["科目"]) for r in rows if r["章"]}
     rows = [r for r in rows
