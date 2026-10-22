@@ -118,6 +118,13 @@ const lessons: Lesson[] = [
           "判讀史料四問：**誰寫的？何時寫？為什麼寫？可信嗎？** 再用多則不同立場的史料交叉比對，才能提出有根據的歷史解釋。",
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：三份資料看開墾",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-frontier-1"), q("set-frontier-2"), q("set-frontier-3")],
+      },
+      {
         id: "a4",
         kind: "quiz",
         title: "小試身手",
@@ -376,6 +383,13 @@ const lessons: Lesson[] = [
         reference:
           "- 1920 年代：蓬萊米外銷、米糖相剋\n- 1930 年：嘉南大圳完工，擴大灌溉面積\n- 1953 年：耕者有其田，自耕農增加\n- 1966 年：高雄加工出口區，出口擴張\n- 1974–1979 年：十大建設，奠定重化工業基礎\n- 1980 年：新竹科學園區，邁向高科技產業\n- 2002 年：加入世界貿易組織，更深入全球市場",
         aiFeedback: true,
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：出口品比重的變化",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-export-1"), q("set-export-2"), q("set-export-3")],
       },
       {
         id: "a4",
