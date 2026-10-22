@@ -2,6 +2,14 @@ import type { Question } from "../../types";
 
 const id = (s: string) => `math.senior.q-${s}`;
 
+/** 素養題組：垃圾信篩選器 */
+const CTX_MAIL_FILTER =
+  "某信箱在一個月內收到 1000 封信（假設的資料）。信箱的篩選器會把疑似垃圾信的郵件標記為「可疑」，統計如下：\n\n| 類別 | 被標記可疑 | 未被標記 | 合計 |\n|---|---|---|---|\n| 垃圾信 | 180 | 20 | 200 |\n| 一般信 | 40 | 760 | 800 |\n| 合計 | 220 | 780 | 1000 |\n\n設事件 $A$ 為「是垃圾信」，事件 $B$ 為「被標記可疑」。";
+
+/** 素養題組：細菌培養紀錄 */
+const CTX_BACTERIA =
+  "某生物社在培養皿中觀察一種細菌（假設的實驗紀錄），起始數量為 1000，之後每隔 2 小時記錄一次：\n\n| 時間（小時） | 0 | 2 | 4 | 6 |\n|---|---|---|---|---|\n| 數量 | 1000 | 4000 | 16000 | 64000 |\n\n已知 $\\log 2 \\approx 0.3010$。";
+
 const questions: Question[] = [
   // 指數與對數
   {
@@ -244,6 +252,78 @@ const questions: Question[] = [
     answer: false,
     explain: "反例：$f(x) = x^3$ 在 $x = 0$ 時 $f'(0) = 0$，但導數沒有變號，不是極值。",
     nodeId: "math.senior.calculus",
+  },
+  {
+    id: "math.senior.q-set-mail-filter-1",
+    type: "numeric",
+    context: CTX_MAIL_FILTER,
+    stem: "一封信「被標記可疑」時，它真的是垃圾信的機率 $P(A|B)$ 約是多少？（取到小數點後兩位）",
+    answer: 0.82,
+    tolerance: 0.01,
+    explain:
+      "被標記的共 $220$ 封，其中 $180$ 封是垃圾信，所以 $P(A|B)=\\frac{180}{220}=\\frac{9}{11}\\approx0.82$。",
+    difficulty: 2,
+    nodeId: "math.senior.cond-prob",
+  },
+  {
+    id: "math.senior.q-set-mail-filter-2",
+    type: "tf",
+    context: CTX_MAIL_FILTER,
+    stem: "$P(B|A)$（垃圾信被標記的機率）與 $P(A|B)$（被標記的信是垃圾的機率）相等。",
+    answer: false,
+    explain:
+      "$P(B|A)=\\frac{180}{200}=0.9$，而 $P(A|B)=\\frac{180}{220}\\approx0.82$，兩者不同。條件與結果對調，機率通常就不一樣。",
+    difficulty: 2,
+    nodeId: "math.senior.cond-prob",
+  },
+  {
+    id: "math.senior.q-set-mail-filter-3",
+    type: "numeric",
+    context: CTX_MAIL_FILTER,
+    stem: "「未被標記」的信裡，有百分之幾其實是垃圾信？（取到小數點後一位）",
+    answer: 2.6,
+    tolerance: 0.1,
+    unit: "%",
+    explain:
+      "未被標記的共 $780$ 封，其中垃圾信 $20$ 封，比例為 $\\frac{20}{780}\\approx 0.0256\\approx 2.6\\%$。",
+    difficulty: 2,
+    nodeId: "math.senior.cond-prob",
+  },
+  {
+    id: "math.senior.q-set-bacteria-1",
+    type: "single",
+    context: CTX_BACTERIA,
+    stem: "從表中判斷，細菌數量平均每小時成長為原來的幾倍？",
+    choices: ["1.5 倍", "2 倍", "4 倍", "8 倍"],
+    answer: 1,
+    explain:
+      "每 $2$ 小時變成 $4$ 倍，所以每小時是 $\\sqrt{4}=2$ 倍。也可以看出數量是 $1000\\times2^t$（$t$ 為小時）。",
+    difficulty: 2,
+    nodeId: "math.senior.exp-log",
+  },
+  {
+    id: "math.senior.q-set-bacteria-2",
+    type: "numeric",
+    context: CTX_BACTERIA,
+    stem: "若維持相同的成長方式，第 $8$ 小時的數量是多少？",
+    answer: 256000,
+    explain:
+      "$1000\\times2^8=1000\\times256=256000$。或由第 $6$ 小時的 $64000$ 再乘以 $4$ 得 $256000$。",
+    difficulty: 2,
+    nodeId: "math.senior.exp-log",
+  },
+  {
+    id: "math.senior.q-set-bacteria-3",
+    type: "numeric",
+    context: CTX_BACTERIA,
+    stem: "數量要達到 $10^6$（一百萬）大約需要幾小時？（用 $\\log 2\\approx0.3010$，答案取到小數點後一位）",
+    answer: 10,
+    tolerance: 0.1,
+    unit: "小時",
+    explain:
+      "令 $1000\\times2^t=10^6$，則 $2^t=1000$，取對數得 $t\\log2=3$，$t=\\frac{3}{0.3010}\\approx9.97\\approx10.0$ 小時。",
+    difficulty: 2,
+    nodeId: "math.senior.exp-log",
   },
 ];
 

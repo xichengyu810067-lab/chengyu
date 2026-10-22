@@ -201,6 +201,17 @@ const lessons: Lesson[] = [
         title: "情境對話：菜市場裡的數學",
         scenarioId: "math.junior.s-market",
       },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：運動中心的方案選擇",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          "math.junior.q-set-gym-plan-1",
+          "math.junior.q-set-gym-plan-2",
+          "math.junior.q-set-gym-plan-3",
+        ],
+      },
       { id: "a5", kind: "quiz", title: "小試身手", questionIds: [q("l1"), q("l3"), q("l5")] },
     ],
   },
@@ -547,6 +558,17 @@ const lessons: Lesson[] = [
           ["眾數", "出現次數最多的數"],
           ["全距", "最大值 − 最小值"],
           ["四分位距", "$Q_3 - Q_1$"],
+        ],
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：班級閱讀量統計",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          "math.junior.q-set-reading-stats-1",
+          "math.junior.q-set-reading-stats-2",
+          "math.junior.q-set-reading-stats-3",
         ],
       },
       {

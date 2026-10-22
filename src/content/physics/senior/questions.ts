@@ -3,6 +3,14 @@ import type { Question } from "../../types";
 const id = (s: string) => `physics.senior.q-${s}`;
 const node = (s: string) => `physics.senior.${s}`;
 
+/** 素養題組：光電效應實驗紀錄 */
+const CTX_PHOTO_DATA =
+  "某實驗室用不同的單色光照射同一片金屬板（假設的實驗紀錄），並測量有沒有光電流。已知這片金屬的功函數為 2.3 eV，普朗克常數 $h = 4.14\\times10^{-15}$ eV·s。\n\n| 光 | 頻率（$10^{14}$ Hz） | 相對強度 | 結果 |\n|---|---|---|---|\n| 甲 | 4.0 | 1 | 無光電流 |\n| 乙 | 4.0 | 10 | 無光電流 |\n| 丙 | 7.0 | 1 | 有光電流 |\n| 丁 | 7.0 | 2 | 光電流是丙的 2 倍 |";
+
+/** 素養題組：空氣軌道上的碰撞 */
+const CTX_CART_COLLISION =
+  "某班在水平的空氣軌道上做碰撞實驗（假設的數據）。滑車 A 質量 0.50 kg，以 0.80 m/s 向右運動，撞上靜止的滑車 B（質量 0.30 kg）。碰撞後，測得 A 的速度為向右 0.20 m/s。軌道摩擦可忽略，以向右為正。";
+
 const questions: Question[] = [
   // 科學方法、物質組成與基本交互作用
   {
@@ -500,6 +508,90 @@ const questions: Question[] = [
     unit: "N/C",
     explain: "$E = \\dfrac{F}{q} = \\dfrac{0.06}{2 \\times 10^{-6}} = 3 \\times 10^4$ N/C。",
     nodeId: node("electrostatics"),
+  },
+  {
+    id: "physics.senior.q-set-photo-data-1",
+    type: "single",
+    context: CTX_PHOTO_DATA,
+    stem: "乙光的強度是甲光的 10 倍，卻仍然沒有光電流，最合理的解釋是？",
+    choices: [
+      "乙光的頻率低於這片金屬的截止頻率，每個光子的能量都不足以打出電子",
+      "乙光太亮，把電子都吸收掉了",
+      "光的強度越大，光電流會越小",
+      "金屬板在實驗前還沒有充電",
+    ],
+    answer: 0,
+    explain:
+      "能否打出電子由光子能量 $hf$ 決定。$4.0\\times10^{14}$ Hz 的光子能量約 $1.66$ eV，小於功函數 $2.3$ eV，所以不論多亮都打不出電子；光的強度只影響光子數量。",
+    difficulty: 2,
+    nodeId: "physics.senior.photoelectric",
+  },
+  {
+    id: "physics.senior.q-set-photo-data-2",
+    type: "numeric",
+    context: CTX_PHOTO_DATA,
+    stem: "丙光打出的光電子，最大動能約是多少 eV？",
+    answer: 0.6,
+    tolerance: 0.02,
+    unit: "eV",
+    explain:
+      "光子能量 $hf=4.14\\times10^{-15}\\times7.0\\times10^{14}\\approx2.90$ eV，最大動能 $K_{max}=hf-W=2.90-2.3\\approx0.60$ eV。",
+    difficulty: 3,
+    nodeId: "physics.senior.photoelectric",
+  },
+  {
+    id: "physics.senior.q-set-photo-data-3",
+    type: "tf",
+    context: CTX_PHOTO_DATA,
+    stem: "丁光打出的光電子，其最大動能是丙光的 2 倍。",
+    answer: false,
+    explain:
+      "丙、丁頻率相同，光子能量相同，所以光電子的最大動能相同；丁光強度為 $2$ 倍，只讓光子數與光電子數變成 $2$ 倍，因此光電流加倍。",
+    difficulty: 2,
+    nodeId: "physics.senior.photoelectric",
+  },
+  {
+    id: "physics.senior.q-set-cart-collision-1",
+    type: "numeric",
+    context: CTX_CART_COLLISION,
+    stem: "碰撞後，滑車 B 的速度是多少（向右為正）？",
+    answer: 1,
+    tolerance: 0.01,
+    unit: "m/s",
+    explain:
+      "碰撞前後總動量守恆：$0.50\\times0.80=0.50\\times0.20+0.30\\,v_B$，即 $0.40=0.10+0.30\\,v_B$，得 $v_B=1.0$ m/s。",
+    difficulty: 2,
+    nodeId: "physics.senior.momentum",
+  },
+  {
+    id: "physics.senior.q-set-cart-collision-2",
+    type: "single",
+    context: CTX_CART_COLLISION,
+    stem: "比較碰撞前後的總動能，這次碰撞屬於哪一種？",
+    choices: [
+      "動能前後相等，是彈性碰撞",
+      "動能變小，是非彈性碰撞",
+      "動能變大，是爆炸",
+      "資料不足，無法判斷",
+    ],
+    answer: 0,
+    explain:
+      "碰前動能 $\\frac{1}{2}\\times0.50\\times0.80^2=0.16$ J；碰後 $\\frac{1}{2}\\times0.50\\times0.20^2+\\frac{1}{2}\\times0.30\\times1.0^2=0.01+0.15=0.16$ J。總動能不變，是彈性碰撞。",
+    difficulty: 3,
+    nodeId: "physics.senior.momentum",
+  },
+  {
+    id: "physics.senior.q-set-cart-collision-3",
+    type: "numeric",
+    context: CTX_CART_COLLISION,
+    stem: "若改成兩車碰撞後黏在一起，一起運動的速度是多少？",
+    answer: 0.5,
+    tolerance: 0.01,
+    unit: "m/s",
+    explain:
+      "完全非彈性碰撞，動量仍守恆：$0.50\\times0.80=(0.50+0.30)\\,v$，得 $v=0.50$ m/s。此時動能只剩 $0.10$ J，少掉的 $0.06$ J 轉成熱和形變。",
+    difficulty: 2,
+    nodeId: "physics.senior.momentum",
   },
 ];
 

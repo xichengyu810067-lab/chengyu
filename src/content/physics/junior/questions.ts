@@ -3,6 +3,14 @@ import type { Question } from "../../types";
 const id = (s: string) => `physics.junior.q-${s}`;
 const node = (s: string) => `physics.junior.${s}`;
 
+/** 素養題組：密度與浮沉 */
+const CTX_DENSITY_FLOAT =
+  "某班同學用天平和量筒測量四個實心物體的質量與體積（假設的實驗紀錄），結果如下：\n\n| 物體 | 質量（g） | 體積（cm³） |\n|---|---|---|\n| 甲 | 54 | 20 |\n| 乙 | 18 | 20 |\n| 丙 | 20 | 20 |\n| 丁 | 40 | 50 |\n\n純水的密度為 1.0 g/cm³。物體放入水中時：密度比水大會下沉，密度比水小會浮在水面。";
+
+/** 素養題組：騎腳踏車的位置紀錄 */
+const CTX_BIKE_RIDE =
+  "某同學沿著筆直的道路騎腳踏車，每隔 2 秒記錄一次他的位置（以出發點為原點，假設的紀錄）：\n\n| 時間（s） | 0 | 2 | 4 | 6 | 8 | 10 |\n|---|---|---|---|---|---|---|\n| 位置（m） | 0 | 8 | 16 | 16 | 16 | 28 |\n\n他在途中曾經停下來等紅燈。";
+
 const questions: Question[] = [
   // 測量與密度
   {
@@ -464,6 +472,76 @@ const questions: Question[] = [
     accept: ["電壓", "V", "電位差"],
     explain: "電功率 = 電流 × 電壓，$P = IV$，單位瓦特（W）。",
     nodeId: node("electric-power"),
+  },
+  {
+    id: "physics.junior.q-set-density-float-1",
+    type: "numeric",
+    context: CTX_DENSITY_FLOAT,
+    stem: "物體甲的密度是多少？",
+    answer: 2.7,
+    tolerance: 0.01,
+    unit: "g/cm³",
+    explain: "密度 = 質量 ÷ 體積 = $\\frac{54}{20}=2.7$ g/cm³。",
+    difficulty: 2,
+    nodeId: "physics.junior.buoyancy",
+  },
+  {
+    id: "physics.junior.q-set-density-float-2",
+    type: "multi",
+    context: CTX_DENSITY_FLOAT,
+    stem: "哪些物體放入純水中會浮在水面？（可複選）",
+    choices: ["甲", "乙", "丙", "丁"],
+    answer: [1, 3],
+    explain:
+      "各物體密度：甲 $2.7$、乙 $\\frac{18}{20}=0.9$、丙 $\\frac{20}{20}=1.0$、丁 $\\frac{40}{50}=0.8$（g/cm³）。密度小於 $1.0$ 的乙和丁會浮在水面；甲會下沉；丙與水相同，會懸浮在水中。",
+    difficulty: 2,
+    nodeId: "physics.junior.buoyancy",
+  },
+  {
+    id: "physics.junior.q-set-density-float-3",
+    type: "numeric",
+    context: CTX_DENSITY_FLOAT,
+    stem: "乙浮在水面時，排開的水體積是多少？",
+    answer: 18,
+    unit: "cm³",
+    explain:
+      "浮在水面時，浮力等於物重。乙的重量相當於 $18$ 公克重，水每 $1$ cm³ 重 $1$ 公克重，所以要排開 $18$ cm³ 的水。",
+    difficulty: 2,
+    nodeId: "physics.junior.buoyancy",
+  },
+  {
+    id: "physics.junior.q-set-bike-ride-1",
+    type: "numeric",
+    context: CTX_BIKE_RIDE,
+    stem: "前 $4$ 秒的平均速度是多少？",
+    answer: 4,
+    unit: "m/s",
+    explain: "平均速度 = 位移 ÷ 時間 = $\\frac{16-0}{4}=4$ m/s。",
+    difficulty: 2,
+    nodeId: "physics.junior.motion-graphs",
+  },
+  {
+    id: "physics.junior.q-set-bike-ride-2",
+    type: "single",
+    context: CTX_BIKE_RIDE,
+    stem: "從第 $4$ 秒到第 $8$ 秒，他的運動狀況最可能是什麼？",
+    choices: ["等速前進", "加速前進", "靜止不動", "往回騎"],
+    answer: 2,
+    explain: "這段時間位置都是 $16$ m，沒有改變，表示位移為 $0$，他停下來等紅燈。",
+    difficulty: 2,
+    nodeId: "physics.junior.motion-graphs",
+  },
+  {
+    id: "physics.junior.q-set-bike-ride-3",
+    type: "numeric",
+    context: CTX_BIKE_RIDE,
+    stem: "第 $8$ 秒到第 $10$ 秒之間，他的平均速度是多少？",
+    answer: 6,
+    unit: "m/s",
+    explain:
+      "位移 $28-16=12$ m，時間 $2$ s，平均速度 $\\frac{12}{2}=6$ m/s，是整段紀錄中最快的一段。",
+    difficulty: 2,
+    nodeId: "physics.junior.motion-graphs",
   },
 ];
 
