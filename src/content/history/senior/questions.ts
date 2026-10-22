@@ -3,6 +3,12 @@ import type { Question } from "../../types";
 const id = (s: string) => `history.senior.q-${s}`;
 const n = (s: string) => `history.senior.${s}`;
 
+const SET_FRONTIER_CONTEXT =
+  "【假設的案例】某位研究者想了解 18 世紀某處丘陵的開墾過程，手上有三份資料（內容為虛構，用來練習史料判讀）：\n\n| 資料 | 來源 | 內容摘要 |\n|---|---|---|\n| 甲 | 地方官員呈給上級的報告 | 該地民番相安，開墾順利，沒有爭端。 |\n| 乙 | 漢人墾戶與番社訂立的土地契約 | 墾戶每年繳租穀給番社，並約定土地界線。 |\n| 丙 | 一百多年後整理的平埔族後裔口述 | 祖先說，後來田地越來越少，才搬到別處去。 |";
+
+const SET_EXPORT_CONTEXT =
+  "【假設的數據】下表是為了教學設計的「某港口出口品價值比重」，數字為示意，並非真實統計。\n\n| 時期 | 茶 | 糖 | 樟腦 | 其他 |\n|---|---|---|---|---|\n| 開港初期 | 10% | 60% | 5% | 25% |\n| 清末 | 50% | 25% | 15% | 10% |\n\n表中的百分比是各項商品占該港**出口總值**的比重。";
+
 const questions: Question[] = [
   // 史料判讀與歷史解釋
   {
@@ -369,6 +375,86 @@ const questions: Question[] = [
     answer: true,
     explain: "人文主義者研究希臘羅馬古典，肯定人的才能與現世成就，藝術也更重視寫實與人體之美。",
     nodeId: n("w-europe-renaissance"),
+  },
+  // 素養題組：開墾史料
+  {
+    id: id("set-frontier-1"),
+    type: "single",
+    context: SET_FRONTIER_CONTEXT,
+    stem: "乙（契約）對研究者最大的價值是什麼？",
+    choices: [
+      "直接顯示漢人與番社之間的租佃與土地關係",
+      "證明甲的報告完全正確",
+      "說明一百多年後平埔族後裔的感受",
+      "代表所有地區的開墾情況都相同",
+    ],
+    answer: 0,
+    explain:
+      "契約由雙方當時訂立，載明繳租與界線，能**直接**呈現土地與經濟關係。它只是一個例子，不能證明其他資料正確，也不能代表所有地區。",
+    nodeId: n("inq-bias"),
+  },
+  {
+    id: id("set-frontier-2"),
+    type: "multi",
+    context: SET_FRONTIER_CONTEXT,
+    stem: "根據表格，下列哪些推論是合理的？（複選）",
+    choices: [
+      "甲出自官員之手，可能傾向報告「穩定順利」，需要和其他資料比對",
+      "丙距離事件已久，需要審慎查證，但它保存了文字史料較少的觀點",
+      "因為甲說「沒有爭端」，所以當地一定沒有任何衝突",
+      "三份資料互相補充，比只用其中一份更能接近過去的面貌",
+    ],
+    answer: [0, 1, 3],
+    explain:
+      "官員報告有立場與目的，口述有時間距離，但各有價值，也需交叉驗證。甲沒有提到爭端，只能說明報告這樣寫，不能推論一定沒有衝突。",
+    nodeId: n("inq-bias"),
+  },
+  {
+    id: id("set-frontier-3"),
+    type: "tf",
+    context: SET_FRONTIER_CONTEXT,
+    stem: "丙是口述而非文字紀錄，所以不能當作史料。",
+    answer: false,
+    explain:
+      "口述歷史是重要的史料，能補足文字史料中較少被記錄的聲音（如原住民族、女性）。使用時要留意記憶的偏差，並與其他資料交叉比對。",
+    nodeId: n("inq-bias"),
+  },
+  // 素養題組：出口結構
+  {
+    id: id("set-export-1"),
+    type: "numeric",
+    context: SET_EXPORT_CONTEXT,
+    stem: "茶在出口品中的比重，從開港初期到清末增加了幾個百分點？",
+    answer: 40,
+    unit: "個百分點",
+    explain: "50% − 10% = **40 個百分點**。",
+    nodeId: n("tw-econ-trade"),
+  },
+  {
+    id: id("set-export-2"),
+    type: "single",
+    context: SET_EXPORT_CONTEXT,
+    stem: "根據表格，下列哪一項推論最有依據？",
+    choices: [
+      "清末茶在該港出口品中的重要性提高",
+      "清末的出口總值一定比開港初期高",
+      "北部的農民收入在清末全都增加",
+      "樟腦在開港初期完全沒有出口",
+    ],
+    answer: 0,
+    explain:
+      "表格顯示茶的比重由 10% 升到 50%，所以茶的相對重要性提高。總值、農民收入無法從比重得知；樟腦在開港初期仍有 5%，並非沒有出口。",
+    nodeId: n("tw-econ-trade"),
+  },
+  {
+    id: id("set-export-3"),
+    type: "tf",
+    context: SET_EXPORT_CONTEXT,
+    stem: "從表格可以確定，糖的出口「數量」在清末比開港初期減少了。",
+    answer: false,
+    explain:
+      "表格給的是**比重**，不是數量。如果出口總值大幅成長，糖的比重下降時，出口量仍可能增加或持平。要判斷數量，需要實際的出口量或總值資料。",
+    nodeId: n("tw-econ-trade"),
   },
 ];
 
