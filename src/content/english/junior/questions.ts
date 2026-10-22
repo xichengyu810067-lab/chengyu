@@ -3,6 +3,21 @@ import type { Question } from "../../types";
 const id = (s: string) => `english.junior.q-${s}`;
 const node = (s: string) => `english.junior.${s}`;
 
+const SWAP_CONTEXT = `閱讀下面的公告，回答問題。
+
+**Book Swap Day**
+
+Hello, everyone! Our class is holding a Book Swap Day next Friday. Bring one or two books that you have finished reading, and you can take home the same number of books from other students. Please do not bring magazines or comic books. The event starts at 12:30 in the library and lasts for forty minutes. Mr. Chen, our English teacher, will give a small card to the student who brings the most books. Don't miss it!`;
+
+const CLASS_CONTEXT = `以下是某班四位同學的資料（為假設的情境）：
+
+| Student | Height (cm) | Minutes to school |
+|---|---|---|
+| Amy | 158 | 10 |
+| Ben | 165 | 25 |
+| Cathy | 160 | 15 |
+| David | 172 | 20 |`;
+
 const BEN =
   "閱讀短文後回答問題。\n\nBen is from Canada. Last year, he came to Taiwan to study Chinese. At first, he could not read the menus at night markets, so he always pointed at the pictures. Now he can order food in Chinese, and he even teaches his classmates how to make pancakes. He says living in Taiwan has changed him a lot.";
 
@@ -499,6 +514,88 @@ const questions: Question[] = [
       "往前找 it 代替的名詞：奶奶送給 Mia 的是 **the plant（植物）**，所以 Mia 很喜歡它。代名詞題要找「單複數相符、意思說得通」的名詞。",
     difficulty: 2,
     nodeId: node("d-reading"),
+  },
+
+  // 素養題組：讀公告
+  {
+    id: id("set-swap-1"),
+    type: "single",
+    context: SWAP_CONTEXT,
+    stem: "What can students do on Book Swap Day?",
+    choices: [
+      "Buy new books from the library.",
+      "Exchange books they have already read.",
+      "Borrow comic books from Mr. Chen.",
+      "Read magazines for forty minutes.",
+    ],
+    answer: 1,
+    explain:
+      "公告說 Bring books that you have finished reading, and you can take home the same number of books：帶來**已讀完**的書，換回同樣數量的別人的書，所以是交換書。",
+    difficulty: 1,
+    nodeId: node("d-reading"),
+  },
+  {
+    id: id("set-swap-2"),
+    type: "single",
+    context: SWAP_CONTEXT,
+    stem: "Amy brings two books to the event. How many books can she take home?",
+    choices: ["One.", "Two.", "Three.", "As many as she wants."],
+    answer: 1,
+    explain:
+      "take home **the same number of** books：帶幾本來，就能帶幾本回去。Amy 帶兩本，所以是兩本。",
+    difficulty: 2,
+    nodeId: node("d-reading"),
+  },
+  {
+    id: id("set-swap-3"),
+    type: "tf",
+    context: SWAP_CONTEXT,
+    stem: "Everyone who joins the event will get a small card from Mr. Chen.",
+    answer: false,
+    explain:
+      "只有 the student who brings the most books（帶最多書的同學）才會拿到小卡片，不是每個人都有。",
+    difficulty: 2,
+    nodeId: node("d-reading"),
+  },
+
+  // 素養題組：讀表格用比較級與最高級
+  {
+    id: id("set-class-1"),
+    type: "single",
+    context: CLASS_CONTEXT,
+    stem: "Which sentence is TRUE?",
+    choices: [
+      "Ben is taller than David.",
+      "Cathy is taller than Amy but shorter than Ben.",
+      "Amy lives the farthest from school.",
+      "David takes the most time to get to school.",
+    ],
+    answer: 1,
+    explain:
+      "Cathy 160 公分，比 Amy（158）高、比 Ben（165）矮，所以 B 正確。Ben 比 David（172）矮；Amy 通勤只要 10 分鐘，是最近的；花最多時間的是 Ben（25 分鐘）。",
+    difficulty: 2,
+    nodeId: node("g-compare"),
+  },
+  {
+    id: id("set-class-2"),
+    type: "cloze",
+    context: CLASS_CONTEXT,
+    stem: "Ben spends the ____ time getting to school among the four students.（填入一個字）",
+    accept: ["most"],
+    explain: "Ben 的 25 分鐘最長。many / much 的最高級是 **most**：the most time。",
+    difficulty: 2,
+    nodeId: node("g-compare"),
+  },
+  {
+    id: id("set-class-3"),
+    type: "numeric",
+    context: CLASS_CONTEXT,
+    stem: "David is ____ cm taller than Amy.（填入數字）",
+    answer: 14,
+    unit: "cm",
+    explain: "David 172 公分、Amy 158 公分，172 − 158 = 14，所以 David 比 Amy 高 14 公分。",
+    difficulty: 1,
+    nodeId: node("g-compare"),
   },
 ];
 

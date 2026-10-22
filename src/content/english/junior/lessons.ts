@@ -630,6 +630,13 @@ const lessons: Lesson[] = [
         aiFeedback: true,
       },
       {
+        id: "a-set",
+        kind: "set",
+        title: "素養題組：讀表格用比較級與最高級",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-class-1"), q("set-class-2"), q("set-class-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -851,6 +858,13 @@ const lessons: Lesson[] = [
         reference:
           "範例：\nDear Grandma,\nHappy Mid-Autumn Festival! I hope you enjoy the mooncakes and the full moon tonight.\nLove,\nAmy",
         aiFeedback: true,
+      },
+      {
+        id: "a-set",
+        kind: "set",
+        title: "素養題組：讀公告回答問題",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-swap-1"), q("set-swap-2"), q("set-swap-3")],
       },
       {
         id: "a5",
