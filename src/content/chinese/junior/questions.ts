@@ -3,6 +3,18 @@ import type { Question } from "../../types";
 const id = (s: string) => `chinese.junior.q-${s}`;
 const node = (s: string) => `chinese.junior.${s}`;
 
+const RAIN_CONTEXT = `某校國文課的閱讀材料（情境為假設）：
+
+學校屋頂的雨水不會白白流走。雨一下，水先順著屋頂進入水管，再流進地下的儲水槽；經過簡單過濾後，用來沖廁所和澆花。去年夏天，這套系統一共蒐集了約三十噸的雨水。可見，只要多一點巧思，平常被忽略的雨水也能變成珍貴的資源。`;
+
+const POEM_CONTEXT = `小安在筆記上抄下一首唐詩，準備做報告：
+
+**〈登鸛雀樓〉**　王之渙（唐）
+
+白日依山盡，黃河入海流。欲窮千里目，更上一層樓。
+
+小安的筆記：「這首詩共四句，每句五個字。」`;
+
 const questions: Question[] = [
   // 字形・六書・成語
   {
@@ -407,6 +419,87 @@ const questions: Question[] = [
     explain: "蘇軾、辛棄疾是豪放派代表；李清照、柳永屬婉約派；李白是唐代詩人。",
     difficulty: 2,
     nodeId: node("lit-ci"),
+  },
+
+  // 素養題組：讀短文辨說明方法
+  {
+    id: id("set-rain-1"),
+    type: "single",
+    context: RAIN_CONTEXT,
+    stem: "第二句「雨一下，水先順著屋頂進入水管，再流進地下的儲水槽」，主要使用哪一種說明方法？",
+    choices: ["舉例說明", "依事物的流程順序說明", "下定義", "作比較"],
+    answer: 1,
+    explain: "句中用「先……再……」交代雨水從屋頂、水管到儲水槽的過程，是依**流程先後**來說明。",
+    difficulty: 1,
+    nodeId: node("b-expository"),
+  },
+  {
+    id: id("set-rain-2"),
+    type: "numeric",
+    context: RAIN_CONTEXT,
+    stem: "一個大水桶可裝 200 公升的水。若 1 公升水約重 1 公斤，短文中的三十噸雨水約可裝滿幾個這樣的水桶？",
+    answer: 150,
+    unit: "個",
+    explain: "三十噸是 30000 公斤，約等於 30000 公升；30000 ÷ 200 = 150，所以約可裝滿 150 個水桶。",
+    difficulty: 2,
+    nodeId: node("b-expository"),
+  },
+  {
+    id: id("set-rain-3"),
+    type: "single",
+    context: RAIN_CONTEXT,
+    stem: "最後一句「可見，只要多一點巧思，平常被忽略的雨水也能變成珍貴的資源」，在全文中的作用是什麼？",
+    choices: [
+      "補充另一個新的例子",
+      "歸納前面的說明，點出全文的主旨",
+      "轉折，推翻前面的說法",
+      "介紹作者的個人背景",
+    ],
+    answer: 1,
+    explain: "「可見」是歸納的語氣，把前面的流程與數據收束成一個結論，也就是全文**主旨**。",
+    difficulty: 2,
+    nodeId: node("a-structure"),
+  },
+
+  // 素養題組：讀詩判斷體裁與韻腳
+  {
+    id: id("set-poem-1"),
+    type: "single",
+    context: POEM_CONTEXT,
+    stem: "依據小安的筆記與詩的內容，〈登鸛雀樓〉屬於哪一種體裁？",
+    choices: ["五言絕句", "七言絕句", "五言律詩", "七言律詩"],
+    answer: 0,
+    explain: "全詩共四句、每句五個字，是**五言絕句**；律詩有八句。",
+    difficulty: 1,
+    nodeId: node("lit-poetry"),
+  },
+  {
+    id: id("set-poem-2"),
+    type: "multi",
+    context: POEM_CONTEXT,
+    stem: "下列哪些字是這首詩的**韻腳**？（複選）",
+    choices: ["盡", "流", "目", "樓"],
+    answer: [1, 3],
+    explain:
+      "絕句通常偶數句押韻：第二句句末「流」和第四句句末「樓」押韻；「盡」「目」在奇數句，不押韻。",
+    difficulty: 2,
+    nodeId: node("lit-poetry"),
+  },
+  {
+    id: id("set-poem-3"),
+    type: "single",
+    context: POEM_CONTEXT,
+    stem: "「欲窮千里目，更上一層樓」的言外之意，最接近下列哪一項？",
+    choices: [
+      "想看得更遠，就要站得更高，也比喻不斷向上努力",
+      "樓上的風景一定比樓下差",
+      "詩人不想爬樓梯",
+      "黃河的水位正在上升",
+    ],
+    answer: 0,
+    explain: "字面是登樓遠望，言外之意是：想要有更開闊的視野與境界，就要再向上努力一層。",
+    difficulty: 2,
+    nodeId: node("lit-poetry"),
   },
 ];
 

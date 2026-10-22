@@ -163,6 +163,13 @@ const lessons: Lesson[] = [
         ],
       },
       {
+        id: "a-set",
+        kind: "set",
+        title: "素養題組：〈師說〉節選",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-shishuo-1"), q("set-shishuo-2"), q("set-shishuo-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -830,6 +837,13 @@ const lessons: Lesson[] = [
         reference:
           "範例：論點「適度留白，才能看見重要的事」→ 事實論據：考前停止熬夜反而表現更好 → 道理論據：中國畫講究留白，空白處引人想像 → 反方：「留白是浪費時間」→ 回應：留白不是空轉，而是整理與沉澱 → 結論：替生活保留一點空白。",
         aiFeedback: true,
+      },
+      {
+        id: "a-set",
+        kind: "set",
+        title: "素養題組：讀表格做統整判斷",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-reading-1"), q("set-reading-2"), q("set-reading-3")],
       },
       {
         id: "a5",

@@ -385,6 +385,13 @@ const lessons: Lesson[] = [
         ],
       },
       {
+        id: "a-set",
+        kind: "set",
+        title: "素養題組：讀訊息練習假設語氣",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-leo-1"), q("set-leo-2"), q("set-leo-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -679,6 +686,13 @@ const lessons: Lesson[] = [
         ],
         takeaway:
           "推論 = **文中線索 + 合理常識**；正確選項一定找得到根據，不能過度延伸或和原文矛盾。",
+      },
+      {
+        id: "a-set",
+        kind: "set",
+        title: "素養題組：短文閱讀（主旨、猜字義、推論）",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-quiet-1"), q("set-quiet-2"), q("set-quiet-3")],
       },
       {
         id: "a5",

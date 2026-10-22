@@ -363,6 +363,13 @@ const lessons: Lesson[] = [
         aiFeedback: true,
       },
       {
+        id: "a-set",
+        kind: "set",
+        title: "素養題組：讀短文辨說明方法",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-rain-1"), q("set-rain-2"), q("set-rain-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -468,6 +475,13 @@ const lessons: Lesson[] = [
           ["蘇軾", "但願人長久，千里共嬋娟"],
           ["李清照", "婉約派女詞人"],
         ],
+      },
+      {
+        id: "a-set",
+        kind: "set",
+        title: "素養題組：讀詩判斷體裁與韻腳",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-poem-1"), q("set-poem-2"), q("set-poem-3")],
       },
       {
         id: "a5",
