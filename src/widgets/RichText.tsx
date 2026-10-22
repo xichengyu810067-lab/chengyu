@@ -81,6 +81,58 @@ function renderInline(text: string, katex: Katex | null, keyBase: string): React
   return out;
 }
 
+/** 以「| a | b |」逐行書寫的表格；第二行若為「|---|---|」則第一行當表頭 */
+function Table({
+  lines,
+  katex,
+  keyBase,
+}: {
+  lines: string[];
+  katex: Katex | null;
+  keyBase: string;
+}) {
+  const cells = (l: string) =>
+    l
+      .trim()
+      .slice(1, -1)
+      .split("|")
+      .map((c) => c.trim());
+  const hasHead = lines.length > 1 && /^[\s|:-]+$/.test(lines[1]);
+  const head = hasHead ? cells(lines[0]) : null;
+  const body = (hasHead ? lines.slice(2) : lines).map(cells);
+  return (
+    <div className="my-2 overflow-x-auto">
+      <table className="min-w-full border-collapse text-sm">
+        {head && (
+          <thead>
+            <tr>
+              {head.map((c, ci) => (
+                <th
+                  key={ci}
+                  className="border border-slate-300 bg-slate-100 px-2 py-1 text-left font-semibold dark:border-slate-700 dark:bg-slate-800"
+                >
+                  {renderInline(c, katex, `${keyBase}-h${ci}`)}
+                </th>
+              ))}
+            </tr>
+          </thead>
+        )}
+        <tbody>
+          {body.map((row, ri) => (
+            <tr key={ri}>
+              {row.map((c, ci) => (
+                <td key={ci} className="border border-slate-300 px-2 py-1 dark:border-slate-700">
+                  {renderInline(c, katex, `${keyBase}-${ri}-${ci}`)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export function RichText({
   text,
   className = "",
@@ -100,6 +152,9 @@ export function RichText({
     <div className={`prose-rich leading-relaxed ${className}`}>
       {paragraphs.map((para, pi) => {
         const lines = para.split("\n");
+        if (lines.every((l) => /^\s*\|.*\|\s*$/.test(l))) {
+          return <Table key={pi} lines={lines} katex={katex} keyBase={`${pi}`} />;
+        }
         const isList = lines.every((l) => /^\s*[-•]\s+/.test(l));
         if (isList) {
           return (

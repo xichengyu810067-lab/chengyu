@@ -3,6 +3,12 @@ import type { Question } from "../../types";
 const id = (s: string) => `geography.senior.q-${s}`;
 const node = (s: string) => `geography.senior.${s}`;
 
+const TRANSITION_CTX =
+  "下表是四個假設國家（甲到丁）在同一年的粗出生率與粗死亡率（單位：‰，資料為假設，方便練習）。自然增加率 = 粗出生率 − 粗死亡率。\n\n|國家|粗出生率（‰）|粗死亡率（‰）|\n|---|---|---|\n|甲|36|32|\n|乙|38|10|\n|丙|18|7|\n|丁|8|11|";
+
+const KOPPEN_CTX =
+  "下表是北半球某測站的氣候資料（假設資料，方便練習）。\n\n|月份|1|2|3|4|5|6|7|8|9|10|11|12|\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n|氣溫（°C）|10|11|13|16|20|24|27|27|24|19|14|11|\n|降水（毫米）|70|60|50|40|25|8|3|5|30|70|90|80|";
+
 const questions: Question[] = [
   // 地圖投影、GIS、遙測與定位
   {
@@ -384,6 +390,70 @@ const questions: Question[] = [
     explain: "歐盟單一市場追求「四大流通自由」，降低貿易障礙，是區域經濟整合的代表。",
     nodeId: node("europe"),
     difficulty: 1,
+  },
+
+  // 素養題組
+  {
+    id: id("set-transition-1"),
+    type: "numeric",
+    context: TRANSITION_CTX,
+    stem: "乙國的自然增加率是多少‰？",
+    answer: 28,
+    unit: "‰",
+    explain: "$38 - 10 = 28$，所以乙國的自然增加率為 28‰。",
+    nodeId: node("population"),
+  },
+  {
+    id: id("set-transition-2"),
+    type: "single",
+    context: TRANSITION_CTX,
+    stem: "哪一個國家的人口成長最快，且最符合「死亡率已明顯下降、出生率仍高」的人口轉型階段？",
+    choices: ["甲", "乙", "丙", "丁"],
+    answer: 1,
+    explain:
+      "乙國出生率高達 38‰，死亡率卻只有 10‰，自然增加率最高，正是人口轉型中死亡率先下降、出生率仍高的快速成長階段。這類國家的人口金字塔通常底部很寬。",
+    nodeId: node("population"),
+  },
+  {
+    id: id("set-transition-3"),
+    type: "tf",
+    context: TRANSITION_CTX,
+    stem: "丁國的自然增加率為負，若沒有移入人口，總人口會逐漸減少。",
+    answer: true,
+    explain:
+      "丁國的出生率（8‰）低於死亡率（11‰），自然增加率為 −3‰，若沒有人口移入，總人口會減少。",
+    nodeId: node("population"),
+  },
+  {
+    id: id("set-koppen-1"),
+    type: "numeric",
+    context: KOPPEN_CTX,
+    stem: "這個測站的年降水量是多少毫米？",
+    answer: 531,
+    unit: "毫米",
+    explain: "$70+60+50+40+25+8+3+5+30+70+90+80 = 531$，年降水量為 531 毫米。",
+    nodeId: node("climate"),
+  },
+  {
+    id: id("set-koppen-2"),
+    type: "single",
+    context: KOPPEN_CTX,
+    stem: "根據氣溫與降水的年變化，這裡最可能屬於哪一種氣候？",
+    choices: ["熱帶雨林氣候", "地中海型氣候（夏乾冬雨）", "溫帶海洋性氣候", "熱帶沙漠氣候"],
+    answer: 1,
+    explain:
+      "夏季炎熱（最高 27°C）且很乾（7 月只有 3 毫米），冬季溫和多雨，屬於夏乾冬雨的地中海型氣候。熱帶雨林全年高溫多雨；溫帶海洋性氣候全年有雨；沙漠氣候全年雨量都極少。",
+    nodeId: node("climate"),
+  },
+  {
+    id: id("set-koppen-3"),
+    type: "tf",
+    context: KOPPEN_CTX,
+    stem: "這裡夏季特別乾燥，與夏季副熱帶高壓帶北移、下沉氣流籠罩有關。",
+    answer: true,
+    explain:
+      "副熱帶高壓帶夏季隨太陽直射點北移而移到這個緯度，下沉氣流使天氣穩定少雨；冬季高壓帶南移，西風帶帶來降雨，形成夏乾冬雨。",
+    nodeId: node("climate"),
   },
 ];
 

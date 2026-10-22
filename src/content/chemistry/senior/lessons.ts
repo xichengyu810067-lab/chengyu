@@ -621,6 +621,13 @@ const lessons: Lesson[] = [
         title: "小試身手",
         questionIds: [q("q1"), q("q2"), q("q3"), q("q4"), q("q5")],
       },
+      {
+        id: "a6",
+        kind: "set",
+        title: "素養題組：氨合成的平衡數據",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-haber-1"), q("set-haber-2"), q("set-haber-3")],
+      },
     ],
   },
   {
@@ -736,6 +743,13 @@ const lessons: Lesson[] = [
         kind: "quiz",
         title: "小試身手",
         questionIds: [q("p1"), q("p2"), q("p3"), q("p5"), q("p6")],
+      },
+      {
+        id: "a5",
+        kind: "set",
+        title: "素養題組：酸鹼滴定曲線",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-titration-1"), q("set-titration-2"), q("set-titration-3")],
       },
     ],
   },

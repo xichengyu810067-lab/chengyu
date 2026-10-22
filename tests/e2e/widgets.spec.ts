@@ -18,6 +18,8 @@ test("心智圖：展開節點並完成", async ({ page }) => {
   await s.getByRole("button", { name: /數與量/ }).click();
   await s.getByRole("button", { name: /負數與數線/ }).click();
   await expect(s.getByText("認識負數，並在數線上表示。")).toBeVisible();
+  await s.getByText("電梯的地下樓層").click();
+  await expect(s.getByText(/B1、B2/)).toBeVisible();
   await s.getByRole("button", { name: /代數/ }).first().click();
   await s.getByRole("button", { name: /我懂了/ }).click();
   await expect(page.getByTestId("done-mindmap")).toBeVisible();
@@ -200,6 +202,18 @@ test("練習題：五種題型", async ({ page }) => {
   await s.getByTestId("quiz-next").click();
   await expect(s.getByText(/答對 5 \/ 5 題/)).toBeVisible();
   await expect(page.getByTestId("done-quiz")).toBeVisible();
+});
+
+test("素養題組：共用材料只顯示一次、各題作答", async ({ page }) => {
+  const s = await section(page, "set");
+  await expect(s.getByTestId("question-context")).toHaveCount(1);
+  await expect(s.getByRole("cell", { name: "氣溫" })).toBeVisible();
+  const qs = s.getByTestId("question");
+  await qs.nth(0).getByTestId("choice-2").click();
+  await qs.nth(1).getByTestId("answer-input").fill("29");
+  await qs.nth(1).getByRole("button", { name: "確認" }).click();
+  await expect(s.getByTestId("set-result")).toContainText("答對 2 / 2");
+  await expect(page.getByTestId("done-set")).toBeVisible();
 });
 
 test("翻牌配對", async ({ page }) => {

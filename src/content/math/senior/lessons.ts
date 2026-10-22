@@ -125,6 +125,17 @@ const lessons: Lesson[] = [
         takeaway: "指數方程式：**化成同底** → 比較指數；化不成同底時，兩邊取對數。",
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：細菌培養紀錄",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          "math.senior.q-set-bacteria-1",
+          "math.senior.q-set-bacteria-2",
+          "math.senior.q-set-bacteria-3",
+        ],
+      },
+      {
         id: "a4",
         kind: "quiz",
         title: "小試身手",
@@ -199,6 +210,17 @@ const lessons: Lesson[] = [
         kind: "dialogue",
         title: "情境對話：夜市抽獎划算嗎？",
         scenarioId: "math.senior.s-lottery",
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：垃圾信篩選器",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          "math.senior.q-set-mail-filter-1",
+          "math.senior.q-set-mail-filter-2",
+          "math.senior.q-set-mail-filter-3",
+        ],
       },
       { id: "a5", kind: "quiz", title: "小試身手", questionIds: [q("c1"), q("c3"), q("c4")] },
     ],

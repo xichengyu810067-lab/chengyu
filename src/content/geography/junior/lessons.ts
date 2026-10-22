@@ -221,6 +221,13 @@ const lessons: Lesson[] = [
         aiFeedback: true,
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：比較兩條登山路線",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-trail-1"), q("set-trail-2"), q("set-trail-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -518,6 +525,13 @@ const lessons: Lesson[] = [
           { id: "i8", label: "觀光旅遊與民宿", bucket: "p3" },
           { id: "i9", label: "金融與網路服務", bucket: "p3" },
         ],
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：人口年齡組成的變化",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-aging-1"), q("set-aging-2"), q("set-aging-3")],
       },
       {
         id: "a5",

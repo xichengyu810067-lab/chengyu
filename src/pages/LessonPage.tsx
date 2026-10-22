@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { getSubject, loadLesson } from "../content/registry";
-import { STAGE_LABEL } from "../content/types";
+import { type CurriculumNode, type Extra, STAGE_LABEL } from "../content/types";
 import { useAsync } from "../lib/hooks";
 import { useProgress } from "../lib/progress";
 import { EmptyState, ProgressBar, Spinner } from "../ui";
 import ActivityHost, { KIND_META } from "../widgets/ActivityHost";
+import Extras from "../widgets/Extras";
 import { Rich, RichText } from "../widgets/RichText";
 
 export default function LessonPage() {
@@ -26,6 +27,19 @@ export default function LessonPage() {
     setFinished(false);
     scores.current = {};
   }, [lessonId]);
+
+  /** 本課相關心智圖節點（nodeIds 或掛了本課的節點）上的課外補充 */
+  const extras = useMemo(() => {
+    if (!data) return [];
+    const wanted = new Set(data.lesson.nodeIds ?? []);
+    const out: Extra[] = [];
+    const walk = (n: CurriculumNode) => {
+      if (wanted.has(n.id) || n.lessonIds?.includes(lessonId)) out.push(...(n.extras ?? []));
+      for (const c of n.children ?? []) walk(c);
+    };
+    walk(data.track.mindmap);
+    return out;
+  }, [data, lessonId]);
 
   const nextLesson = useMemo(() => {
     if (!data) return undefined;
@@ -149,6 +163,12 @@ export default function LessonPage() {
             ))}
           </ul>
         </details>
+        {extras.length > 0 && (
+          <details className="text-sm text-slate-600 dark:text-slate-300">
+            <summary className="cursor-pointer">✨ 課外補充（{extras.length}）</summary>
+            <Extras extras={extras} className="mt-2" />
+          </details>
+        )}
       </header>
 
       <div className="flex items-center gap-3">

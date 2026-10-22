@@ -3,6 +3,17 @@ import type { Question } from "../../types";
 const id = (s: string) => `chinese.senior.q-${s}`;
 const node = (s: string) => `chinese.senior.${s}`;
 
+const SHISHUO_CONTEXT = `閱讀〈師說〉節選（韓愈，唐）：
+
+「古之學者必有師。師者，所以傳道、受業、解惑也。……是故弟子不必不如師，師不必賢於弟子，聞道有先後，術業有專攻，如是而已。」`;
+
+const READING_CONTEXT = `某高中國文老師想了解同學的閱讀情況，請三個年級各抽樣一班，統計平均每週花在課外閱讀與使用手機的時間（以下數字為**假設的調查結果**）：
+
+| 項目 | 高一 | 高二 | 高三 |
+|---|---|---|---|
+| 平均每週課外閱讀（小時） | 2.5 | 1.5 | 0.5 |
+| 平均每週使用手機（小時） | 14 | 16 | 12 |`;
+
 const questions: Question[] = [
   // 文言虛字與句式
   {
@@ -389,6 +400,88 @@ const questions: Question[] = [
     explain: "以水比喻人民、以舟比喻國家（君主），借具體形象說明抽象道理，是**比喻論證**。",
     difficulty: 2,
     nodeId: node("writ-argument"),
+  },
+
+  // 素養題組：〈師說〉節選
+  {
+    id: id("set-shishuo-1"),
+    type: "single",
+    context: SHISHUO_CONTEXT,
+    stem: "「師不必賢於弟子」的「於」，意思最接近下列哪一項？",
+    choices: ["在", "從", "比", "被"],
+    answer: 2,
+    explain: "「賢於弟子」是「比弟子賢能」，這裡的「於」表示比較，意思是**比**。",
+    difficulty: 2,
+    nodeId: node("shishuo"),
+  },
+  {
+    id: id("set-shishuo-2"),
+    type: "single",
+    context: SHISHUO_CONTEXT,
+    stem: "「師者，所以傳道、受業、解惑也」屬於哪一種句式？",
+    choices: ["判斷句", "被動句", "倒裝句", "省略句"],
+    answer: 0,
+    explain: "句型是「……者，……也」，用來解釋或判斷「老師是什麼」，屬於**判斷句**。",
+    difficulty: 1,
+    nodeId: node("shishuo"),
+  },
+  {
+    id: id("set-shishuo-3"),
+    type: "single",
+    context: SHISHUO_CONTEXT,
+    stem: "根據這段文字，韓愈如何看待師生關係？",
+    choices: [
+      "學生永遠不可能超越老師",
+      "老師必須在每一方面都比學生賢能",
+      "聞道有先後、技藝各有專長，所以師生可以互相學習",
+      "有了老師，就不必再自己思考",
+    ],
+    answer: 2,
+    explain:
+      "「聞道有先後，術業有專攻」說明每個人懂得的時間與專長不同，因此「弟子不必不如師，師不必賢於弟子」，誰在某方面有所長，誰就可以當老師。",
+    difficulty: 2,
+    nodeId: node("shishuo"),
+  },
+
+  // 素養題組：讀表格做統整判斷（假設資料）
+  {
+    id: id("set-reading-1"),
+    type: "numeric",
+    context: READING_CONTEXT,
+    stem: "高一平均每週課外閱讀時間，比高三多幾小時？",
+    answer: 2,
+    unit: "小時",
+    explain: "高一是 2.5 小時，高三是 0.5 小時，2.5 − 0.5 = 2，所以多 2 小時。",
+    difficulty: 1,
+    nodeId: node("writ-zhixing"),
+  },
+  {
+    id: id("set-reading-2"),
+    type: "tf",
+    context: READING_CONTEXT,
+    stem: "根據表格，可以得出「手機使用時間越長，課外閱讀時間就越短」的結論。",
+    answer: false,
+    explain:
+      "高三的手機使用時間最短（12 小時），課外閱讀卻也最少（0.5 小時），並不符合這個說法；而且表格只有三組平均數，也不能證明兩者有因果關係。",
+    difficulty: 2,
+    nodeId: node("writ-zhixing"),
+  },
+  {
+    id: id("set-reading-3"),
+    type: "single",
+    context: READING_CONTEXT,
+    stem: "下列哪一個敘述**有表格資料作為依據**？",
+    choices: [
+      "年級越高，平均每週課外閱讀時間越少",
+      "高二同學最不喜歡閱讀",
+      "高三因為升學壓力，才讓課外閱讀變少",
+      "使用手機會降低人們的閱讀興趣",
+    ],
+    answer: 0,
+    explain:
+      "高一、高二、高三的閱讀時間依序是 2.5、1.5、0.5 小時，確實遞減。其餘選項涉及「喜不喜歡」或「原因」，表格沒有提供這類資料。",
+    difficulty: 2,
+    nodeId: node("writ-zhixing"),
   },
 ];
 

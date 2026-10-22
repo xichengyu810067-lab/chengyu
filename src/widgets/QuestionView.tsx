@@ -53,18 +53,34 @@ export function correctAnswerText(q: Question): string {
 
 const LETTERS = "ABCDEFGH";
 
+/** 題組共用的情境／資料 */
+export function ContextBox({ text }: { text: string }) {
+  return (
+    <div
+      className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-[15px] dark:border-amber-900 dark:bg-amber-950/30"
+      data-testid="question-context"
+    >
+      <p className="mb-1 text-xs font-semibold text-amber-800 dark:text-amber-300">📑 閱讀材料</p>
+      <RichText text={text} />
+    </div>
+  );
+}
+
 export default function QuestionView({
   question,
   onAnswer,
   disabled = false,
   showExplain = true,
   compact = false,
+  hideContext = false,
 }: {
   question: Question;
   onAnswer: (correct: boolean) => void;
   disabled?: boolean;
   showExplain?: boolean;
   compact?: boolean;
+  /** 題組內已在上方顯示共用材料時設為 true */
+  hideContext?: boolean;
 }) {
   const [value, setValue] = useState<unknown>(question.type === "multi" ? [] : null);
   const [result, setResult] = useState<boolean | null>(null);
@@ -105,6 +121,7 @@ export default function QuestionView({
 
   return (
     <div className="space-y-3" data-testid="question">
+      {question.context && !hideContext && <ContextBox text={question.context} />}
       <RichText
         text={question.stem}
         className={compact ? "font-semibold" : "text-lg font-semibold"}

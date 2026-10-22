@@ -3,6 +3,12 @@ import type { Question } from "../../types";
 const id = (s: string) => `earth.senior.q-${s}`;
 const node = (s: string) => `earth.senior.${s}`;
 
+const CO2_CTX =
+  "某研究站（以下為假設的資料，方便練習）連續多年記錄大氣中的二氧化碳濃度。年平均濃度如下表；另外，該站每年 5 月的濃度比年平均高約 3 ppm，9 月則低約 3 ppm。\n\n|觀測年|年平均濃度（ppm）|\n|---|---|\n|第 1 年|370|\n|第 11 年|390|\n|第 21 年|414|";
+
+const QUAKE_CTX =
+  "下表是某天三次地震的資料（假設資料，方便練習）。甲鎮較靠近震央，乙鎮離震央較遠。\n\n|地震|規模|震源深度|甲鎮震度|乙鎮震度|\n|---|---|---|---|---|\n|A|6.0|10 公里|5 強|4|\n|B|6.0|90 公里|4|3|\n|C|4.0|10 公里|2|1|";
+
 const questions: Question[] = [
   // 從地球看宇宙
   {
@@ -430,6 +436,82 @@ const questions: Question[] = [
     explain:
       "增溫與濃度的**對數**成正比：$1120 = 280 \\times 2^2$，加倍兩次，增溫約 $3 \\times 2 = 6$°C。",
     nodeId: node("climate-change"),
+  },
+
+  // 素養題組
+  {
+    id: id("set-co2-1"),
+    type: "numeric",
+    context: CO2_CTX,
+    stem: "從第 1 年到第 21 年，年平均濃度平均每年增加約多少 ppm？",
+    answer: 2.2,
+    tolerance: 0.1,
+    unit: "ppm",
+    explain: "$(414 - 370) \\div 20 = 2.2$，所以平均每年增加約 2.2 ppm。",
+    nodeId: node("climate-change"),
+  },
+  {
+    id: id("set-co2-2"),
+    type: "single",
+    context: CO2_CTX,
+    stem: "該站每年 5 月濃度最高、9 月最低，最合理的解釋是什麼？",
+    choices: [
+      "北半球夏季植物旺盛生長，光合作用吸收較多二氧化碳，使濃度下降",
+      "9 月時火山噴發特別少",
+      "5 月時太陽離地球最近",
+      "9 月時海水溫度最高，把二氧化碳全部放進大氣",
+    ],
+    answer: 0,
+    explain:
+      "北半球陸地多，春夏植物大量吸收二氧化碳，到夏末（9 月）濃度降到最低；秋冬植物落葉、分解增加，濃度回升，到春末（5 月）最高。這個週期是疊加在長期上升趨勢上的季節變化。",
+    nodeId: node("climate-change"),
+  },
+  {
+    id: id("set-co2-3"),
+    type: "tf",
+    context: CO2_CTX,
+    stem: "第二個十年（第 11 到 21 年）的增加量比第一個十年（第 1 到 11 年）大，表示濃度上升的速度變快了。",
+    answer: true,
+    explain:
+      "第一個十年增加 $390 - 370 = 20$ ppm，第二個十年增加 $414 - 390 = 24$ ppm，增加量變大，所以上升速度變快。",
+    nodeId: node("climate-change"),
+  },
+  {
+    id: id("set-quake-1"),
+    type: "single",
+    context: QUAKE_CTX,
+    stem: "地震 A 與 B 的規模相同，但甲鎮的震度為什麼差這麼多？",
+    choices: [
+      "震源深度不同：B 的震源較深，到達地表時能量已減弱，搖晃較小",
+      "B 的規模其實比較小",
+      "規模每次地震有很多個值，B 的比較小",
+      "甲鎮在 B 地震時變遠了",
+    ],
+    answer: 0,
+    explain:
+      "規模是地震本身釋放的能量，一次地震只有一個值；震度則是各地的搖晃程度，受到距離與震源深度等影響。同樣規模時，震源越深、離震央越遠，震度通常越小。",
+    nodeId: node("quake-hazard"),
+  },
+  {
+    id: id("set-quake-2"),
+    type: "numeric",
+    context: QUAKE_CTX,
+    stem: "地震 A（規模 6.0）釋放的能量，約是地震 C（規模 4.0）的幾倍？",
+    answer: 1000,
+    tolerance: 30,
+    unit: "倍",
+    explain:
+      "規模每增加 1，能量約增加 32 倍。規模差 2，約為 $32 \\times 32 = 1024$，也就是約 1000 倍。",
+    nodeId: node("quake-hazard"),
+  },
+  {
+    id: id("set-quake-3"),
+    type: "tf",
+    context: QUAKE_CTX,
+    stem: "地震 A 在甲鎮是 5 強、在乙鎮是 4，表示 A 地震有兩個不同的規模。",
+    answer: false,
+    explain: "一次地震只有一個規模，代表它釋放的能量；不同地點的震度不同，只是各地搖晃程度不一樣。",
+    nodeId: node("quake-hazard"),
   },
 ];
 

@@ -23,6 +23,13 @@ const mindmap: CurriculumNode = {
             "菲爾紹（Virchow，也譯作魏修）補充：細胞來自原有的細胞",
           ],
           lessonIds: ["biology.senior.cell-membrane"],
+          extras: [
+            {
+              kind: "history",
+              title: "細胞學說是怎麼拼起來的",
+              body: "1838 至 1839 年，德國的許來登（Schleiden，研究植物）與許旺（Schwann，研究動物）先後指出，生物體都是由細胞組成。1855 年，德國醫師 Virchow 進一步主張：新的細胞來自**既有的細胞**，不是憑空產生。\n\n這幾步合起來，才是我們今天說的細胞學說。後來巴斯德的曲頸瓶實驗，更直接推翻了「生物可由無生命物質自然發生」的想法。",
+            },
+          ],
         },
         {
           id: "biology.senior.cell-structure",
@@ -35,6 +42,13 @@ const mindmap: CurriculumNode = {
             "溶體含水解酵素，分解老舊胞器與吞入的物質",
           ],
           lessonIds: ["biology.senior.cell-membrane"],
+          extras: [
+            {
+              kind: "history",
+              title: "粒線體曾經是獨立的細菌？",
+              body: "1967 年，美國的馬古利斯提出**內共生學說**：真核細胞的粒線體與葉綠體，源自被早期細胞吞入後共生的細菌。\n\n證據包括：它們有雙層膜、有自己的環狀 DNA、核糖體與細菌相似，且以類似二分裂的方式增生。這個學說現在已被廣泛接受。",
+            },
+          ],
         },
         {
           id: "biology.senior.membrane-transport",
@@ -47,6 +61,18 @@ const mindmap: CurriculumNode = {
             "胞吞作用與胞吐作用：以膜泡運送大分子",
           ],
           lessonIds: ["biology.senior.cell-membrane"],
+          extras: [
+            {
+              kind: "life",
+              title: "為什麼點滴要用「生理食鹽水」？",
+              body: "靜脈注射用的生理食鹽水，濃度約為 0.9% 的氯化鈉溶液，與血漿的滲透壓接近，是**等張溶液**。若直接注入純水，水會進入紅血球使其脹破；若注入濃度過高的鹽水，紅血球則會失水皺縮。\n\n這是細胞膜與滲透作用在醫療上最直接的應用。",
+            },
+            {
+              kind: "history",
+              title: "水通道蛋白：細胞膜上的「水龍頭」",
+              body: "水能直接穿過脂雙層，但速度很慢。1990 年代初，科學家在紅血球膜上找到專供水分子快速通過的**水通道蛋白**，解釋了腎臟、紅血球等細胞為何能很快調節水分。\n\n這項發現讓發現者獲得 2003 年諾貝爾化學獎。",
+            },
+          ],
         },
         {
           id: "biology.senior.atp-enzyme",
@@ -56,6 +82,18 @@ const mindmap: CurriculumNode = {
           keyPoints: [
             "ATP 水解成 ADP 與磷酸時釋出能量",
             "酵素具專一性，活性受溫度、pH、受質濃度等影響",
+          ],
+          extras: [
+            {
+              kind: "life",
+              title: "喝牛奶會腹瀉：乳糖酶的故事",
+              body: "牛奶中的乳糖需要**乳糖酶**分解成葡萄糖和半乳糖才能被吸收。許多人長大後，小腸製造的乳糖酶活性下降，喝牛奶就容易腹脹、腹瀉，稱為乳糖不耐症。\n\n這不是過敏，而是缺少酵素。改喝低乳糖牛奶、優酪乳，或服用乳糖酶製劑，都有幫助。",
+            },
+            {
+              kind: "myth",
+              title: "ATP 是細胞儲存能量的「倉庫」嗎？",
+              body: "不是。細胞內的 ATP 量很少，能量主要儲存在醣類和脂質等分子中，ATP 則像**隨用隨付的貨幣**。\n\n據估計，成年人一天中合成並用掉的 ATP 質量，可與自己的體重相當，因為每個 ATP 分子會被不斷地水解再合成，循環使用。",
+            },
           ],
         },
       ],
@@ -76,6 +114,13 @@ const mindmap: CurriculumNode = {
             "乳酸發酵（肌肉、乳酸菌）與酒精發酵（酵母菌）只產生少量 ATP",
           ],
           lessonIds: ["biology.senior.cell-energy"],
+          extras: [
+            {
+              kind: "myth",
+              title: "肌肉痠痛，是乳酸堆積造成的嗎？",
+              body: "運動後一兩天才出現的肌肉痠痛（延遲性肌肉痠痛），與乳酸的關係不大。乳酸在運動結束後約一個小時內就會被肝臟與肌肉代謝掉。\n\n一般認為，這種痠痛主要與肌纖維的**微小損傷和隨之而來的發炎反應**有關，尤其在不熟悉的動作或離心收縮之後更明顯。",
+            },
+          ],
         },
         {
           id: "biology.senior.photosynthesis",
@@ -88,6 +133,13 @@ const mindmap: CurriculumNode = {
             "碳反應又稱卡爾文循環",
           ],
           lessonIds: ["biology.senior.cell-energy"],
+          extras: [
+            {
+              kind: "history",
+              title: "氧氣從哪裡來？同位素給了答案",
+              body: "1941 年，魯賓與卡門用含重氧同位素 $\\ce{^{18}O}$ 的水或二氧化碳，供給綠藻進行光合作用。結果只有用含 $\\ce{^{18}O}$ 的**水**時，放出的氧氣才帶有這種標記。\n\n這證明光合作用釋出的氧氣來自水的分解，而不是來自二氧化碳。",
+            },
+          ],
         },
         {
           id: "biology.senior.limiting-factors",
@@ -99,6 +151,13 @@ const mindmap: CurriculumNode = {
             "**光飽和點**：光強度再增加，速率也不再上升",
           ],
           lessonIds: ["biology.senior.cell-energy"],
+          extras: [
+            {
+              kind: "challenge",
+              title: "夏天正午，光最強，光合作用反而變慢？",
+              body: "在炎熱的夏日正午，許多植物的光合速率反而下降，稱為「午休現象」。請試著用氣孔與限制因子的觀念解釋。\n\n**提示**：氣孔除了讓二氧化碳進入，還會讓什麼離開？\n\n**解答思路**：高溫乾燥時，植物為了減少水分散失而關閉氣孔，使二氧化碳進不來，**二氧化碳**成了限制因子，儘管光很強，光合速率仍然下降。",
+            },
+          ],
         },
       ],
     },
@@ -117,6 +176,13 @@ const mindmap: CurriculumNode = {
             "兩性狀雜交（兩對基因位於不同對染色體）：9 : 3 : 3 : 1",
             "試交：與隱性同型合子交配，以判斷未知個體的基因型",
           ],
+          extras: [
+            {
+              kind: "challenge",
+              title: "三個孩子裡，至少有一個患者的機率",
+              body: "一對夫妻基因型都是 $Aa$，其中隱性基因型 $aa$ 會表現某遺傳性狀。他們生三個孩子，至少一個是 $aa$ 的機率是多少？\n\n**提示**：各胎彼此獨立，先算「三個都不是 $aa$」的機率。\n\n**解答思路**：三個都不是 $aa$ 的機率為 $\\left(\\frac{3}{4}\\right)^3 = \\frac{27}{64}$，所以至少一個是 $aa$ 的機率是 $1 - \\frac{27}{64} = \\frac{37}{64}$。",
+            },
+          ],
         },
         {
           id: "biology.senior.chromosome",
@@ -126,6 +192,13 @@ const mindmap: CurriculumNode = {
           keyPoints: [
             "減數分裂時同源染色體分離、互換，增加遺傳多樣性",
             "性聯遺傳：基因位於 X 染色體上，例如紅綠色盲",
+          ],
+          extras: [
+            {
+              kind: "history",
+              title: "摩根的白眼果蠅",
+              body: "果蠅的眼睛通常是紅色。1910 年，摩根在實驗室裡發現一隻白眼的雄蠅。他讓牠與紅眼雌蠅交配，發現白眼性狀的遺傳與**性別**有關，顯示控制眼色的基因位於 X 染色體上。\n\n這個實驗首次將特定基因與特定染色體連結起來，摩根因此獲得 1933 年諾貝爾生理醫學獎。",
+            },
           ],
         },
         {
@@ -139,6 +212,13 @@ const mindmap: CurriculumNode = {
             "DNA 聚合酶只能從 5′ 往 3′ 方向延長新股",
           ],
           lessonIds: ["biology.senior.dna-expression"],
+          extras: [
+            {
+              kind: "history",
+              title: "半保留複製：用「重氮」看 DNA 的密度",
+              body: "1958 年，美國的 Meselson 與 Stahl 讓大腸桿菌先在含重氮（$\\ce{^{15}N}$）的培養基中生長，再轉到一般的氮（$\\ce{^{14}N}$）培養基，並用離心依密度分離 DNA。\n\n第一代 DNA 的密度介於中間，第二代則是一半中間、一半較輕，結果與**半保留複製**的預測相符，排除了其他模型。",
+            },
+          ],
         },
         {
           id: "biology.senior.expression",
@@ -151,6 +231,13 @@ const mindmap: CurriculumNode = {
             "tRNA 以反密碼子與密碼子配對，攜入對應的胺基酸",
           ],
           lessonIds: ["biology.senior.dna-expression"],
+          extras: [
+            {
+              kind: "myth",
+              title: "一個基因，就只製造一種蛋白質嗎？",
+              body: "早期的說法是「一個基因，一種酵素」，但真核生物並非這麼單純。人類蛋白質編碼基因約兩萬個左右，蛋白質的種類卻多得多。\n\n原因之一是 **選擇性剪接**：同一段基因轉錄出的 mRNA 前驅物，剪掉內含子後，可以保留不同的外顯子組合，形成不同的 mRNA，翻譯出不同的蛋白質。",
+            },
+          ],
         },
         {
           id: "biology.senior.regulation",
@@ -160,6 +247,13 @@ const mindmap: CurriculumNode = {
           keyPoints: [
             "乳糖操縱組：無乳糖時，抑制蛋白與操作子結合，阻止轉錄",
             "真核細胞以轉錄因子等多層次方式調控基因表現",
+          ],
+          extras: [
+            {
+              kind: "history",
+              title: "乳糖操縱組：第一個基因調控模型",
+              body: "1961 年，法國的 Jacob 與 Monod 研究大腸桿菌如何決定要不要製造分解乳糖的酵素，提出**操縱組模型**：調節基因產生抑制蛋白，結合在操縱序列上阻止轉錄；有乳糖時，抑制蛋白被移開，基因才開啟。\n\n這是人類第一次說明基因如何被「開關」，兩人後來獲得諾貝爾獎。",
+            },
           ],
         },
         {
@@ -173,6 +267,18 @@ const mindmap: CurriculumNode = {
             "應用：基因轉殖作物、生產藥物、親子與刑事鑑定，並需考量倫理與安全",
           ],
           lessonIds: ["biology.senior.dna-expression"],
+          extras: [
+            {
+              kind: "life",
+              title: "新冠病毒檢測背後的 PCR",
+              body: "聚合酶連鎖反應（PCR）可以在短時間內把微量的 DNA 複製成數十億份。新冠肺炎期間常用的核酸檢測，就是先把病毒 RNA 反轉錄成 DNA，再用 PCR 擴增與偵測。\n\nPCR 能實用化，關鍵之一是使用從溫泉細菌中取得的**耐熱 DNA 聚合酶**，在高溫反覆加熱時不會失去活性。",
+            },
+            {
+              kind: "history",
+              title: "CRISPR：細菌的免疫系統變成基因剪刀",
+              body: "CRISPR 原本是細菌用來辨認並切斷入侵病毒 DNA 的防禦機制。兩位女性科學家把它改造成可以精準編輯基因的工具，並因此獲得 2020 年諾貝爾化學獎。\n\n它讓基因編輯變得更便宜、更快速，也引發了嚴肅的倫理討論，例如是否可以編輯人類胚胎。",
+            },
+          ],
         },
       ],
     },
@@ -200,6 +306,13 @@ const mindmap: CurriculumNode = {
             "內聚力—張力學說：水分子間的內聚力使水柱不斷，被蒸散作用往上拉",
             "壓力流學說：韌皮部中養分由濃度高的源流向庫",
           ],
+          extras: [
+            {
+              kind: "cross",
+              title: "沒有幫浦，水怎麼爬到一百多公尺的樹頂？",
+              body: "世界上最高的樹超過 100 公尺。植物沒有心臟推送水分，主要靠葉片的**蒸散作用**在木質部水柱頂端產生拉力，再加上水分子之間的內聚力與水和管壁的附著力，把連續的水柱往上拉。\n\n這是物理學的表面張力與分子作用力在生物上的應用。",
+            },
+          ],
         },
         {
           id: "biology.senior.plant-hormone",
@@ -210,6 +323,13 @@ const mindmap: CurriculumNode = {
             "生長素：促進細胞伸長，與向光性有關",
             "離層酸：缺水時促使氣孔關閉",
             "乙烯：促進果實成熟",
+          ],
+          extras: [
+            {
+              kind: "life",
+              title: "一顆熟蘋果，讓整袋水果變熟",
+              body: "乙烯是氣體形式的植物激素，能促進果實成熟。熟透的蘋果、香蕉會釋放較多乙烯，若和尚未成熟的水果放在同一個密閉袋中，後者會成熟得更快。\n\n所以儲藏水果時，常把會產生大量乙烯的水果與其他蔬果分開，延長保存時間。",
+            },
           ],
         },
       ],
@@ -230,6 +350,13 @@ const mindmap: CurriculumNode = {
             "全有全無律；有髓鞘神經以跳躍式傳導，速度較快",
           ],
           lessonIds: ["biology.senior.nerve-immune"],
+          extras: [
+            {
+              kind: "cross",
+              title: "河豚毒素為什麼會致命？",
+              body: "河豚體內的河豚毒素能專一地阻斷神經細胞膜上的**電壓閘控鈉離子通道**。鈉離子進不來，就無法產生動作電位，神經衝動無法傳遞，肌肉因而麻痺，嚴重時造成呼吸衰竭。\n\n河豚毒素是研究神經傳導的重要工具，也是解釋動作電位為何依賴鈉離子的絕佳例子。",
+            },
+          ],
         },
         {
           id: "biology.senior.synapse",
@@ -238,6 +365,13 @@ const mindmap: CurriculumNode = {
           summary: "軸突末梢釋放神經傳導物質，與下一個細胞上的受體結合。",
           keyPoints: ["化學突觸的傳遞是單向的", "藥物或毒素可能影響神經傳導物質的釋放、結合或回收"],
           lessonIds: ["biology.senior.nerve-immune"],
+          extras: [
+            {
+              kind: "life",
+              title: "咖啡因為什麼讓人不想睡？",
+              body: "清醒時，大腦中會逐漸累積一種叫腺苷的物質，它與神經元上的受體結合後，會減緩神經活動，使人想睡。咖啡因的結構與腺苷相似，卻**佔據同一種受體**而不引起睡意，所以能暫時使人保持清醒。\n\n這是突觸上「受體競爭」的日常例子。",
+            },
+          ],
         },
         {
           id: "biology.senior.immunity",
@@ -250,6 +384,18 @@ const mindmap: CurriculumNode = {
             "疫苗誘發主動免疫，產生記憶細胞",
           ],
           lessonIds: ["biology.senior.nerve-immune"],
+          extras: [
+            {
+              kind: "history",
+              title: "詹納與牛痘",
+              body: "18 世紀末，天花奪走許多性命。英國的詹納聽說擠牛奶的女工得過牛痘後，似乎不會得天花，1796 年便取牛痘膿皰的物質為一名男孩接種，之後再讓他接觸天花，男孩沒有發病。\n\n這是疫苗的起點。「vaccine」一詞，正是源自拉丁文中的「牛」。",
+            },
+            {
+              kind: "myth",
+              title: "感冒了，吃抗生素就會好？",
+              body: "不會。感冒與流感都是**病毒**引起的，而抗生素的作用對象是細菌，對病毒無效。\n\n不必要地使用抗生素，不但沒有幫助，還可能殺死身體中的有益細菌，並促使細菌產生抗藥性。用藥一定要依醫師指示。",
+            },
+          ],
         },
         {
           id: "biology.senior.hormone-feedback",
@@ -257,6 +403,13 @@ const mindmap: CurriculumNode = {
           grade: 11,
           summary: "下視丘與腦垂腺調控多種內分泌腺，多以負回饋維持恆定。",
           keyPoints: ["甲狀腺素過多時，會抑制下視丘與腦垂腺的分泌", "血糖由胰島素與升糖素拮抗調節"],
+          extras: [
+            {
+              kind: "cross",
+              title: "負回饋是冷氣，正回饋是雪球",
+              body: "冷氣機的恆溫器偵測到溫度低於設定值就停止運轉，讓溫度維持穩定，這就是**負回饋**，體溫和血糖的調節也是如此。\n\n少數情況是**正回饋**：分娩時，子宮收縮刺激催產素分泌，催產素又使子宮收縮更強，直到胎兒娩出才終止。這個機制與工程學的控制系統是相通的。",
+            },
+          ],
         },
       ],
     },
@@ -276,6 +429,13 @@ const mindmap: CurriculumNode = {
             "親緣越近，DNA 與蛋白質序列越相似",
           ],
           lessonIds: ["biology.senior.evolution-diversity"],
+          extras: [
+            {
+              kind: "myth",
+              title: "「演化只是一個理論」，所以沒有證據嗎？",
+              body: "日常生活說的「理論」常常是指「猜測」，但在科學上，理論是經過大量證據支持、能解釋許多現象並做出可檢驗預測的**完整解釋**。\n\n演化的證據包含化石、比較解剖（同源構造）、胚胎發育、分子序列的相似性與地理分布等，多條獨立線索指向同一結論。",
+            },
+          ],
         },
         {
           id: "biology.senior.mechanism",
@@ -288,6 +448,13 @@ const mindmap: CurriculumNode = {
             "哈地－溫伯格平衡：$p^2 + 2pq + q^2 = 1$",
           ],
           lessonIds: ["biology.senior.evolution-diversity"],
+          extras: [
+            {
+              kind: "life",
+              title: "抗藥性細菌：天擇發生在你我身邊",
+              body: "細菌族群中，本來就可能有少數個體因為突變而對某種抗生素不敏感。使用抗生素後，敏感的細菌被殺死，抗藥的個體存活下來繁殖，下一代抗藥者的比例就增加了。\n\n這是在短時間內就能觀察到的天擇，也是為什麼抗生素不能濫用、療程要按時吃完的原因。",
+            },
+          ],
         },
         {
           id: "biology.senior.speciation",
@@ -309,6 +476,13 @@ const mindmap: CurriculumNode = {
             "生物多樣性包含遺傳、物種與生態系多樣性",
           ],
           lessonIds: ["biology.senior.evolution-diversity"],
+          extras: [
+            {
+              kind: "history",
+              title: "沃斯與第三個生命域",
+              body: "過去生物被簡單分成原核與真核。1977 年，美國的沃斯比較核糖體 RNA 的序列後，發現有一群原核生物與一般細菌差異很大，稱為**古細菌**。後來他進一步提出生物可分為細菌域、古細菌域與真核域三大域。\n\n這是用分子資料重新劃分生命樹的經典例子。",
+            },
+          ],
         },
       ],
     },
@@ -327,6 +501,13 @@ const mindmap: CurriculumNode = {
             "S 型成長在 $N = \\frac{K}{2}$ 時成長最快",
           ],
           lessonIds: ["biology.senior.population-ecosystem"],
+          extras: [
+            {
+              kind: "challenge",
+              title: "細菌 7 小時會變成多少隻？",
+              body: "假設一種細菌每 20 分鐘分裂一次，環境資源充足，從 1 隻開始，7 小時後理論上有多少隻？\n\n**提示**：先算 7 小時有幾個 20 分鐘。\n\n**解答思路**：$7 \\times 60 \\div 20 = 21$ 次分裂，數量為 $2^{21} = 2097152$ 隻。實際上資源與空間有限，族群不會無限成長，會受到環境負荷量限制。",
+            },
+          ],
         },
         {
           id: "biology.senior.community",
@@ -348,6 +529,13 @@ const mindmap: CurriculumNode = {
             "碳循環：光合作用吸收 $\\ce{CO2}$；呼吸作用、分解作用與燃燒釋出 $\\ce{CO2}$",
           ],
           lessonIds: ["biology.senior.population-ecosystem"],
+          extras: [
+            {
+              kind: "history",
+              title: "基林曲線：在山頂量出二氧化碳的上升",
+              body: "1958 年起，美國科學家基林（Keeling）在夏威夷茂納洛亞山持續測量大氣的二氧化碳濃度，當時約為 315 ppm。之後的記錄呈現逐年上升，且帶有隨季節起伏的鋸齒狀曲線。\n\n近年的數值已超過 420 ppm。鋸齒是北半球植物夏季光合作用吸收、冬季減少的結果，是碳循環最直接的證據。",
+            },
+          ],
         },
         {
           id: "biology.senior.global-change",
@@ -359,6 +547,13 @@ const mindmap: CurriculumNode = {
             "海水吸收過多 $\\ce{CO2}$ 造成海洋酸化，影響珊瑚與貝類",
           ],
           lessonIds: ["biology.senior.population-ecosystem"],
+          extras: [
+            {
+              kind: "myth",
+              title: "臭氧層破洞，是全球暖化的原因嗎？",
+              body: "兩者常被混為一談，其實是不同的問題。**臭氧層破洞**是氟氯碳化物等物質破壞平流層的臭氧，使較多的紫外線到達地面；**全球暖化**則主要是二氧化碳等溫室氣體增加，加強了溫室效應。\n\n兩者有些交互影響，但原因與解決方式不同。各國簽訂的蒙特婁議定書，就是針對管制破壞臭氧層的物質。",
+            },
+          ],
         },
         {
           id: "biology.senior.conservation",
@@ -370,6 +565,13 @@ const mindmap: CurriculumNode = {
             "保育策略：棲地保護、移除入侵種、源頭管理（不棄養、不放生）",
           ],
           lessonIds: ["biology.senior.population-ecosystem"],
+          extras: [
+            {
+              kind: "life",
+              title: "石虎：臺灣僅存的野生貓科動物",
+              body: "石虎是臺灣目前僅存的野生貓科動物，主要棲息在苗栗等地的淺山和農地。牠的威脅包含棲地破碎化、**路殺**與誤食毒鼠藥後的二次中毒。\n\n保育石虎，不只是保護一種動物，也是維持淺山生態系的完整，包含限制毒鼠藥、設置動物通道等。",
+            },
+          ],
         },
       ],
     },

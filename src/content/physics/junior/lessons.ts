@@ -356,6 +356,17 @@ const lessons: Lesson[] = [
         ],
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：密度與浮沉",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          "physics.junior.q-set-density-float-1",
+          "physics.junior.q-set-density-float-2",
+          "physics.junior.q-set-density-float-3",
+        ],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -492,6 +503,17 @@ const lessons: Lesson[] = [
         kind: "dialogue",
         title: "情境對話：和伽利略討論落體運動",
         scenarioId: "physics.junior.s-galileo",
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：騎腳踏車的位置紀錄",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          "physics.junior.q-set-bike-ride-1",
+          "physics.junior.q-set-bike-ride-2",
+          "physics.junior.q-set-bike-ride-3",
+        ],
       },
       {
         id: "a5",

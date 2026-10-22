@@ -2,6 +2,14 @@ import type { Question } from "../../types";
 
 const id = (s: string) => `math.junior.q-${s}`;
 
+/** 素養題組：班級閱讀量統計 */
+const CTX_READING_STATS =
+  "某班 40 位同學（假設的資料）調查「上個月讀完幾本課外書」，結果整理如下：\n\n| 本數 | 0 | 1 | 2 | 3 |\n|---|---|---|---|---|\n| 人數 | 6 | 14 | 12 | 8 |\n\n老師想用一個數字，來描述這個班同學一般的閱讀情況。";
+
+/** 素養題組：運動中心的方案選擇 */
+const CTX_GYM_PLAN =
+  "某社區運動中心（假設的收費）提供兩種方案：\n\n| 方案 | 月費 | 每次入場費 |\n|---|---|---|\n| 甲 | 600 元 | 50 元 |\n| 乙 | 0 元 | 100 元 |\n\n小傑想知道每個月去幾次，哪個方案比較划算。設一個月去 $x$ 次，甲方案的總花費 $y=600+50x$，乙方案的總花費 $y=100x$。";
+
 const questions: Question[] = [
   // 負數與數線
   {
@@ -275,6 +283,76 @@ const questions: Question[] = [
     accept: ["眾數"],
     explain: "出現次數最多的數值稱為**眾數**。",
     nodeId: "math.junior.d-stats",
+  },
+  {
+    id: "math.junior.q-set-reading-stats-1",
+    type: "tf",
+    context: CTX_READING_STATS,
+    stem: "「有超過一半的同學只讀 1 本」這個說法正確嗎？",
+    answer: false,
+    explain:
+      "讀 1 本的有 $14$ 人，$\\frac{14}{40}=35\\%$，沒有過半。眾數是出現最多次的值，不代表佔多數。",
+    difficulty: 2,
+    nodeId: "math.junior.d-stats",
+  },
+  {
+    id: "math.junior.q-set-reading-stats-2",
+    type: "numeric",
+    context: CTX_READING_STATS,
+    stem: "全班平均每人讀幾本？",
+    answer: 1.55,
+    tolerance: 0.01,
+    unit: "本",
+    explain:
+      "總本數 $0\\times6+1\\times14+2\\times12+3\\times8=0+14+24+24=62$，平均 $62\\div40=1.55$。",
+    difficulty: 2,
+    nodeId: "math.junior.d-stats",
+  },
+  {
+    id: "math.junior.q-set-reading-stats-3",
+    type: "single",
+    context: CTX_READING_STATS,
+    stem: "這組資料的中位數是多少本？",
+    choices: ["1", "1.5", "2", "1.55"],
+    answer: 1,
+    explain:
+      "共 $40$ 筆資料，中位數是第 $20$、$21$ 筆的平均。由小到大排：$0$ 本佔第 1 到 6 筆、$1$ 本佔第 7 到 20 筆、$2$ 本佔第 21 到 32 筆。第 $20$ 筆是 $1$，第 $21$ 筆是 $2$，中位數為 $\\frac{1+2}{2}=1.5$。",
+    difficulty: 2,
+    nodeId: "math.junior.d-stats",
+  },
+  {
+    id: "math.junior.q-set-gym-plan-1",
+    type: "numeric",
+    context: CTX_GYM_PLAN,
+    stem: "一個月去 $20$ 次，甲方案要花多少元？",
+    answer: 1600,
+    unit: "元",
+    explain: "代入 $y=600+50x$，$y=600+50\\times20=1600$。",
+    difficulty: 2,
+    nodeId: "math.junior.a-linear",
+  },
+  {
+    id: "math.junior.q-set-gym-plan-2",
+    type: "numeric",
+    context: CTX_GYM_PLAN,
+    stem: "每個月去幾次時，兩種方案的花費剛好相同？",
+    answer: 12,
+    unit: "次",
+    explain: "令 $600+50x=100x$，移項得 $600=50x$，所以 $x=12$。此時兩方案都花 $1200$ 元。",
+    difficulty: 2,
+    nodeId: "math.junior.a-linear",
+  },
+  {
+    id: "math.junior.q-set-gym-plan-3",
+    type: "single",
+    context: CTX_GYM_PLAN,
+    stem: "小傑預計一個月只去 $8$ 次，選哪個方案比較省？",
+    choices: ["甲方案", "乙方案", "兩個一樣", "無法判斷"],
+    answer: 1,
+    explain:
+      "甲：$600+50\\times8=1000$ 元；乙：$100\\times8=800$ 元，乙較省。去的次數少於 $12$ 次時乙划算，多於 $12$ 次才換甲划算。",
+    difficulty: 2,
+    nodeId: "math.junior.a-linear",
   },
 ];
 

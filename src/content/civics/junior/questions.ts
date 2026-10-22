@@ -2,6 +2,12 @@ import type { Question } from "../../types";
 
 const id = (s: string) => `civics.junior.q-${s}`;
 
+const SET_NIGHT_MARKET_CONTEXT =
+  "【假設情境】某市夜市垃圾與噪音問題嚴重，市政府研擬三種做法（情境為虛構，用來練習判斷人權限制是否適當）：\n\n| 方案 | 做法 |\n|---|---|\n| 甲 | 全面禁止夜市營業 |\n| 乙 | 增設垃圾桶、加強清運，並依法對亂丟垃圾者處罰鍰 |\n| 丙 | 要求每位攤商先繳高額保證金，是否退還由市長一人決定 |\n\n請依憲法第 23 條與比例原則思考。";
+
+const SET_MINOR_CONTRACT_CONTEXT =
+  "【假設情境】16 歲的小安發生了三件事（情境為虛構，用來練習判斷未成年人行為的效力）：\n\n| 事件 | 金額 | 父母的態度 |\n|---|---|---|\n| 甲：用父母平常給的零用錢買漫畫 | 200 元 | 父母平時就同意他自由使用零用錢 |\n| 乙：沒有告訴父母，就簽約分期購買電競耳機 | 8,000 元 | 事後表示不同意 |\n| 丙：收下同學贈送的小禮物 | 0 元 | 沒有表示 |";
+
 const questions: Question[] = [
   // 人性尊嚴、性別與家庭
   {
@@ -545,6 +551,92 @@ const questions: Question[] = [
     explain:
       "資金透過銀行等金融中介機構，從存款人流向借款人，稱為間接金融；企業直接發行股票、債券向大眾籌資，則是直接金融。",
     nodeId: "civics.junior.money",
+  },
+  // 素養題組：人權限制
+  {
+    id: id("set-night-market-1"),
+    type: "single",
+    context: SET_NIGHT_MARKET_CONTEXT,
+    stem: "三個方案中，哪一個最符合比例原則中「手段必要、損害最小」的精神？",
+    choices: [
+      "甲：全面禁止夜市營業",
+      "乙：增設垃圾桶、加強清運並依法罰鍰",
+      "丙：高額保證金加市長決定是否退還",
+      "三個方案都一樣",
+    ],
+    answer: 1,
+    explain:
+      "乙直接針對垃圾問題，採用對攤商營業自由限制較小、又能達成目的的方法。甲的限制過度；丙缺少明確標準，由一人決定，也不符合法治。",
+    nodeId: "civics.junior.rights-limits",
+  },
+  {
+    id: id("set-night-market-2"),
+    type: "multi",
+    context: SET_NIGHT_MARKET_CONTEXT,
+    stem: "市政府若要限制攤商的營業自由，下列哪些符合法治與比例原則？（複選）",
+    choices: [
+      "限制要有法律或法律授權的規定作為依據",
+      "只要市長認為需要，就可以直接限制",
+      "在有效的方法中，選擇對人民損害較小的",
+      "造成的損害不能明顯大於所要增進的公共利益",
+    ],
+    answer: [0, 2, 3],
+    explain:
+      "限制人民權利須有法律依據（法律保留），並符合適當、必要、衡量的比例原則。單憑首長個人認為需要，缺乏法律依據，不符合法治。",
+    nodeId: "civics.junior.rights-limits",
+  },
+  {
+    id: id("set-night-market-3"),
+    type: "tf",
+    context: SET_NIGHT_MARKET_CONTEXT,
+    stem: "只要目的是維持環境整潔，政府就可以不受限制地限制人民的營業自由。",
+    answer: false,
+    explain:
+      "即使目的正當，手段仍須有法律依據，且不能超過必要的程度。目的正當不代表可以使用任何手段。",
+    nodeId: "civics.junior.rights-limits",
+  },
+  // 素養題組：未成年人的契約
+  {
+    id: id("set-minor-contract-1"),
+    type: "single",
+    context: SET_MINOR_CONTRACT_CONTEXT,
+    stem: "小安的乙事件（分期購買電競耳機）在法律上最可能是什麼狀態？",
+    choices: [
+      "一定有效，因為小安已經 16 歲",
+      "須經父母承認才生效；父母不承認，契約就不生效",
+      "一定無效，父母不需要做任何表示",
+      "有效，但小安要自己負責全部",
+    ],
+    answer: 1,
+    explain:
+      "16 歲是限制行為能力人。未經法定代理人允許所訂的契約，須經法定代理人承認才有效，承認前效力未定。父母事後表示不同意，契約就不生效。",
+    nodeId: "civics.junior.civil-law",
+  },
+  {
+    id: id("set-minor-contract-2"),
+    type: "multi",
+    context: SET_MINOR_CONTRACT_CONTEXT,
+    stem: "下列哪些事件，通常不必再另外取得父母承認就有效？（複選）",
+    choices: [
+      "甲：用零用錢買漫畫",
+      "乙：分期購買電競耳機",
+      "丙：收下同學贈送的小禮物",
+      "三件事都需要父母承認才有效",
+    ],
+    answer: [0, 2],
+    explain:
+      "甲是在父母允許自由使用的零用錢範圍內，丙是純粹獲得利益（接受贈與），通常不需另外取得承認。乙金額大、未經允許，須父母承認。",
+    nodeId: "civics.junior.civil-law",
+  },
+  {
+    id: id("set-minor-contract-3"),
+    type: "tf",
+    context: SET_MINOR_CONTRACT_CONTEXT,
+    stem: "小安已滿 7 歲，所以他所訂立的所有契約，都可以由他自己決定。",
+    answer: false,
+    explain:
+      "7 歲以上未滿 18 歲是限制行為能力人，部分行為須法定代理人允許或承認，不能自己全權決定。",
+    nodeId: "civics.junior.civil-law",
   },
 ];
 

@@ -488,6 +488,17 @@ const lessons: Lesson[] = [
         ],
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：空氣軌道上的碰撞",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          "physics.senior.q-set-cart-collision-1",
+          "physics.senior.q-set-cart-collision-2",
+          "physics.senior.q-set-cart-collision-3",
+        ],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -719,6 +730,17 @@ const lessons: Lesson[] = [
         kind: "dialogue",
         title: "情境對話：和愛因斯坦聊光電效應",
         scenarioId: "physics.senior.s-einstein",
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：光電效應實驗紀錄",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          "physics.senior.q-set-photo-data-1",
+          "physics.senior.q-set-photo-data-2",
+          "physics.senior.q-set-photo-data-3",
+        ],
       },
       {
         id: "a5",

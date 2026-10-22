@@ -223,6 +223,13 @@ const lessons: Lesson[] = [
         title: "小試身手",
         questionIds: [q("m1"), q("m2"), q("m3"), q("m6")],
       },
+      {
+        id: "a6",
+        kind: "set",
+        title: "素養題組：讀懂溶解度表",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-solubility-1"), q("set-solubility-2"), q("set-solubility-3")],
+      },
     ],
   },
   {
@@ -710,6 +717,13 @@ const lessons: Lesson[] = [
         kind: "quiz",
         title: "小試身手",
         questionIds: [q("k1"), q("k2"), q("k5"), q("k6"), q("k8")],
+      },
+      {
+        id: "a6",
+        kind: "set",
+        title: "素養題組：大理石與鹽酸的反應速率",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-rate-1"), q("set-rate-2"), q("set-rate-3")],
       },
     ],
   },

@@ -491,6 +491,13 @@ const lessons: Lesson[] = [
         ],
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：夜市管理與人權限制",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-night-market-1"), q("set-night-market-2"), q("set-night-market-3")],
+      },
+      {
         id: "a4",
         kind: "quiz",
         title: "小試身手",
@@ -614,6 +621,17 @@ const lessons: Lesson[] = [
         title: "情境對話：網購退貨",
         prompt: "賣家說拆封就不能退？和法律系的表姊一起想想看。",
         scenarioId: "civics.junior.s-online-return",
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：小安的三件事",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [
+          q("set-minor-contract-1"),
+          q("set-minor-contract-2"),
+          q("set-minor-contract-3"),
+        ],
       },
       {
         id: "a5",

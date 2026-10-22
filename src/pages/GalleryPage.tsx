@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DEMO_ACTIVITIES, DEMO_QUESTIONS } from "../gallery/fixtures";
+import { DEMO_ACTIVITIES, DEMO_QUESTIONS, DEMO_SET_QUESTIONS } from "../gallery/fixtures";
 import { PageTitle } from "../ui";
 import ActivityHost, { KIND_META } from "../widgets/ActivityHost";
 import QuizGame from "../widgets/QuizGame";
@@ -62,7 +62,7 @@ export default function GalleryPage() {
                 subject: "math",
                 stage: "junior",
                 color: "#4f46e5",
-                questions: DEMO_QUESTIONS,
+                questions: [...DEMO_QUESTIONS, ...DEMO_SET_QUESTIONS],
               }}
             />
           </div>

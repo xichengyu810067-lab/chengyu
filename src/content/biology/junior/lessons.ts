@@ -345,6 +345,13 @@ const lessons: Lesson[] = [
         title: "小試身手",
         questionIds: [q("n1"), q("n3"), q("n4"), q("n5"), q("n7")],
       },
+      {
+        id: "a6",
+        kind: "set",
+        title: "素養題組：唾液澱粉酶與溫度",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-amylase-1"), q("set-amylase-2"), q("set-amylase-3")],
+      },
     ],
   },
   {
@@ -860,6 +867,13 @@ const lessons: Lesson[] = [
         kind: "quiz",
         title: "小試身手",
         questionIds: [q("e1"), q("e2"), q("e4"), q("e5"), q("e6"), q("e9")],
+      },
+      {
+        id: "a6",
+        kind: "set",
+        title: "素養題組：湖泊食物鏈的能量與毒物",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-foodchain-1"), q("set-foodchain-2"), q("set-foodchain-3")],
       },
     ],
   },

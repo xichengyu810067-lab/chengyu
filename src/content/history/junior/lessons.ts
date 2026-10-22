@@ -183,6 +183,13 @@ const lessons: Lesson[] = [
         takeaway: "判讀史料四問：**誰寫的？何時？為什麼？可信嗎？** 再找不同立場的史料互相比對。",
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：同一場火災，三份紀錄",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-sources-1"), q("set-sources-2"), q("set-sources-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -239,6 +246,13 @@ const lessons: Lesson[] = [
           ["1947 年", "二二八事件"],
           ["1987 年", "解除戒嚴"],
         ],
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：陳阿嬤家的年表",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-timeline-1"), q("set-timeline-2"), q("set-timeline-3")],
       },
       {
         id: "a4",

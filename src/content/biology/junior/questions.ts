@@ -3,6 +3,21 @@ import type { Question } from "../../types";
 const id = (s: string) => `biology.junior.q-${s}`;
 const node = (s: string) => `biology.junior.${s}`;
 
+const ENZYME_SET = `某班同學想了解唾液澱粉酶的作用。他們在 5 支試管中各放入等量的澱粉溶液與唾液，分別置於不同溫度的水浴中，每隔一段時間取樣滴加碘液（澱粉遇碘液呈藍黑色），記錄藍黑色消失所需的時間；超過 30 分鐘仍未消失，就記為「未消失」。（以下為**教學用的假設資料**）
+
+| 水浴溫度（°C） | 0 | 20 | 37 | 60 | 80 |
+|---|---|---|---|---|---|
+| 藍黑色消失所需時間 | 未消失 | 8 分鐘 | 2 分鐘 | 未消失 | 未消失 |`;
+
+const FOOD_CHAIN_SET = `某湖泊的食物鏈為：浮游植物 → 浮游動物 → 小魚 → 大魚。研究人員估算各營養階層一年內獲得的能量，並測量牠們體內某種不易分解的脂溶性毒物濃度（以下為**教學用的假設資料**）。
+
+| 營養階層 | 一年獲得的能量（kJ） | 毒物濃度（ppm） |
+|---|---|---|
+| 浮游植物 | 100000 | 0.002 |
+| 浮游動物 | 10000 | 0.04 |
+| 小魚 | 1200 | 0.5 |
+| 大魚 | 100 | 2.0 |`;
+
 const questions: Question[] = [
   // 細胞與顯微鏡
   {
@@ -558,6 +573,90 @@ const questions: Question[] = [
     explain: "綠鬣蜥多因寵物逃逸或遭棄養而進入野外，自行繁殖擴散並造成危害，是**外來入侵種**。",
     difficulty: 1,
     nodeId: node("biodiversity"),
+  },
+
+  // 素養題組：唾液澱粉酶與溫度
+  {
+    id: id("set-amylase-1"),
+    type: "single",
+    context: ENZYME_SET,
+    stem: "根據表中資料，下列哪一個溫度最適合唾液澱粉酶作用？",
+    choices: ["0 °C", "20 °C", "37 °C", "60 °C"],
+    answer: 2,
+    explain:
+      "37 °C 時藍黑色消失最快（2 分鐘），代表澱粉被分解得最快，酵素活性最高。這個溫度也接近人體的體溫。",
+    difficulty: 1,
+    nodeId: node("enzyme"),
+  },
+  {
+    id: id("set-amylase-2"),
+    type: "single",
+    context: ENZYME_SET,
+    stem: "0 °C 與 60 °C 的試管都「未消失」，但原因不同。若把這兩支試管都移到 37 °C 的水浴中，一段時間後最可能的結果是？",
+    choices: [
+      "兩支試管的藍黑色都會消失",
+      "只有 0 °C 的那支會消失，因為低溫只是抑制酵素活性，並未破壞酵素",
+      "只有 60 °C 的那支會消失，因為高溫使酵素更有活性",
+      "兩支試管的藍黑色都不會消失",
+    ],
+    answer: 1,
+    explain:
+      "低溫使分子運動緩慢，酵素活性變低，但構造沒有被破壞，回到適當溫度還能作用。高溫會使酵素的立體構造改變，也就是**變性**，無法恢復，所以移回 37 °C 也不會再分解澱粉。",
+    difficulty: 3,
+    nodeId: node("enzyme"),
+  },
+  {
+    id: id("set-amylase-3"),
+    type: "tf",
+    context: ENZYME_SET,
+    stem: "如果實驗前先把唾液煮沸再冷卻，放入 37 °C 的試管中，藍黑色仍會在約 2 分鐘內消失。",
+    answer: false,
+    explain:
+      "煮沸會使唾液中的澱粉酶變性。變性的酵素無法恢復活性，所以即使放在 37 °C，澱粉也不會被分解，藍黑色不會消失。",
+    difficulty: 2,
+    nodeId: node("enzyme"),
+  },
+  // 素養題組：湖泊食物鏈的能量與毒物
+  {
+    id: id("set-foodchain-1"),
+    type: "numeric",
+    context: FOOD_CHAIN_SET,
+    stem: "由浮游動物傳到小魚的能量轉移率是多少 %？",
+    answer: 12,
+    tolerance: 0.1,
+    unit: "%",
+    explain:
+      "轉移率 = 下一階層獲得的能量 ÷ 上一階層獲得的能量 × 100% = $\\frac{1200}{10000} \\times 100\\% = 12\\%$。",
+    difficulty: 2,
+    nodeId: node("energy-matter"),
+  },
+  {
+    id: id("set-foodchain-2"),
+    type: "single",
+    context: FOOD_CHAIN_SET,
+    stem: "為什麼毒物濃度越往高階營養階層越高？",
+    choices: [
+      "毒物不易分解也不易排出，會隨著捕食在高階消費者體內不斷累積",
+      "高階消費者比較喜歡吃有毒的食物",
+      "毒物會在高階消費者體內自己產生",
+      "高階消費者獲得的能量最多",
+    ],
+    answer: 0,
+    explain:
+      "不易分解的脂溶性毒物會儲存在生物體內，每吃一次獵物，就把獵物累積的毒物一起吃進去。於是沿著食物鏈往上，濃度越來越高，這個現象叫**生物放大**。",
+    difficulty: 2,
+    nodeId: node("energy-matter"),
+  },
+  {
+    id: id("set-foodchain-3"),
+    type: "tf",
+    context: FOOD_CHAIN_SET,
+    stem: "從表中能量的變化可知，能量沿食物鏈逐級遞減，這是食物鏈的階層數通常不多的原因之一。",
+    answer: true,
+    explain:
+      "每一階層獲得的能量，有很大一部分用在呼吸作用、散失成熱，只有少部分能傳給下一階層。越往上能量越少，能支持的生物量與階層數就受到限制。",
+    difficulty: 1,
+    nodeId: node("energy-matter"),
   },
 ];
 

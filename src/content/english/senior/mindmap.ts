@@ -42,6 +42,13 @@ const mindmap: CurriculumNode = {
                 "re- 表示「再、回」：rewrite、return",
               ],
               lessonIds: [L("word-formation")],
+              extras: [
+                {
+                  kind: "myth",
+                  title: "in- 不一定是否定",
+                  body: "inflammable 的 in- 來自 inflame（使燃燒）的 in-，不是否定，所以它和 flammable 一樣是「易燃的」，容易讓人誤會，因此標示上常改用 flammable。另一個例子是 invaluable：它不是「沒價值」，而是「價值高到無法衡量」。看到字首，要連同整個字的意思一起想。",
+                },
+              ],
             },
             {
               id: "english.senior.vocab-root",
@@ -55,6 +62,18 @@ const mindmap: CurriculumNode = {
                 "rupt 破裂：interrupt、disrupt",
               ],
               lessonIds: [L("word-formation")],
+              extras: [
+                {
+                  kind: "history",
+                  title: "quarantine 的四十天",
+                  body: "quarantine（隔離檢疫）來自義大利語的 quaranta giorni，意思是「四十天」。中世紀歐洲的港口城市，曾要求來自疫區的船隻先停泊一段時間，確認船上沒有人生病才可上岸，這段時間後來被訂為四十天。從字的來源，可以看到人類對抗疫病的歷史。",
+                },
+                {
+                  kind: "cross",
+                  title: "scope：看的工具",
+                  body: "字根 scope 來自希臘文，意思是「看、觀察」，和不同字首結合，就變成自然課常見的儀器：tele-（遠）+ scope = telescope（望遠鏡）、micro-（微小）+ scope = microscope（顯微鏡）、peri-（周圍）+ scope = periscope（潛望鏡）。拆開來記，一次就能記住一整組。",
+                },
+              ],
             },
             {
               id: "english.senior.vocab-suffix",
@@ -67,6 +86,13 @@ const mindmap: CurriculumNode = {
                 "動詞：-ize、-en；副詞：-ly",
               ],
               lessonIds: [L("word-formation")],
+              extras: [
+                {
+                  kind: "myth",
+                  title: "-ly 一定是副詞嗎？",
+                  body: "friendly、lovely、lonely、elderly 都以 -ly 結尾，卻是**形容詞**：She is a friendly girl. 反過來，有些副詞沒有 -ly，例如 fast、hard、late。判斷詞性不能只看字尾，要看它在句中修飾什麼：修飾名詞的是形容詞，修飾動詞的是副詞。",
+                },
+              ],
             },
             {
               id: "english.senior.vocab-collocation",
@@ -76,6 +102,13 @@ const mindmap: CurriculumNode = {
               keyPoints: [
                 "pay attention to、make a decision、take action",
                 "have an impact on、play a role in",
+              ],
+              extras: [
+                {
+                  kind: "myth",
+                  title: "為什麼不是 strong rain",
+                  body: "中文說「大雨」，英文是 heavy rain，不是 big rain 或 strong rain；中文說「濃茶」，英文卻是 strong tea。這就是搭配詞：字詞之間有固定的搭配習慣，不一定能用邏輯推出來。背單字時連同常見搭配一起記，寫作與中譯英才不容易出現生硬的中式英文。",
+                },
               ],
             },
           ],
@@ -96,6 +129,13 @@ const mindmap: CurriculumNode = {
                 "what = the thing(s) that：**What you said** is true.",
               ],
               lessonIds: [L("clauses")],
+              extras: [
+                {
+                  kind: "challenge",
+                  title: "兩句合成一句",
+                  body: "請把 I don't know. 和 Where did she go? 合成一句；Did she go home? 也試試看。\n\n**解答**：I don't know where she went. 以及 I don't know whether (if) she went home. 疑問詞子句要用直述句語序，助動詞 did 消失，動詞改回過去式 went。",
+                },
+              ],
             },
             {
               id: "english.senior.g-rel-adverb",
@@ -121,6 +161,18 @@ const mindmap: CurriculumNode = {
                 "I wish / as if / It's time + 假設語氣",
               ],
               lessonIds: [L("subjunctive")],
+              extras: [
+                {
+                  kind: "history",
+                  title: "為什麼是 If I were",
+                  body: "為什麼說 If I were a rich man，而不是 was？因為 were 是古英語留下來的假設語氣形式，用來表示「與事實相反」。音樂劇《屋頂上的提琴手》有一首名曲就叫 If I Were a Rich Man。口語中有人會說 If I was，但考試與正式寫作請用 were。",
+                },
+                {
+                  kind: "life",
+                  title: "用 I wish 說出遺憾",
+                  body: "寫日記或傳訊息時，常用假設語氣表達遺憾：I wish I had studied harder. 重點是事實：當時沒有認真讀書。wish 後面的動詞要「退一格」：與現在事實相反用過去式，與過去事實相反用 had + p.p.。",
+                },
+              ],
             },
             {
               id: "english.senior.g-participle",
@@ -133,6 +185,13 @@ const mindmap: CurriculumNode = {
                 "主詞不同不能直接化簡（避免懸垂分詞）",
               ],
               lessonIds: [L("sentence-transform")],
+              extras: [
+                {
+                  kind: "myth",
+                  title: "懸垂分詞",
+                  body: "Walking along the river, the sunset looked beautiful. 這句有問題：Walking 的動作者應該是人，但後面的主詞卻是 the sunset，變成「夕陽在河邊散步」。改成 Walking along the river, I saw a beautiful sunset. 才對。分詞構句省略的主詞，必須和主要子句的主詞相同。",
+                },
+              ],
             },
             {
               id: "english.senior.g-inversion",
@@ -145,6 +204,13 @@ const mindmap: CurriculumNode = {
                 "省略 if 的假設語氣：**Had I known**, I would have told you.",
               ],
               lessonIds: [L("sentence-transform")],
+              extras: [
+                {
+                  kind: "cross",
+                  title: "文言文的倒裝",
+                  body: "英文的倒裝句，像 Never have I seen such a view.，把否定副詞提到句首來強調。中文的文言文也有類似的「賓語前置」：〈師說〉的「句讀之不知」，就是「不知句讀」的倒裝。不同的語言，都會用調換語序來強調想突顯的資訊。",
+                },
+              ],
             },
             {
               id: "english.senior.g-cleft",
@@ -156,6 +222,13 @@ const mindmap: CurriculumNode = {
                 "強調人時也可用 who：It was my brother who broke the window.",
               ],
               lessonIds: [L("sentence-transform")],
+              extras: [
+                {
+                  kind: "challenge",
+                  title: "三種強調",
+                  body: "用強調句分別強調 Tom broke the window yesterday. 的三個部分。\n\n**解答**：It was Tom who broke the window yesterday. / It was the window that Tom broke yesterday. / It was yesterday that Tom broke the window.",
+                },
+              ],
             },
           ],
         },
@@ -187,6 +260,13 @@ const mindmap: CurriculumNode = {
             "聽不清楚時：Could you repeat the question, please?",
           ],
           lessonIds: [L("opinion-writing")],
+          extras: [
+            {
+              kind: "life",
+              title: "用 STAR 回答面試問題",
+              body: "回答面試問題時，可以用 STAR 架構組織想法：Situation（情境）、Task（任務）、Action（行動）、Result（結果）。例如被問到團隊合作的經驗，先說當時的活動，再說你負責什麼、做了什麼，最後說成果。這個架構能讓回答具體、有順序。",
+            },
+          ],
         },
       ],
     },
@@ -201,6 +281,13 @@ const mindmap: CurriculumNode = {
           grade: 11,
           summary: "比較不同文化的價值觀與習慣，關心環境、科技等全球議題。",
           keyPoints: ["用英文介紹臺灣的飲食、節慶與景點", "閱讀國際新聞時，注意不同觀點與文化背景"],
+          extras: [
+            {
+              kind: "history",
+              title: "tea 與 cha",
+              body: "英文的 tea 和許多歐洲語言的「茶」，來自閩南語的 te，因為早期茶葉從福建廈門一帶經海路運往歐洲；而經陸路傳到俄羅斯、土耳其、印度等地的茶，名稱接近 cha（如俄語的 chai）。從一個字的發音，就能看出茶的傳播路線，語言和貿易常常有關。",
+            },
+          ],
         },
       ],
     },
@@ -229,6 +316,13 @@ const mindmap: CurriculumNode = {
               summary: "根據文中線索加上合理常識，推出作者沒有直接說的事。",
               keyPoints: ["答案要有文本根據", "避免過度推論或與原文矛盾"],
               lessonIds: [L("reading-exam")],
+              extras: [
+                {
+                  kind: "myth",
+                  title: "推論不是亂猜",
+                  body: "閱讀測驗的推論題，答案一定要能從文章找到**根據**，而不是「我覺得可能」。如果選項用了 always、never、all 這類絕對字眼，文章卻只提過 sometimes，通常就是過度推論。先畫出線索，再問自己：作者有說到嗎？",
+                },
+              ],
             },
             {
               id: "english.senior.read-reference",
@@ -310,6 +404,13 @@ const mindmap: CurriculumNode = {
                 "花時間 → It takes + 人 + 時間 + to V",
               ],
               lessonIds: [L("opinion-writing")],
+              extras: [
+                {
+                  kind: "cross",
+                  title: "中英語序大不同",
+                  body: "中文習慣先說時間、地點，再說動作：「我昨天在圖書館讀書」；英文通常先說主詞和動詞，再把地點、時間放在後面：I studied in the library yesterday. 中譯英時，先找出「誰做什麼」，再補上時間、地點，就不容易寫出前後顛倒的句子。",
+                },
+              ],
             },
             {
               id: "english.senior.write-paragraph",
@@ -331,6 +432,13 @@ const mindmap: CurriculumNode = {
                 "舉例：For example、For instance",
               ],
               lessonIds: [L("opinion-writing")],
+              extras: [
+                {
+                  kind: "myth",
+                  title: "however 不是連接詞",
+                  body: "It was raining, however, we went out. 這句有問題。however 是**副詞**，不能像 but 一樣只靠逗號連接兩個完整的句子。改法：It was raining, but we went out. 或 It was raining; however, we went out. 或分成兩句，用句號加 However,。",
+                },
+              ],
             },
           ],
         },

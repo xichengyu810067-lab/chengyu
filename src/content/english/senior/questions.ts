@@ -3,6 +3,14 @@ import type { Question } from "../../types";
 const id = (s: string) => `english.senior.q-${s}`;
 const node = (s: string) => `english.senior.${s}`;
 
+const QUIET_CONTEXT = `Read the passage (a made-up story) and answer the questions.
+
+Last year, the small seaside town of Brightwater began "Quiet Sunday." On the first Sunday of each month, cars are not allowed in the town center from 9 a.m. to 3 p.m. At first, many shop owners worried that business would suffer. However, the opposite happened. Without noisy traffic, more families walked to the center, sat outside cafés, and stayed for hours. One baker said, "People used to rush past my window. Now they stop and smell the bread." Some residents still complain that it is hard to reach the center, but most agree that the town feels friendlier.`;
+
+const LEO_CONTEXT = `Read Leo's message to his friend.
+
+I missed the last train because I stayed at school to chat. Now I'm stuck at the station. If I had left ten minutes earlier, I would have caught it. I wish I had checked the timetable! But I'm not too sad—the waiting room is warm, and I'm reading a good book.`;
+
 const questions: Question[] = [
   // ── 字彙與構詞 ──
   {
@@ -463,6 +471,105 @@ const questions: Question[] = [
       "好的自我介紹用**完整句子**，依序說出姓名、學校與興趣，簡短又清楚；只說名字太簡略，反問則不禮貌。",
     difficulty: 1,
     nodeId: node("b-interview"),
+  },
+
+  // 素養題組：短文閱讀（主旨、猜字義、推論）
+  {
+    id: id("set-quiet-1"),
+    type: "single",
+    context: QUIET_CONTEXT,
+    stem: "What is the main idea of the passage?",
+    choices: [
+      "Quiet Sunday made the center of Brightwater livelier and friendlier, despite some complaints.",
+      "Shop owners in Brightwater plan to close their shops on Sundays.",
+      "Cars are not allowed in Brightwater on any day of the week.",
+      "The bakers in Brightwater make the best bread in the country.",
+    ],
+    answer: 0,
+    explain:
+      "全文談 Quiet Sunday 的效果：店家原本擔心，結果更多家庭來逛，多數人覺得小鎮更友善。B、D 文中沒有提到；C 只有每月第一個星期日、九點到三點禁車。",
+    difficulty: 2,
+    nodeId: node("read-main"),
+  },
+  {
+    id: id("set-quiet-2"),
+    type: "single",
+    context: QUIET_CONTEXT,
+    stem: 'In the passage, the phrase "business would suffer" is closest in meaning to ______.',
+    choices: [
+      "business would improve",
+      "business would get worse",
+      "business would stay the same",
+      "business would become famous",
+    ],
+    answer: 1,
+    explain:
+      "線索在下一句：However, the opposite happened（然而情況正好相反）。結果是更多人來逛、生意變好，所以原本擔心的是生意會**變差**（get worse）。",
+    difficulty: 2,
+    nodeId: node("read-context"),
+  },
+  {
+    id: id("set-quiet-3"),
+    type: "single",
+    context: QUIET_CONTEXT,
+    stem: "What can we infer from the baker's words?",
+    choices: [
+      "Quiet Sunday brought him more attention from people passing by.",
+      "He wants to stop selling bread.",
+      "He dislikes families who stay for hours.",
+      "He believes traffic is good for his business.",
+    ],
+    answer: 0,
+    explain:
+      "麵包師傅說以前大家匆匆走過櫥窗，現在會停下來聞麵包香，可推論禁車後路人更注意到他的店。他的話沒有表達不想賣麵包、討厭家庭或喜歡車流。",
+    difficulty: 3,
+    nodeId: node("read-inference"),
+  },
+
+  // 素養題組：假設語氣（訊息情境）
+  {
+    id: id("set-leo-1"),
+    type: "single",
+    context: LEO_CONTEXT,
+    stem: "Which statement about Leo is TRUE?",
+    choices: [
+      "He caught the last train.",
+      "He did not leave school early enough.",
+      "He checked the timetable before leaving.",
+      "He is waiting outside in the cold.",
+    ],
+    answer: 1,
+    explain:
+      "他留在學校聊天而錯過末班車，並說 If I had left ten minutes earlier，表示當時沒有早點離開。他沒趕上車、沒看時刻表，也是在溫暖的候車室。",
+    difficulty: 1,
+    nodeId: node("g-subjunctive"),
+  },
+  {
+    id: id("set-leo-2"),
+    type: "cloze",
+    context: LEO_CONTEXT,
+    stem: "If Leo had left ten minutes earlier, he ____ have caught the train.（填入一個助動詞）",
+    accept: ["would", "could", "might"],
+    explain:
+      "與過去事實相反的假設語氣：If + had p.p., 主句用 would / could / might have + p.p.。原文用的是 would。",
+    difficulty: 2,
+    nodeId: node("g-subjunctive"),
+  },
+  {
+    id: id("set-leo-3"),
+    type: "single",
+    context: LEO_CONTEXT,
+    stem: 'What does "I wish I had checked the timetable" tell us?',
+    choices: [
+      "Leo checked the timetable carefully.",
+      "Leo did not check the timetable, and he regrets it.",
+      "Leo will check the timetable tomorrow.",
+      "Leo wants someone else to check it.",
+    ],
+    answer: 1,
+    explain: "I wish + had p.p. 表示對過去事實的遺憾：事實是他**沒有**查時刻表，現在後悔了。",
+    difficulty: 2,
+    nodeId: node("g-subjunctive"),
   },
 ];
 

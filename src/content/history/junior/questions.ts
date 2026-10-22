@@ -3,6 +3,12 @@ import type { Question } from "../../types";
 const id = (s: string) => `history.junior.q-${s}`;
 const n = (s: string) => `history.junior.${s}`;
 
+const SET_SOURCES_CONTEXT =
+  "【假設情境】某班同學要了解社區老街一場市集火災，找到三份資料（內容為虛構，用來練習判讀史料）：\n\n| 資料 | 來源 | 內容摘要 |\n|---|---|---|\n| 甲 | 公所職員，火災隔天寫的公文 | 損失輕微，市集次日照常營業，居民情緒平穩。 |\n| 乙 | 受災攤商，火災當晚寫的日記 | 半條街的貨都燒光了，鄰居抱著孩子在路邊哭。 |\n| 丙 | 當代作者，火災六十年後出版的書 | 綜合多方資料，推估約二十戶受災。 |";
+
+const SET_TIMELINE_CONTEXT =
+  "【假設人物】陳阿嬤是虛構人物，下面的年代制度則是真實的。\n\n- 換算提醒：民國元年是西元 1912 年；昭和元年是西元 1926 年。\n- 臺灣自 1949 年實施戒嚴，1987 年解除；1996 年舉行首次總統直選。\n\n| 陳阿嬤家的大事 | 戶籍上的紀年 |\n|---|---|\n| 陳阿嬤出生 | 昭和 5 年 |\n| 陳阿嬤結婚 | 民國 45 年 |\n| 兒子出生 | 民國 46 年 |";
+
 const questions: Question[] = [
   // 歷史的基礎觀念
   {
@@ -450,6 +456,81 @@ const questions: Question[] = [
     explain:
       "美洲的玉米、馬鈴薯、番薯傳到舊大陸；舊大陸的馬、牛與天花等疾病傳入美洲，深刻改變了兩邊的社會。",
     nodeId: n("w-voyages"),
+  },
+  // 素養題組：史料判讀
+  {
+    id: id("set-sources-1"),
+    type: "single",
+    context: SET_SOURCES_CONTEXT,
+    stem: "若想了解「火災當晚居民的心情與感受」，下列哪一份資料最直接？",
+    choices: [
+      "甲：公所隔天寫的公文",
+      "乙：攤商當晚寫的日記",
+      "丙：六十年後出版的書",
+      "三份資料一樣直接",
+    ],
+    answer: 1,
+    explain:
+      "乙是**當事人在事件當晚**寫下的一手史料，最能呈現當時的感受。甲是事後的公務報告，丙是後人整理的二手研究，都不是直接記錄當晚的心情。",
+    nodeId: n("basics-sources"),
+  },
+  {
+    id: id("set-sources-2"),
+    type: "multi",
+    context: SET_SOURCES_CONTEXT,
+    stem: "根據表格，下列哪些判斷是合理的？（複選）",
+    choices: [
+      "甲與乙都是火災當時或隔天留下的，屬於一手史料",
+      "丙是後人整理的二手研究",
+      "甲與乙的說法不同，所以其中一方一定在說謊",
+      "甲與乙的作者身分和寫作目的不同，可能影響他們記下的內容",
+    ],
+    answer: [0, 1, 3],
+    explain:
+      "甲、乙是同時代的一手史料，丙是事後整理的二手研究；作者的身分與目的不同，記錄的重點也會不同。說法不同不代表有人說謊，可能只是看到的範圍或在意的事情不同。",
+    nodeId: n("basics-sources"),
+  },
+  {
+    id: id("set-sources-3"),
+    type: "tf",
+    context: SET_SOURCES_CONTEXT,
+    stem: "甲與乙的說法不一致時，最好的做法是比對作者的立場，並找報紙、照片等第三方資料來印證。",
+    answer: true,
+    explain:
+      "不同立場的紀錄可能互相衝突，要先問「誰寫的、為什麼寫」，再尋找其他獨立的證據交叉比對，才能形成較完整的理解。",
+    nodeId: n("basics-perspectives"),
+  },
+  // 素養題組：年表換算
+  {
+    id: id("set-timeline-1"),
+    type: "numeric",
+    context: SET_TIMELINE_CONTEXT,
+    stem: "陳阿嬤出生的昭和 5 年，是西元哪一年？",
+    answer: 1930,
+    unit: "年",
+    explain: "昭和元年是 1926 年，所以昭和 5 年 = 1926 + 4 = **1930 年**（也可用 1925 + 5 計算）。",
+    nodeId: n("basics-time"),
+  },
+  {
+    id: id("set-timeline-2"),
+    type: "single",
+    context: SET_TIMELINE_CONTEXT,
+    stem: "陳阿嬤結婚的民國 45 年，臺灣處於下列哪個時期？",
+    choices: ["日治時期", "戰後的戒嚴時期", "解嚴之後", "清帝國時期"],
+    answer: 1,
+    explain:
+      "民國 45 年 = 1911 + 45 = 1956 年。臺灣 1949 年起戒嚴、1987 年解除，所以 1956 年屬於**戰後的戒嚴時期**。",
+    nodeId: n("tw-pw-politics"),
+  },
+  {
+    id: id("set-timeline-3"),
+    type: "numeric",
+    context: SET_TIMELINE_CONTEXT,
+    stem: "陳阿嬤的兒子在 1996 年首次總統直選時，約幾歲？（以西元年份相減計算）",
+    answer: 39,
+    unit: "歲",
+    explain: "民國 46 年 = 1911 + 46 = 1957 年，所以 1996 − 1957 = **39 歲**。",
+    nodeId: n("tw-pw-politics"),
   },
 ];
 

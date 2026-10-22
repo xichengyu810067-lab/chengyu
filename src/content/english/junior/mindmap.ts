@@ -32,6 +32,13 @@ const mindmap: CurriculumNode = {
                 "看到單字先唸出來，聽、說、讀、寫一起練",
               ],
               lessonIds: [L("classroom-vocab")],
+              extras: [
+                {
+                  kind: "history",
+                  title: "星期幾的名字怎麼來",
+                  body: "英文的星期名稱藏著神話：Sunday 是太陽日，Monday 是月亮日；Wednesday 來自古英語的 Wōdnesdæg，是北歐神話主神沃登（Woden，即奧丁）之日；Thursday 和雷神索爾（Thor）有關；Tuesday 與 Friday 也對應北歐神祇，Saturday 則來自羅馬農神 Saturn。",
+                },
+              ],
             },
             {
               id: "english.junior.vocab-wordclass",
@@ -44,6 +51,13 @@ const mindmap: CurriculumNode = {
                 "an 用在**母音開頭的音**前：an apple、an hour（h 不發音）",
               ],
               lessonIds: [L("classroom-vocab")],
+              extras: [
+                {
+                  kind: "myth",
+                  title: "news 是複數嗎？",
+                  body: "news 看起來像複數，但它是**不可數名詞**，動詞用單數：The news is good. 同樣常被誤用的還有 information、advice、homework，都不能加 -s，也不能直接加 a。要表示「一則」，可以說 a piece of news、a piece of advice。",
+                },
+              ],
             },
             {
               id: "english.junior.vocab-phonics",
@@ -53,6 +67,13 @@ const mindmap: CurriculumNode = {
               keyPoints: [
                 "字尾不發音的 e 會讓前面的母音唸字母音：cap → cape、kit → kite",
                 "Yes/No 問句語調通常上揚，Wh- 問句通常下降",
+              ],
+              extras: [
+                {
+                  kind: "myth",
+                  title: "英文不是「看字就會唸」",
+                  body: "through、though、tough、cough 都有 ough，卻分別唸成不同的音（光是 through 和 tough 的母音就不一樣）。這是因為英文拼字大多保留了古代的樣子，發音卻一直在改變。所以遇到新字，最好查發音或聽示範，而不是只靠猜。",
+                },
               ],
             },
           ],
@@ -80,6 +101,13 @@ const mindmap: CurriculumNode = {
                     "否定與疑問借助 do / does：Does he like math?",
                   ],
                   lessonIds: [L("tense-timeline")],
+                  extras: [
+                    {
+                      kind: "cross",
+                      title: "科學事實用現在簡單式",
+                      body: "描述不會改變的科學事實，英文用現在簡單式，例如：Water boils at 100°C at sea level. 或 The Earth goes around the Sun. 寫自然科學的說明時，這是很常用的句型。主詞是第三人稱單數時別忘了加 s：boils、goes。",
+                    },
+                  ],
                 },
                 {
                   id: "english.junior.g-progressive",
@@ -91,6 +119,13 @@ const mindmap: CurriculumNode = {
                     "過去進行式 was / were + V-ing：I **was reading** when you called.",
                   ],
                   lessonIds: [L("tense-timeline")],
+                  extras: [
+                    {
+                      kind: "myth",
+                      title: "I am knowing？",
+                      body: "know、like、want、love 這類表示**狀態或想法**的動詞，通常不用進行式：不說 I am knowing the answer，要說 I know the answer。不過某速食廣告的標語 I'm lovin' it 是刻意的口語用法，目的是營造輕鬆的感覺，不是考試的標準答案。",
+                    },
+                  ],
                 },
                 {
                   id: "english.junior.g-past",
@@ -102,6 +137,13 @@ const mindmap: CurriculumNode = {
                     "常搭配 yesterday、last week、two days ago、in 2020",
                   ],
                   lessonIds: [L("tense-timeline")],
+                  extras: [
+                    {
+                      kind: "history",
+                      title: "go 的過去式為什麼是 went",
+                      body: "went 看起來和 go 完全不像，原因是它其實借用了另一個舊動詞 wend（前往）的過去式。這種把兩個詞「合併」成同一組變化的情形，叫做補充法（suppletion）。be 動詞的 am、is、are、was、were 也是類似的例子，所以不規則動詞要靠多唸、多用來記。",
+                    },
+                  ],
                 },
                 {
                   id: "english.junior.g-future",
@@ -125,6 +167,18 @@ const mindmap: CurriculumNode = {
                     "不和 yesterday、last year 等明確的過去時間連用",
                   ],
                   lessonIds: [L("tense-timeline")],
+                  extras: [
+                    {
+                      kind: "myth",
+                      title: "has gone to 和 has been to",
+                      body: "He has been to Japan. 表示他去過日本，現在已經回來了；He has gone to Japan. 則表示他去日本了，人現在還在那邊或在路上。所以不能說 I have gone to Japan twice，因為說話的人就在這裡。想說「去過」，請用 have been to。",
+                    },
+                    {
+                      kind: "challenge",
+                      title: "since 還是 for？",
+                      body: "請判斷空格要填 since 還是 for：\n- I have lived here ___ 2019.\n- I have lived here ___ five years.\n\n**提示**：後面接的是「時間點」還是「一段時間」？\n\n**解答**：第一句是時間點，用 since；第二句是一段時間，用 for。",
+                    },
+                  ],
                 },
               ],
             },
@@ -145,6 +199,13 @@ const mindmap: CurriculumNode = {
                     "as + 原級 + as：一樣…",
                   ],
                   lessonIds: [L("comparison")],
+                  extras: [
+                    {
+                      kind: "myth",
+                      title: "不能說 more better",
+                      body: "better 已經是 good 的比較級，所以不能再加 more，要說 This one is better，不說 more better。最高級也一樣，不說 the most best。另外 farther 和 further 常可互換，談實際距離時多用 farther；further 還可表示「進一步的」，例如 further information。",
+                    },
+                  ],
                 },
                 {
                   id: "english.junior.g-inf-ger",
@@ -157,6 +218,13 @@ const mindmap: CurriculumNode = {
                     "動名詞當主詞：**Swimming** is good exercise.",
                   ],
                   lessonIds: [L("passive-relative")],
+                  extras: [
+                    {
+                      kind: "challenge",
+                      title: "stop to read 還是 stop reading？",
+                      body: "兩個句子差一個字，意思卻不同：\n- I stopped to read.\n- I stopped reading.\n\n請想想各是什麼意思。\n\n**解答**：stop to read 是「停下手邊的事，去讀書」（to read 表示目的）；stop reading 是「不再讀了」（動名詞是被停止的事）。",
+                    },
+                  ],
                 },
                 {
                   id: "english.junior.g-conj",
@@ -180,6 +248,13 @@ const mindmap: CurriculumNode = {
                     "動作者不重要或不清楚時，by 片語可以省略",
                   ],
                   lessonIds: [L("passive-relative")],
+                  extras: [
+                    {
+                      kind: "life",
+                      title: "Made in Taiwan",
+                      body: "商品上的 Made in Taiwan 其實是被動語態，完整的說法是 This product was made in Taiwan。標示、告示常省略主詞和 be 動詞，像 Made in Taiwan、Sold out（已售完）。只要看到過去分詞，主詞又是物品，就可以想到被動。",
+                    },
+                  ],
                 },
                 {
                   id: "english.junior.g-relative",
@@ -191,6 +266,13 @@ const mindmap: CurriculumNode = {
                     "I have a friend **who can speak Japanese**.",
                   ],
                   lessonIds: [L("passive-relative")],
+                  extras: [
+                    {
+                      kind: "cross",
+                      title: "中文放前面，英文放後面",
+                      body: "中文把修飾語放在名詞前面：「會說日語的朋友」；英文則把關係子句放在名詞後面：a friend who can speak Japanese。這個語序差異是翻譯時的常見難點。可以記成：中文「先修飾，再講人」，英文「先講人，再補充」。",
+                    },
+                  ],
                 },
                 {
                   id: "english.junior.g-tag",
@@ -259,6 +341,13 @@ const mindmap: CurriculumNode = {
             "This is Amy (speaking). → 電話中說「我是 Amy」",
             "Can I take a message?",
           ],
+          extras: [
+            {
+              kind: "history",
+              title: "第一通電話",
+              body: "1876 年，亞歷山大・格拉漢姆・貝爾（Alexander Graham Bell）取得電話專利。據他的實驗筆記記載，他對隔壁房間的助手華生說了：Mr. Watson, come here. I want to see you. 這被視為第一通電話的內容。今天電話中說 Hello，也是電話普及之後才流行起來的習慣。",
+            },
+          ],
         },
         {
           id: "english.junior.b-preference",
@@ -291,6 +380,18 @@ const mindmap: CurriculumNode = {
             "Lunar New Year：red envelopes、family reunion dinner",
           ],
           lessonIds: [L("festivals-reading")],
+          extras: [
+            {
+              kind: "history",
+              title: "萬聖夜的起源",
+              body: "一般認為，Halloween 和古代凱爾特人在秋收結束時舉行的 Samhain 節有關。基督教的萬聖節（All Saints' Day）在 11 月 1 日，前一晚稱為 All Hallows' Eve，縮短後就變成 Halloween。Hallow 的意思是「神聖的」。",
+            },
+            {
+              kind: "myth",
+              title: "感恩節是哪一天？",
+              body: "美國的感恩節（Thanksgiving）不是固定日期，而是 11 月的**第四個星期四**。1863 年林肯總統宣布了全國感恩日，到了 1941 年國會立法，才正式確定是 11 月第四個星期四，所以每年的日期都不太一樣。",
+            },
+          ],
         },
         {
           id: "english.junior.c-custom",
@@ -301,6 +402,13 @@ const mindmap: CurriculumNode = {
             "在美國的餐廳用餐，通常要另外給服務生小費（tip）",
             "別人打噴嚏時，常會說 Bless you!",
             "收到禮物時，常當面打開並道謝",
+          ],
+          extras: [
+            {
+              kind: "life",
+              title: "小費怎麼算",
+              body: "在美國的餐廳，服務生的收入有一部分靠小費，常見做法是給帳單金額的 15% 到 20%。例如餐費 40 美元，給 20% 就是 8 美元。不過各國習慣不同，有些地方服務費已經包含在帳單裡，出國前最好先查一下當地的習慣。",
+            },
           ],
         },
       ],
@@ -321,6 +429,13 @@ const mindmap: CurriculumNode = {
             "不認識的字，從上下文猜意思",
           ],
           lessonIds: [L("festivals-reading")],
+          extras: [
+            {
+              kind: "cross",
+              title: "國文與英文的主旨策略",
+              body: "找主旨的策略，國文和英文是相通的：先看標題與第一、最後一段，再把每段濃縮成一句話。英文文章常用主題句（topic sentence）開頭，一段只談一個重點，所以先讀每段的第一句，大致就能掌握文章的骨架。",
+            },
+          ],
         },
         {
           id: "english.junior.d-writing",
@@ -332,6 +447,13 @@ const mindmap: CurriculumNode = {
             "段落：主題句 → 支持句 → 結論句",
           ],
           lessonIds: [L("festivals-reading")],
+          extras: [
+            {
+              kind: "life",
+              title: "Dear 與 Hi",
+              body: "寫給老師、長輩或陌生人的 email，開頭用 Dear Mr. Lin, 或 Dear Ms. Chen,，結尾用 Best regards, 或 Sincerely,；寫給好朋友就可以輕鬆些：Hi Amy, ... See you!。主旨欄（Subject）也要簡短清楚，例如 Question about homework。選對語氣，就是溝通的第一步。",
+            },
+          ],
         },
       ],
     },

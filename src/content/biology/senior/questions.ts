@@ -3,6 +3,21 @@ import type { Question } from "../../types";
 const id = (s: string) => `biology.senior.q-${s}`;
 const node = (s: string) => `biology.senior.${s}`;
 
+const CODON_SET = `下表節錄部分密碼子的對照（為真實的遺傳密碼）。某段基因（**教學用假設**）轉錄出的正常 mRNA 為：5'-AUG UUU GAA AAA UGG UAA-3'
+
+| 密碼子 | AUG | UUU | GAA | GAG | AAA | UGG | UAA |
+|---|---|---|---|---|---|---|---|
+| 意義 | 甲硫胺酸（起始） | 苯丙胺酸 | 麩胺酸 | 麩胺酸 | 離胺酸 | 色胺酸 | 終止 |
+
+突變株甲：第 3 個密碼子由 GAA 變成 GAG。
+突變株乙：第 4 個密碼子由 AAA 變成 UAA。`;
+
+const DEER_SET = `某座沒有天敵的島嶼上引入 20 隻鹿，生態學家每兩年調查一次族群大小（以下為**教學用的假設資料**）。
+
+| 年 | 0 | 2 | 4 | 6 | 8 | 10 | 12 |
+|---|---|---|---|---|---|---|---|
+| 鹿的數量（隻） | 20 | 50 | 120 | 240 | 330 | 370 | 380 |`;
+
 const questions: Question[] = [
   // 細胞與膜運輸
   {
@@ -532,6 +547,91 @@ const questions: Question[] = [
       "能量沿食物鏈**單向流動**，每一階層都有大量能量以熱的形式散失，無法循環；可以循環的是碳、氮等物質。",
     difficulty: 1,
     nodeId: node("ecosystem"),
+  },
+
+  // 素養題組：密碼子與突變
+  {
+    id: id("set-codon-1"),
+    type: "cloze",
+    context: CODON_SET,
+    stem: "正常 mRNA 在轉譯時，遇到哪一個密碼子會停止？（請填三個字母）",
+    accept: ["UAA"],
+    explain:
+      "表中 UAA 的意義是「終止」，核糖體遇到終止密碼子時不再接上胺基酸，多肽鏈合成結束。終止密碼子本身不對應任何胺基酸。",
+    difficulty: 1,
+    nodeId: node("expression"),
+  },
+  {
+    id: id("set-codon-2"),
+    type: "single",
+    context: CODON_SET,
+    stem: "突變株甲製造出的蛋白質，與正常蛋白質相比，最可能有什麼變化？",
+    choices: [
+      "胺基酸序列完全相同，因為 GAA 與 GAG 都對應麩胺酸",
+      "少了一個胺基酸",
+      "蛋白質在第 3 個胺基酸後提早終止",
+      "第 3 個胺基酸變成離胺酸",
+    ],
+    answer: 0,
+    explain:
+      "遺傳密碼具有簡併性，不同的密碼子可以對應同一種胺基酸。GAA 與 GAG 都是麩胺酸，所以這個鹼基改變沒有造成胺基酸改變，稱為**同義突變**。",
+    difficulty: 2,
+    nodeId: node("expression"),
+  },
+  {
+    id: id("set-codon-3"),
+    type: "numeric",
+    context: CODON_SET,
+    stem: "突變株乙轉譯出的多肽鏈含有幾個胺基酸？",
+    answer: 3,
+    unit: "個",
+    explain:
+      "第 4 個密碼子變成 UAA（終止密碼子），轉譯在這裡就停止。前面只有 AUG、UUU、GAA 三個密碼子，對應甲硫胺酸、苯丙胺酸、麩胺酸，共 3 個胺基酸。這種突變稱為**無義突變**，通常使蛋白質失去功能。",
+    difficulty: 2,
+    nodeId: node("expression"),
+  },
+  // 素養題組：島上鹿群的成長
+  {
+    id: id("set-deer-1"),
+    type: "single",
+    context: DEER_SET,
+    stem: "這群鹿的族群成長最接近哪一種曲線？",
+    choices: [
+      "J 型曲線：持續快速增加，沒有上限",
+      "S 型（邏輯斯）曲線：先快速增加，後來趨緩並接近上限",
+      "族群數量持續下降",
+      "族群數量上下劇烈震盪",
+    ],
+    answer: 1,
+    explain:
+      "資料顯示數量先快速上升，到第 8 年之後增加變慢，並接近 380 隻，呈現 S 型曲線，表示環境資源與空間限制了族群繼續成長。",
+    difficulty: 1,
+    nodeId: node("population"),
+  },
+  {
+    id: id("set-deer-2"),
+    type: "numeric",
+    context: DEER_SET,
+    stem: "根據資料，這座島嶼的環境負荷量最接近多少隻？",
+    answer: 380,
+    tolerance: 20,
+    unit: "隻",
+    explain:
+      "環境負荷量是環境能長期維持的最大族群大小。後幾次調查的數量（370、380）幾乎不再增加，表示已接近上限，約為 380 隻。",
+    difficulty: 2,
+    nodeId: node("population"),
+  },
+  {
+    id: id("set-deer-3"),
+    type: "single",
+    context: DEER_SET,
+    stem: "哪一段兩年期間，鹿群**增加的隻數**最多？",
+    choices: ["第 0 年到第 2 年", "第 2 年到第 4 年", "第 4 年到第 6 年", "第 8 年到第 10 年"],
+    answer: 2,
+    explain:
+      "各段增加的隻數分別是：0–2 年 +30、2–4 年 +70、4–6 年 +120、6–8 年 +90、8–10 年 +40。第 4 到第 6 年增加最多（120 隻），之後環境阻力變大，增加量就減少。",
+    difficulty: 2,
+    nodeId: node("population"),
   },
 ];
 
