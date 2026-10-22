@@ -3,6 +3,12 @@ import type { Question } from "../../types";
 const id = (s: string) => `earth.junior.q-${s}`;
 const node = (s: string) => `earth.junior.${s}`;
 
+const QUAKE_CTX =
+  "某次防災演練中，老師給同學三個測站（甲、乙、丙）收到的同一次模擬地震紀錄。演練假設 P 波每秒前進 6 公里、S 波每秒前進 3 公里；各站 S 波比 P 波晚到的時間如下（資料為假設，方便練習）。\n\n|測站|S 波比 P 波晚到（秒）|\n|---|---|\n|甲|10|\n|乙|20|\n|丙|35|";
+
+const TIDE_CTX =
+  "某同學到海邊觀察，並查了當地的潮汐預報，整理成下表（時間與潮差為假設資料，方便練習）。潮差是同一天滿潮與乾潮的水位差。\n\n|農曆日期|月相|第 1 次滿潮|潮差（公尺）|\n|---|---|---|---|\n|初一|新月|05:10|2.1|\n|初二|新月後一天|06:00|2.0|\n|初八|上弦月|11:00|1.0|";
+
 const questions: Question[] = [
   // 地球的構造、礦物與岩石
   {
@@ -476,6 +482,77 @@ const questions: Question[] = [
     accept: ["29.5", "29.53", "約29.5", "29.5天"],
     explain: "這個週期稱為朔望月，約 29.5 天，是農曆一個月的由來。",
     nodeId: node("moon-phases"),
+  },
+
+  // 素養題組
+  {
+    id: id("set-quake-1"),
+    type: "single",
+    context: QUAKE_CTX,
+    stem: "哪一個測站離震源最近？",
+    choices: ["甲", "乙", "丙", "三個一樣近"],
+    answer: 0,
+    explain: "離震源越遠，P 波與 S 波的到達時間差越大。甲站時間差最小（10 秒），所以最近。",
+    nodeId: node("earthquake"),
+  },
+  {
+    id: id("set-quake-2"),
+    type: "numeric",
+    context: QUAKE_CTX,
+    stem: "乙站離震源大約多遠？",
+    answer: 120,
+    unit: "公里",
+    explain:
+      "設距離為 $d$ 公里，S 波比 P 波晚到 $\\frac{d}{3} - \\frac{d}{6} = \\frac{d}{6}$ 秒。乙站是 20 秒，所以 $d = 20 \\times 6 = 120$ 公里。",
+    nodeId: node("earthquake"),
+  },
+  {
+    id: id("set-quake-3"),
+    type: "single",
+    context: QUAKE_CTX,
+    stem: "只靠乙站一個測站的資料，能確定震央在哪裡嗎？",
+    choices: [
+      "可以，時間差直接告訴我們方向",
+      "不行，只知道距離，震央可能在以乙站為圓心的圓周上，需要三個以上測站交會",
+      "可以，S 波會指出震央的方向",
+      "不需要測站，只要用規模就能找出震央",
+    ],
+    answer: 1,
+    explain:
+      "一個測站只能算出到震源的距離，位置落在一個圓周上。用三個測站各畫一個圓，交會處才是震央，這就是三角定位。",
+    nodeId: node("earthquake"),
+  },
+  {
+    id: id("set-tide-1"),
+    type: "numeric",
+    context: TIDE_CTX,
+    stem: "初二的第 1 次滿潮比初一晚了幾分鐘？",
+    answer: 50,
+    unit: "分鐘",
+    explain:
+      "05:10 到 06:00 相差 50 分鐘，與「滿潮時刻每天約延後 50 分鐘」相符。這是因為月球繞地球公轉，地球要多轉一小段才會再對準月球。",
+    nodeId: node("tides"),
+  },
+  {
+    id: id("set-tide-2"),
+    type: "single",
+    context: TIDE_CTX,
+    stem: "表中哪一天最接近**小潮**？",
+    choices: ["初一", "初二", "初八", "三天都是大潮"],
+    answer: 2,
+    explain:
+      "初八是上弦月，月球與太陽的引力方向互相垂直而部分抵消，潮差最小（1.0 公尺），屬於小潮。",
+    nodeId: node("tides"),
+  },
+  {
+    id: id("set-tide-3"),
+    type: "tf",
+    context: TIDE_CTX,
+    stem: "初一的潮差最大，與新月時太陽和月球的引力方向大致相同、互相加強有關。",
+    answer: true,
+    explain:
+      "朔（新月）與望（滿月）時，日、地、月大致排成一直線，太陽與月球的引力互相加強，形成大潮。",
+    nodeId: node("tides"),
   },
 ];
 
