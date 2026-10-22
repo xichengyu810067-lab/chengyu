@@ -217,6 +217,34 @@ export const DEMO_QUESTIONS: Question[] = [
   },
 ];
 
+const DEMO_SET_CONTEXT = `小明記錄一週每天的最高氣溫（°C）：
+
+| 星期 | 一 | 二 | 三 | 四 | 五 |
+|---|---|---|---|---|---|
+| 氣溫 | 28 | 31 | 30 | 25 | 31 |`;
+
+/** 題組示範（共用 context） */
+export const DEMO_SET_QUESTIONS: Question[] = [
+  {
+    id: "demo.junior.q-set1",
+    type: "single",
+    context: DEMO_SET_CONTEXT,
+    stem: "這五天最高氣溫的眾數是？",
+    choices: ["28", "30", "31", "25"],
+    answer: 2,
+    explain: "31 出現了兩次，比其他數值多，所以眾數是 31。",
+  },
+  {
+    id: "demo.junior.q-set2",
+    type: "numeric",
+    context: DEMO_SET_CONTEXT,
+    stem: "這五天最高氣溫的平均是多少 °C？",
+    answer: 29,
+    unit: "°C",
+    explain: "$(28+31+30+25+31) \\div 5 = 145 \\div 5 = 29$。",
+  },
+];
+
 export const DEMO_ACTIVITIES: Activity[] = [
   {
     id: "mindmap",
@@ -238,6 +266,13 @@ export const DEMO_ACTIVITIES: Activity[] = [
               code: "N-7-3",
               summary: "認識負數，並在數線上表示。",
               keyPoints: ["數線右大左小", "絕對值是到原點的距離"],
+              extras: [
+                {
+                  kind: "life",
+                  title: "電梯的地下樓層",
+                  body: "電梯按鈕上的 B1、B2 就像數線上的 $-1$、$-2$：從 3 樓到 B2 要經過幾層樓？想成 $3-(-2)=5$。",
+                },
+              ],
             },
             {
               id: "demo.junior.n2",
@@ -438,6 +473,13 @@ export const DEMO_ACTIVITIES: Activity[] = [
     aiFeedback: true,
   },
   { id: "quiz", kind: "quiz", title: "練習題", questionIds: DEMO_QUESTIONS.map((q) => q.id) },
+  {
+    id: "set",
+    kind: "set",
+    title: "素養題組：讀表格回答問題",
+    prompt: "先讀材料，再回答下面每一題。",
+    questionIds: DEMO_SET_QUESTIONS.map((q) => q.id),
+  },
   {
     id: "memory",
     kind: "memory",

@@ -8,6 +8,7 @@ import {
   type Activity,
   type ActivityKind,
   type CurriculumNode,
+  EXTRA_META,
   type Scenario,
   STAGES,
   type Stage,
@@ -93,6 +94,17 @@ function checkActivity(a: Activity, track: TrackData, scenarios: Scenario[], whe
       expect(a.questionIds.length, `${where} 至少 1 題`).toBeGreaterThan(0);
       for (const id of a.questionIds) expect(qids.has(id), `${where} 找不到題目 ${id}`).toBe(true);
       break;
+    case "set": {
+      expect(a.questionIds.length, `${where} 題組 2–4 題`).toBeGreaterThanOrEqual(2);
+      expect(a.questionIds.length, `${where} 題組 2–4 題`).toBeLessThanOrEqual(4);
+      const qs = a.questionIds.map((id) => track.questions.find((q) => q.id === id));
+      for (const [i, q] of qs.entries())
+        expect(q, `${where} 找不到題目 ${a.questionIds[i]}`).toBeDefined();
+      const ctxs = new Set(qs.map((q) => q?.context ?? ""));
+      expect(ctxs.size, `${where} 題組的題目 context 必須相同`).toBe(1);
+      expect([...ctxs][0].length, `${where} 題組缺共用材料 context`).toBeGreaterThan(20);
+      break;
+    }
     case "dialogue":
       expect(
         scenarios.some((s) => s.id === a.scenarioId),
@@ -240,6 +252,11 @@ for (const meta of subjects) {
             if (node.grade) expect(GRADES[stage]).toContain(node.grade);
             for (const lid of node.lessonIds ?? [])
               expect(lessonIds.has(lid), `節點 ${node.id} 連到不存在的課程 ${lid}`).toBe(true);
+            for (const e of node.extras ?? []) {
+              expect(Object.keys(EXTRA_META), `${node.id} 補充類型 ${e.kind}`).toContain(e.kind);
+              expect(e.title.length, `${node.id} 補充缺標題`).toBeGreaterThan(1);
+              expect(e.body.length, `${node.id} 補充「${e.title}」內容太短`).toBeGreaterThan(20);
+            }
           }
           // 每堂課都應該能從心智圖找到
           const linked = new Set(nodes.flatMap((n) => n.node.lessonIds ?? []));
@@ -260,7 +277,7 @@ for (const meta of subjects) {
             expect(l.activities.length, `${l.id} 活動數 2–6`).toBeLessThanOrEqual(6);
             expect(l.objectives.length, `${l.id} 學習目標`).toBeGreaterThan(0);
             expect(
-              l.activities.some((a) => a.kind !== "read" && a.kind !== "quiz"),
+              l.activities.some((a) => !["read", "quiz", "set"].includes(a.kind)),
               `${l.id} 需要互動活動`,
             ).toBe(true);
             expect(new Set(l.activities.map((a) => a.id)).size, `${l.id} 活動 id 重複`).toBe(

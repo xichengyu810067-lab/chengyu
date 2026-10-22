@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router";
 import type { CurriculumNode } from "../content/types";
 import { useMediaQuery } from "../lib/hooks";
+import Extras from "./Extras";
 import { Rich, RichText } from "./RichText";
 
 interface Placed {
@@ -231,6 +232,11 @@ export default function MindMap({
                           📘
                         </span>
                       ) : null}
+                      {p.node.extras?.length ? (
+                        <span role="img" aria-label="有課外補充">
+                          ✨
+                        </span>
+                      ) : null}
                       {p.hiddenChildren > 0 && (
                         <span className="rounded-full bg-slate-900/10 px-1.5 text-[11px] dark:bg-white/20">
                           +{p.hiddenChildren}
@@ -293,6 +299,12 @@ export default function MindMap({
               ))}
             </div>
           ) : null}
+          {selected.extras?.length ? (
+            <div className="mt-3">
+              <p className="mb-1 text-sm font-bold">✨ 課外補充</p>
+              <Extras extras={selected.extras} />
+            </div>
+          ) : null}
         </div>
       )}
     </div>
@@ -339,6 +351,11 @@ function OutlineNode({
         {node.lessonIds?.length ? (
           <span role="img" aria-label="有互動課程">
             📘
+          </span>
+        ) : null}
+        {node.extras?.length ? (
+          <span role="img" aria-label="有課外補充">
+            ✨
           </span>
         ) : null}
         {node.code && (

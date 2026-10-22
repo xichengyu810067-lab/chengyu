@@ -56,6 +56,24 @@ export interface SubjectMeta {
 
 /* ───────────────────────── 心智圖 / 課綱節點 ───────────────────────── */
 
+/** 課外補充的類型 */
+export type ExtraKind = "life" | "history" | "cross" | "myth" | "challenge";
+
+export const EXTRA_META: Record<ExtraKind, { icon: string; label: string }> = {
+  life: { icon: "🏠", label: "生活應用" },
+  history: { icon: "📜", label: "科學史與人物" },
+  cross: { icon: "🔗", label: "跨科連結" },
+  myth: { icon: "🤔", label: "常見迷思" },
+  challenge: { icon: "🚀", label: "挑戰一下" },
+};
+
+/** 課外補充：課本之外的延伸閱讀，掛在心智圖節點上 */
+export interface Extra {
+  kind: ExtraKind;
+  title: string;
+  body: Rich;
+}
+
 export interface CurriculumNode {
   /** `${subject}.${stage}.${slug}`，根節點可用 `${subject}.${stage}` */
   id: string;
@@ -66,6 +84,8 @@ export interface CurriculumNode {
   summary?: Rich;
   keyPoints?: Rich[];
   lessonIds?: string[];
+  /** 課外補充（生活應用、科學史、跨科連結、常見迷思、挑戰題） */
+  extras?: Extra[];
   children?: CurriculumNode[];
 }
 
@@ -91,6 +111,8 @@ export interface SceneProps {
 interface QuestionBase {
   /** `${subject}.${stage}.q-${slug}` */
   id: string;
+  /** 題組共用的情境或資料（同一題組的題目填相同內容；單獨出題時也會顯示） */
+  context?: Rich;
   stem: Rich;
   explain: Rich;
   difficulty?: 1 | 2 | 3;
@@ -268,6 +290,13 @@ export type QuizActivity = ActivityBase & {
   questionIds: string[];
 };
 
+/** 素養題組：同一段情境／資料搭配 2–4 題（題目的 `context` 必須相同） */
+export type SetActivity = ActivityBase & {
+  kind: "set";
+  /** 引用同一 track 題庫中的題目 id */
+  questionIds: string[];
+};
+
 export type MemoryActivity = ActivityBase & { kind: "memory"; pairs: [Rich, Rich][] };
 
 export type ReadActivity = ActivityBase & { kind: "read"; body: Rich };
@@ -284,6 +313,7 @@ export type Activity =
   | DialogueActivity
   | CanvasActivity
   | QuizActivity
+  | SetActivity
   | MemoryActivity
   | ReadActivity;
 

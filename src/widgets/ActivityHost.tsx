@@ -60,6 +60,7 @@ const WIDGETS: Record<ActivityKind, AnyWidget> = {
   dialogue: lazyRetry(() => import("./Dialogue")),
   canvas: lazyRetry(() => import("./DoodleCanvas")),
   quiz: lazyRetry(() => import("./Quiz")),
+  set: lazyRetry(() => import("./QuestionSet")),
   memory: lazyRetry(() => import("./MemoryMatch")),
   read: ReadWidget,
 };
@@ -76,6 +77,7 @@ export const KIND_META: Record<ActivityKind, { icon: string; label: string }> = 
   dialogue: { icon: "💬", label: "情境對話" },
   canvas: { icon: "🎨", label: "沙盒畫布" },
   quiz: { icon: "✅", label: "練習題" },
+  set: { icon: "📑", label: "素養題組" },
   memory: { icon: "🃏", label: "翻牌配對" },
   read: { icon: "📖", label: "閱讀" },
 };
