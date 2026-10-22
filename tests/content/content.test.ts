@@ -59,8 +59,11 @@ function strings(v: unknown, out: string[] = []): string[] {
   return out;
 }
 
+/** 活動種類（題組 set 和 quiz 一樣是練習，不計入種類多樣性） */
 function kindsOf(t: TrackData): Set<ActivityKind> {
-  return new Set(t.lessons.flatMap((l) => l.activities.map((a) => a.kind)));
+  return new Set(
+    t.lessons.flatMap((l) => l.activities.map((a) => a.kind)).filter((k) => k !== "set"),
+  );
 }
 
 function formsOf(kinds: Set<ActivityKind>): string[] {
@@ -97,6 +100,7 @@ function checkActivity(a: Activity, track: TrackData, scenarios: Scenario[], whe
     case "set": {
       expect(a.questionIds.length, `${where} 題組 2–4 題`).toBeGreaterThanOrEqual(2);
       expect(a.questionIds.length, `${where} 題組 2–4 題`).toBeLessThanOrEqual(4);
+      expect(new Set(a.questionIds).size, `${where} 題組題目 id 重複`).toBe(a.questionIds.length);
       const qs = a.questionIds.map((id) => track.questions.find((q) => q.id === id));
       for (const [i, q] of qs.entries())
         expect(q, `${where} 找不到題目 ${a.questionIds[i]}`).toBeDefined();
@@ -324,6 +328,9 @@ for (const meta of subjects) {
           for (const s of strings([t, scenarios])) {
             expect(s, `疑似簡體字：「${s.slice(0, 40)}」`).not.toMatch(SIMPLIFIED_RE);
             expect(s, `內容不可包含外部網址：「${s.slice(0, 40)}」`).not.toMatch(/https?:\/\//);
+            // KaTeX 中 % 是註解，公式內要寫成 \%
+            for (const m of s.match(/\$\$[^$]+\$\$|\$[^$\n]+\$/g) ?? [])
+              expect(m, `公式內的 % 要寫成 \\%：「${m.slice(0, 40)}」`).not.toMatch(/(^|[^\\])%/);
           }
         });
       });

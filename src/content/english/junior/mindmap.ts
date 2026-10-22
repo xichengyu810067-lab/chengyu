@@ -345,7 +345,7 @@ const mindmap: CurriculumNode = {
             {
               kind: "history",
               title: "第一通電話",
-              body: "1876 年，亞歷山大・格雷厄姆・貝爾取得電話專利。據他的實驗筆記記載，他對隔壁房間的助手華生說了：Mr. Watson, come here. I want to see you. 這被視為第一通電話的內容。今天電話中說 Hello，也是電話普及之後才流行起來的習慣。",
+              body: "1876 年，亞歷山大・格拉漢姆・貝爾（Alexander Graham Bell）取得電話專利。據他的實驗筆記記載，他對隔壁房間的助手華生說了：Mr. Watson, come here. I want to see you. 這被視為第一通電話的內容。今天電話中說 Hello，也是電話普及之後才流行起來的習慣。",
             },
           ],
         },

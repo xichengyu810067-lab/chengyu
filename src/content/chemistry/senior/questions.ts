@@ -3,7 +3,7 @@ import type { Question } from "../../types";
 const id = (s: string) => `chemistry.senior.q-${s}`;
 const node = (s: string) => `chemistry.senior.${s}`;
 
-const HABER_SET = `某化學社團研究氨的合成反應 $\\ce{N2(g) + 3H2(g) <=> 2NH3(g)}$：在不同溫度與壓力下，等反應達到平衡後，記錄混合氣體中氨的體積百分率（以下為**教學用的假設數據**）。
+const HABER_SET = `某化學社團研究氨的合成反應 $\\ce{N2(g) + 3H2(g) <=> 2NH3(g)}$：在不同溫度與壓力下，等反應達到平衡後，記錄混合氣體中氨的體積百分率（以下為**教學用的假設資料**）。
 
 | 溫度（°C） | 壓力（atm） | 平衡時氨的體積百分率（%） |
 |---|---|---|
@@ -12,7 +12,7 @@ const HABER_SET = `某化學社團研究氨的合成反應 $\\ce{N2(g) + 3H2(g) 
 | 500 | 100 | 11 |
 | 500 | 200 | 18 |`;
 
-const TITRATION_SET = `某同學以 0.100 M 的 $\\ce{NaOH}$ 溶液滴定 20.0 mL 的 $\\ce{HCl}$ 溶液，邊滴邊用 pH 計記錄（以下為**教學用的假設數據**）。反應式：$\\ce{HCl + NaOH -> NaCl + H2O}$
+const TITRATION_SET = `某同學以 0.100 M 的 $\\ce{NaOH}$ 溶液滴定 20.0 mL 的 $\\ce{HCl}$ 溶液，邊滴邊用 pH 計記錄（以下為**教學用的假設資料**）。反應式：$\\ce{HCl + NaOH -> NaCl + H2O}$
 
 | 加入 NaOH（mL） | 0 | 10.0 | 19.9 | 20.0 | 20.1 | 30.0 |
 |---|---|---|---|---|---|---|
