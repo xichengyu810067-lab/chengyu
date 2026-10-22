@@ -3,6 +3,21 @@ import type { Question } from "../../types";
 const id = (s: string) => `chemistry.senior.q-${s}`;
 const node = (s: string) => `chemistry.senior.${s}`;
 
+const HABER_SET = `某化學社團研究氨的合成反應 $\\ce{N2(g) + 3H2(g) <=> 2NH3(g)}$：在不同溫度與壓力下，等反應達到平衡後，記錄混合氣體中氨的體積百分率（以下為**教學用的假設數據**）。
+
+| 溫度（°C） | 壓力（atm） | 平衡時氨的體積百分率（%） |
+|---|---|---|
+| 400 | 100 | 25 |
+| 400 | 200 | 36 |
+| 500 | 100 | 11 |
+| 500 | 200 | 18 |`;
+
+const TITRATION_SET = `某同學以 0.100 M 的 $\\ce{NaOH}$ 溶液滴定 20.0 mL 的 $\\ce{HCl}$ 溶液，邊滴邊用 pH 計記錄（以下為**教學用的假設數據**）。反應式：$\\ce{HCl + NaOH -> NaCl + H2O}$
+
+| 加入 NaOH（mL） | 0 | 10.0 | 19.9 | 20.0 | 20.1 | 30.0 |
+|---|---|---|---|---|---|---|
+| 溶液 pH | 1.0 | 1.5 | 3.6 | 7.0 | 10.4 | 12.3 |`;
+
 const questions: Question[] = [
   // 莫耳、化學計量與氣體
   {
@@ -522,6 +537,92 @@ const questions: Question[] = [
     explain: "醋酸只有少部分解離，$[\\ce{H+}]$ 較小，pH 約 2.9；0.1 M 鹽酸完全解離，pH = 1。",
     difficulty: 1,
     nodeId: node("acid-base"),
+  },
+
+  // 素養題組：氨合成的平衡
+  {
+    id: id("set-haber-1"),
+    type: "single",
+    context: HABER_SET,
+    stem: "比較壓力相同、溫度不同的兩組數據，可推斷氨的合成反應（正反應）是？",
+    choices: ["吸熱反應", "放熱反應", "無法由資料判斷", "與熱量變化無關"],
+    answer: 1,
+    explain:
+      "壓力相同時，溫度由 400 °C 升到 500 °C，平衡時氨的百分率反而下降，表示平衡向逆反應方向移動。升溫會使平衡朝吸熱方向移動，所以逆反應吸熱、**正反應放熱**。",
+    difficulty: 2,
+    nodeId: node("le-chatelier"),
+  },
+  {
+    id: id("set-haber-2"),
+    type: "single",
+    context: HABER_SET,
+    stem: "在相同溫度下，壓力由 100 atm 增為 200 atm，氨的百分率提高，最合理的解釋是？",
+    choices: [
+      "正反應使氣體的總莫耳數由 4 變為 2，加壓使平衡向氣體分子數較少的正反應方向移動",
+      "加壓使反應物的分子變小，所以更容易反應",
+      "加壓使反應變成吸熱反應",
+      "加壓使催化劑的活性提高",
+    ],
+    answer: 0,
+    explain:
+      "反應前氣體共 $1 + 3 = 4$ mol，反應後只有 2 mol。依勒沙特列原理，增加壓力時平衡會向減少氣體分子數的方向移動，也就是向生成氨的方向。",
+    difficulty: 2,
+    nodeId: node("le-chatelier"),
+  },
+  {
+    id: id("set-haber-3"),
+    type: "tf",
+    context: HABER_SET,
+    stem: "在 500 °C、100 atm 的條件下加入催化劑，平衡時氨的體積百分率會高於表中的 11%。",
+    answer: false,
+    explain:
+      "催化劑同時加快正、逆反應，只能縮短到達平衡所需的時間，不會改變平衡時的組成，所以氨的百分率仍然是 11%。",
+    difficulty: 2,
+    nodeId: node("le-chatelier"),
+  },
+  // 素養題組：酸鹼滴定曲線
+  {
+    id: id("set-titration-1"),
+    type: "numeric",
+    context: TITRATION_SET,
+    stem: "加入 20.0 mL 的 $\\ce{NaOH}$ 時 pH 為 7.0，達到滴定終點。這份 $\\ce{HCl}$ 溶液的濃度是多少 M？",
+    answer: 0.1,
+    tolerance: 0.001,
+    unit: "M",
+    explain:
+      "終點時 $\\ce{HCl}$ 與 $\\ce{NaOH}$ 的莫耳數相等：$n(\\ce{NaOH}) = 0.100 \\times 0.0200 = 2.00 \\times 10^{-3}$ mol，所以 $\\ce{HCl}$ 濃度為 $\\frac{2.00 \\times 10^{-3}}{0.0200} = 0.100$ M。",
+    difficulty: 2,
+    nodeId: node("titration"),
+  },
+  {
+    id: id("set-titration-2"),
+    type: "single",
+    context: TITRATION_SET,
+    stem: "加入的 NaOH 由 19.9 mL 增為 20.1 mL，只多了 0.2 mL，pH 卻由 3.6 升到 10.4。這個現象說明什麼？",
+    choices: [
+      "終點附近 pH 變化非常劇烈，只要選變色範圍落在這段 pH 內的指示劑，一滴就能看出終點",
+      "pH 計在終點附近壞掉了",
+      "滴定時溶液的體積沒有改變",
+      "強酸被強鹼滴定時，pH 永遠緩慢變化",
+    ],
+    answer: 0,
+    explain:
+      "強酸滴定強鹼（或反過來）時，終點前後 pH 會急遽跳躍。指示劑的變色範圍只要落在這段跳躍的 pH 內，在終點附近多加一滴就會明顯變色，因此可以準確判斷終點。",
+    difficulty: 2,
+    nodeId: node("titration"),
+  },
+  {
+    id: id("set-titration-3"),
+    type: "numeric",
+    context: TITRATION_SET,
+    stem: "若改用 0.0500 M 的 $\\ce{NaOH}$ 溶液滴定同一份 20.0 mL 的 $\\ce{HCl}$ 溶液，達到終點需要加入多少 mL？",
+    answer: 40,
+    tolerance: 0.1,
+    unit: "mL",
+    explain:
+      "$\\ce{HCl}$ 的莫耳數為 $2.00 \\times 10^{-3}$ mol。終點時需要 $\\ce{NaOH}$ 同樣是這麼多，體積為 $\\frac{2.00 \\times 10^{-3}}{0.0500} = 0.0400$ L，也就是 40.0 mL。",
+    difficulty: 2,
+    nodeId: node("titration"),
   },
 ];
 

@@ -336,6 +336,13 @@ const lessons: Lesson[] = [
         title: "小試身手",
         questionIds: [q("d1"), q("d2"), q("d3"), q("d4"), q("d5"), q("d7")],
       },
+      {
+        id: "a6",
+        kind: "set",
+        title: "素養題組：密碼子與突變",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-codon-1"), q("set-codon-2"), q("set-codon-3")],
+      },
     ],
   },
   {
@@ -786,6 +793,13 @@ const lessons: Lesson[] = [
         kind: "quiz",
         title: "小試身手",
         questionIds: [q("e1"), q("e2"), q("e3"), q("e4"), q("e5"), q("e6")],
+      },
+      {
+        id: "a6",
+        kind: "set",
+        title: "素養題組：島上鹿群的成長",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-deer-1"), q("set-deer-2"), q("set-deer-3")],
       },
     ],
   },

@@ -3,6 +3,21 @@ import type { Question } from "../../types";
 const id = (s: string) => `chemistry.junior.q-${s}`;
 const node = (s: string) => `chemistry.junior.${s}`;
 
+const SOLUBILITY_SET = `某班同學研究硝酸鉀（$\\ce{KNO3}$）的溶解度：在不同溫度下各取 100 g 的水，慢慢加入硝酸鉀並充分攪拌，直到不能再溶解為止，記錄最多能溶解的質量。（以下為**教學用的假設數據**）
+
+| 水溫（°C） | 20 | 40 | 60 |
+|---|---|---|---|
+| 100 g 水最多溶解的硝酸鉀（g） | 32 | 64 | 110 |`;
+
+const RATE_SET = `某班同學用大理石與稀鹽酸反應，比較影響反應速率的因素。每組都使用**等量**的大理石，鹽酸皆過量，並記錄收集 20 mL 二氧化碳所需的時間（以下為**教學用的假設數據**）。反應式：$\\ce{CaCO3 + 2HCl -> CaCl2 + H2O + CO2}$
+
+| 組別 | 大理石形狀 | 鹽酸濃度 | 溫度 | 收集 20 mL 氣體所需時間 |
+|---|---|---|---|---|
+| A | 塊狀 | 低 | 25 °C | 120 秒 |
+| B | 粉末 | 低 | 25 °C | 40 秒 |
+| C | 塊狀 | 高 | 25 °C | 60 秒 |
+| D | 塊狀 | 低 | 40 °C | 55 秒 |`;
+
 const questions: Question[] = [
   // 物質的分類與分離
   {
@@ -486,6 +501,85 @@ const questions: Question[] = [
     explain: "化學平衡是**動態平衡**：正、逆反應仍持續進行，只是速率相等，所以各物質的量不再改變。",
     difficulty: 2,
     nodeId: node("equilibrium"),
+  },
+
+  // 素養題組：溶解度表
+  {
+    id: id("set-solubility-1"),
+    type: "numeric",
+    context: SOLUBILITY_SET,
+    stem: "60 °C 時，50 g 的水最多能溶解多少克硝酸鉀？",
+    answer: 55,
+    unit: "g",
+    explain:
+      "溶解度是以 100 g 水為標準：60 °C 時 100 g 水最多溶解 110 g。水量減半，最多溶解的量也減半，所以是 $110 \\div 2 = 55$ g。",
+    difficulty: 2,
+    nodeId: node("solubility"),
+  },
+  {
+    id: id("set-solubility-2"),
+    type: "numeric",
+    context: SOLUBILITY_SET,
+    stem: "把 60 °C 時由 100 g 水配成的飽和溶液（含 110 g 硝酸鉀）降溫到 20 °C，理論上會析出多少克硝酸鉀晶體？",
+    answer: 78,
+    unit: "g",
+    explain:
+      "20 °C 時 100 g 水最多只能溶解 32 g，多出來的就會結晶析出：$110 - 32 = 78$ g。這就是利用降溫使溶解度變小來取得晶體的方法。",
+    difficulty: 2,
+    nodeId: node("solubility"),
+  },
+  {
+    id: id("set-solubility-3"),
+    type: "tf",
+    context: SOLUBILITY_SET,
+    stem: "在 40 °C 的 100 g 水中加入 50 g 硝酸鉀並充分攪拌，會得到飽和溶液，杯底還有未溶解的固體。",
+    answer: false,
+    explain:
+      "40 °C 時 100 g 水最多可溶解 64 g，而只加了 50 g，比溶解度小，所以會全部溶解，得到的是**不飽和溶液**，杯底沒有固體。",
+    difficulty: 2,
+    nodeId: node("solubility"),
+  },
+  // 素養題組：大理石與鹽酸的反應速率
+  {
+    id: id("set-rate-1"),
+    type: "single",
+    context: RATE_SET,
+    stem: "若要證明「接觸面積」會影響反應速率，應該比較哪兩組？",
+    choices: ["A 組和 B 組", "A 組和 C 組", "A 組和 D 組", "C 組和 D 組"],
+    answer: 0,
+    explain:
+      "做對照實驗時，一次只能改變一個變因。A 與 B 只有大理石形狀（塊狀或粉末）不同，濃度和溫度都相同，所以能證明接觸面積的影響。",
+    difficulty: 1,
+    nodeId: node("rate-factors"),
+  },
+  {
+    id: id("set-rate-2"),
+    type: "multi",
+    context: RATE_SET,
+    stem: "根據表中資料，下列哪些推論合理？（複選）",
+    choices: [
+      "其他條件相同時，粉末狀大理石的反應比塊狀快",
+      "其他條件相同時，鹽酸濃度較高，反應較快",
+      "比較 A 組與 D 組，可看出升高溫度能加快反應",
+      "B 組用粉末，所以最後產生的二氧化碳總量比 A 組多",
+    ],
+    answer: [0, 1, 2],
+    explain:
+      "A 與 B、A 與 C、A 與 D 分別顯示接觸面積、濃度、溫度都使反應變快。但每組的大理石質量相同、鹽酸又過量，最後生成的二氧化碳總量相同；影響的只是**速率**，不是總量。",
+    difficulty: 2,
+    nodeId: node("rate-factors"),
+  },
+  {
+    id: id("set-rate-3"),
+    type: "numeric",
+    context: RATE_SET,
+    stem: "B 組收集氣體的平均速率是多少 mL／秒？",
+    answer: 0.5,
+    tolerance: 0.01,
+    unit: "mL／秒",
+    explain: "平均速率 = 氣體體積 ÷ 時間 = $20 \\div 40 = 0.5$ mL／秒。",
+    difficulty: 1,
+    nodeId: node("rate-factors"),
   },
 ];
 
