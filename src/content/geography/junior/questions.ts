@@ -3,6 +3,12 @@ import type { Question } from "../../types";
 const id = (s: string) => `geography.junior.q-${s}`;
 const node = (s: string) => `geography.junior.${s}`;
 
+const AGING_CTX =
+  "某縣市（假設資料，方便練習）的人口年齡組成，在三個年份的百分比如下表。\n\n|年份|0–14 歲（%）|15–64 歲（%）|65 歲以上（%）|\n|---|---|---|---|\n|第 1 年|18|72|10|\n|第 11 年|14|72|14|\n|第 21 年|11|68|21|";
+
+const TRAIL_CTX =
+  "某山區的地形圖比例尺為 1:25000，等高距為 100 公尺。登山社規劃兩條由山腳登上山腰的路線（資料為假設）：\n\n|路線|圖上長度|起點到終點的海拔差|\n|---|---|---|\n|甲|8 公分|400 公尺|\n|乙|16 公分|400 公尺|";
+
 const questions: Question[] = [
   // 經緯度與時區
   {
@@ -379,6 +385,86 @@ const questions: Question[] = [
     explain: "跨國企業依各地的技術、勞力與成本優勢分配生產工作，形成國際分工，是全球化的重要特徵。",
     nodeId: node("globalization"),
     difficulty: 1,
+  },
+
+  // 素養題組
+  {
+    id: id("set-aging-1"),
+    type: "single",
+    context: AGING_CTX,
+    stem: "從這份資料可以看出該縣市的人口發生了什麼變化？",
+    choices: [
+      "幼年人口比例下降，老年人口比例上升，出現少子化與高齡化",
+      "幼年人口與老年人口的比例都一直上升",
+      "老年人口比例下降，幼年人口比例上升",
+      "三個年齡組的比例完全沒有改變",
+    ],
+    answer: 0,
+    explain:
+      "0–14 歲從 18% 降到 11%（少子化），65 歲以上從 10% 升到 21%（高齡化），兩個趨勢同時發生。",
+    nodeId: node("tw-population"),
+  },
+  {
+    id: id("set-aging-2"),
+    type: "numeric",
+    context: AGING_CTX,
+    stem: "從第 1 年到第 21 年，65 歲以上人口的比例增加了幾個百分點？",
+    answer: 11,
+    unit: "個百分點",
+    explain: "$21 - 10 = 11$，增加了 11 個百分點，老年人口比例變成原來的兩倍多。",
+    nodeId: node("tw-population"),
+  },
+  {
+    id: id("set-aging-3"),
+    type: "multi",
+    context: AGING_CTX,
+    stem: "如果這個趨勢持續下去，該縣市未來可能面臨哪些挑戰？（複選）",
+    choices: [
+      "學校的學生數持續減少，需要調整或整併",
+      "長期照顧與醫療的需求增加",
+      "15–64 歲的工作年齡人口比例下降，人力與稅收的壓力增大",
+      "需要大量興建新的幼兒園與國小",
+    ],
+    answer: [0, 1, 2],
+    explain:
+      "幼年人口減少會使學校學生數下降；老年人口增加使長照與醫療需求上升；工作年齡人口比例降低，則會增加人力與財政的壓力。因此不需要大量增建幼兒園與國小。",
+    nodeId: node("tw-population"),
+  },
+  {
+    id: id("set-trail-1"),
+    type: "numeric",
+    context: TRAIL_CTX,
+    stem: "甲路線在實際上的水平長度約是幾公里？",
+    answer: 2,
+    unit: "公里",
+    explain: "$8 \\times 25000 = 200000$ 公分 = 2000 公尺 = 2 公里。",
+    nodeId: node("contour"),
+  },
+  {
+    id: id("set-trail-2"),
+    type: "single",
+    context: TRAIL_CTX,
+    stem: "哪一條路線的平均坡度較陡？",
+    choices: [
+      "甲，因為相同的海拔差在較短的水平距離內爬升",
+      "乙，因為圖上長度較長",
+      "兩條一樣陡",
+      "無法比較",
+    ],
+    answer: 0,
+    explain:
+      "兩條路線的海拔差相同（400 公尺），甲的水平距離約 2 公里、乙約 4 公里。同樣爬升 400 公尺，水平距離越短，坡度越陡，所以甲較陡。",
+    nodeId: node("contour"),
+  },
+  {
+    id: id("set-trail-3"),
+    type: "tf",
+    context: TRAIL_CTX,
+    stem: "在這張地形圖上，甲路線一帶的等高線，會比乙路線一帶更密集。",
+    answer: true,
+    explain:
+      "等高距相同，甲路線在較短的水平距離內跨過相同數量（4 條）的等高線，所以等高線較密集，坡度也較陡。",
+    nodeId: node("contour"),
   },
 ];
 

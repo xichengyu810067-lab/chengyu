@@ -474,6 +474,13 @@ const lessons: Lesson[] = [
           "強震即時警報利用「P 波比 S 波快、電訊比地震波快」爭取時間。收到警報立刻**趴下、掩護、穩住**。",
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：規模與震度",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-quake-1"), q("set-quake-2"), q("set-quake-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -894,6 +901,13 @@ const lessons: Lesson[] = [
         reference:
           "太陽輻射以可見光等短波為主，大多能穿過大氣；地表吸熱後放出長波紅外線，二氧化碳、甲烷、水氣等溫室氣體吸收後向各方向（包括地面）再輻射，使地表平均溫度約 15°C，而不是約 −18°C。溫室氣體增加 → 留住更多熱 → 全球暖化。",
         aiFeedback: true,
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：二氧化碳濃度的變化",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-co2-1"), q("set-co2-2"), q("set-co2-3")],
       },
       {
         id: "a5",

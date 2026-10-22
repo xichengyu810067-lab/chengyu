@@ -471,6 +471,13 @@ const lessons: Lesson[] = [
         ],
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：判讀一張氣候資料表",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-koppen-1"), q("set-koppen-2"), q("set-koppen-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -568,6 +575,13 @@ const lessons: Lesson[] = [
             back: "青壯年人口比例高、扶養負擔輕的時期，勞動力充足，有利經濟成長。",
           },
         ],
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：從出生率與死亡率看人口轉型",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-transition-1"), q("set-transition-2"), q("set-transition-3")],
       },
       {
         id: "a5",

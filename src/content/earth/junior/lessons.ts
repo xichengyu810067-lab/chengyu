@@ -342,6 +342,13 @@ const lessons: Lesson[] = [
         },
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：用時間差找震源",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-quake-1"), q("set-quake-2"), q("set-quake-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -704,6 +711,13 @@ const lessons: Lesson[] = [
             back: "海嘯多由**海底地震**造成，波長極長、傳播極快，到岸邊時水位暴漲，破壞力很大。",
           },
         ],
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：讀懂潮汐表",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-tide-1"), q("set-tide-2"), q("set-tide-3")],
       },
       {
         id: "a5",
