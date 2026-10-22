@@ -2,6 +2,12 @@ import type { Question } from "../../types";
 
 const id = (s: string) => `civics.senior.q-${s}`;
 
+const SET_POLL_CONTEXT =
+  "【假設的民調】某機構針對「某市是否應興建新的公共圖書館」進行電話訪問（情境與數字皆為虛構，用來練習讀民調）：\n\n| 項目 | 內容 |\n|---|---|\n| 訪問對象 | 該市成年市民，以市話隨機撥號 |\n| 有效樣本 | 1,068 人 |\n| 贊成 | 46% |\n| 反對 | 42% |\n| 無意見或拒答 | 12% |\n| 抽樣誤差 | 在 95% 信心水準下，正負 3 個百分點 |";
+
+const SET_RENT_CONTEXT =
+  "【假設的租屋案例】大學生小林向房東承租套房，契約約定如下（情境為虛構，用來練習判斷契約條款）：\n\n| 項目 | 契約內容 |\n|---|---|\n| 每月租金 | 12,000 元 |\n| 押金 | 36,000 元 |\n\n小林提出疑問時，房東說：「契約是你自己簽的，所以每一條都有效。」";
+
 const questions: Question[] = [
   // 人性尊嚴與人權
   {
@@ -635,6 +641,85 @@ const questions: Question[] = [
     explain:
       "WTO 制定國際貿易規則、推動降低關稅與貿易障礙，並設有爭端解決機制。我國以「臺澎金馬個別關稅領域」名義於 2002 年加入。",
     nodeId: "civics.senior.globalization",
+  },
+  // 素養題組：讀懂民調
+  {
+    id: id("set-poll-1"),
+    type: "numeric",
+    context: SET_POLL_CONTEXT,
+    stem: "在 95% 信心水準下，「贊成」的比例最低可能是多少 %？",
+    answer: 43,
+    unit: "%",
+    explain: "贊成為 46%，抽樣誤差正負 3 個百分點，所以合理範圍是 43%–49%，最低為 **43%**。",
+    nodeId: "civics.senior.media",
+  },
+  {
+    id: id("set-poll-2"),
+    type: "single",
+    context: SET_POLL_CONTEXT,
+    stem: "贊成 46%、反對 42%，下列哪個說法最恰當？",
+    choices: [
+      "可以斷定贊成的人較多，因為 46 大於 42",
+      "不宜斷言贊成較多，因為兩者的合理範圍有重疊",
+      "不可能比較，因為有 12% 沒有意見",
+      "只要樣本數超過 1,000，就可以斷定",
+    ],
+    answer: 1,
+    explain:
+      "贊成的範圍約 43%–49%，反對約 39%–45%，兩者在 43%–45% 重疊，差距 4 個百分點在誤差附近，不宜據此斷言誰較多。",
+    nodeId: "civics.senior.media",
+  },
+  {
+    id: id("set-poll-3"),
+    type: "multi",
+    context: SET_POLL_CONTEXT,
+    stem: "下列哪些因素可能影響這份民調的代表性？（複選）",
+    choices: [
+      "只撥市話，可能漏掉只使用手機的市民",
+      "問卷題目的措辭是否具有引導性",
+      "受訪者的回覆率與是否有系統性的差異",
+      "只要樣本數夠大，抽樣方法就不重要",
+    ],
+    answer: [0, 1, 2],
+    explain:
+      "抽樣方式、問題設計與回覆情況都會影響代表性。樣本數大不能彌補抽樣偏誤，所以第四項不正確。",
+    nodeId: "civics.senior.media",
+  },
+  // 素養題組：租屋押金
+  {
+    id: id("set-rent-1"),
+    type: "numeric",
+    context: SET_RENT_CONTEXT,
+    stem: "依住宅租賃的規定，押金不得超過 2 個月租金總額，這份契約押金最高可以收多少元？",
+    answer: 24000,
+    unit: "元",
+    explain: "月租 12,000 元，2 個月即 12,000 × 2 = **24,000 元**。契約約定的 36,000 元已經超過。",
+    nodeId: "civics.senior.contract",
+  },
+  {
+    id: id("set-rent-2"),
+    type: "single",
+    context: SET_RENT_CONTEXT,
+    stem: "契約約定押金 36,000 元，超過上限的部分，法律效力為何？",
+    choices: [
+      "整份租賃契約全部無效",
+      "超過 2 個月租金的部分無效",
+      "只要小林簽名，就全部有效",
+      "押金的約定一律無效",
+    ],
+    answer: 1,
+    explain:
+      "法律對住宅租賃押金設有上限，超過的部分無效，但不影響其他合法的約定；契約並不會因此整份無效。",
+    nodeId: "civics.senior.contract",
+  },
+  {
+    id: id("set-rent-3"),
+    type: "tf",
+    context: SET_RENT_CONTEXT,
+    stem: "房東說「契約是你自己簽的，所以每一條都有效」，這個說法是正確的。",
+    answer: false,
+    explain: "契約自由有界線：違反強制規定或公序良俗的約定無效。不是簽了名，所有條款就一定有效。",
+    nodeId: "civics.senior.contract",
   },
 ];
 

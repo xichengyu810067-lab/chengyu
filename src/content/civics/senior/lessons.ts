@@ -426,6 +426,13 @@ const lessons: Lesson[] = [
         ],
       },
       {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：圖書館興建民調",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-poll-1"), q("set-poll-2"), q("set-poll-3")],
+      },
+      {
         id: "a5",
         kind: "quiz",
         title: "小試身手",
@@ -525,6 +532,13 @@ const lessons: Lesson[] = [
         title: "情境對話：租屋大小事",
         prompt: "熱水器壞了誰修？退租押金怎麼算？和房東陳先生好好談一談。",
         scenarioId: "civics.senior.s-rental-deposit",
+      },
+      {
+        id: "set1",
+        kind: "set",
+        title: "素養題組：套房租賃契約",
+        prompt: "先讀材料，再回答下面每一題。",
+        questionIds: [q("set-rent-1"), q("set-rent-2"), q("set-rent-3")],
       },
       {
         id: "a5",
